@@ -1,0 +1,1650 @@
+model_name,provider,category,release_date,release_year,arena_elo,benchmark,score
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,mmlu,17.9
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,mmlu,25.1
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,mmlu,34.3
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,mmlu,43.8
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,mmlu,50.6
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,mmlu,56.4
+PaLM 62B,Google,frontier,2022-04-04,2022,,mmlu,63.2
+PaLM 8B,Google,frontier,2022-04-04,2022,,mmlu,49.6
+PaLM 540B,Google,frontier,2022-04-04,2022,,mmlu,69.1
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,mmlu,64.4
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,mmlu,70.0
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,mmlu,77.0
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,mmlu,86.4
+PaLM 2 Bison,Google,frontier,2023-05-10,2023,,mmlu,74.8
+PaLM 2 Gecko,Google,frontier,2023-05-10,2023,,mmlu,58.9
+PaLM 2 Unicorn,Google,frontier,2023-05-10,2023,,mmlu,81.4
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,mmlu,70.8
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,mmlu,86.4
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,mmlu,78.2
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,mmlu,78.5
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,mmlu,86.5
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,mmlu,76.7
+Gemini 1.0 Nano,Google,frontier,2023-12-06,2023,,mmlu,55.4
+Gemini 1.0 Pro,Google,frontier,2023-12-06,2023,,mmlu,72.2
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,mmlu,83.7
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,mmlu,73.8
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,mmlu,86.4
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,mmlu,85.8
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,mmlu,81.2
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,mmlu,75.2
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,mmlu,86.8
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,mmlu,78.8
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,mmlu,75.4
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,mmlu,88.7
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,mmlu,79.3
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,mmlu,88.7
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,mmlu,82.0
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,mmlu,84.0
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,mmlu,89.1
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,mmlu,87.3
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,mmlu,84.6
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,mmlu,90.8
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,mmlu,72.0
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,mmlu,88.7
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,mmlu,78.0
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,mmlu,71.7
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,mmlu,80.8
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,mmlu,91.8
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,mmlu,88.5
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,mmlu,89.4
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,mmlu,90.8
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,mmlu,88.5
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,mmlu,86.9
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,mmlu,81.6
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,mmlu,90.7
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,mmlu,91.9
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,mmlu,89.5
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,mmlu,91.6
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,mmlu,79.8
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,mmlu,85.6
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,mmlu,93.4
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,mmlu,89.2
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,mmlu,89.7
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,mmlu,92.3
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,mmlu,86.9
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,mmlu,82.1
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,mmlu,91.7
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,mmlu,90.1
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,mmlu,94.4
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,mmlu,90.3
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,mmlu,92.4
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,mmlu,89.1
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,mmlu,91.6
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,mmlu,90.8
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,mmlu,92.7
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,mmlu,89.7
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,mmlu,92.4
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,mmlu,94.2
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,mmlu,93.1
+T5 Base,Google,research,2020-02-24,2020,,mmlu,29.6
+T5 Large,Google,research,2020-02-24,2020,,mmlu,35.2
+T5 Small,Google,research,2020-02-24,2020,,mmlu,24.7
+T5 XL,Google,research,2020-02-24,2020,,mmlu,39.9
+T5 XXL,Google,research,2020-02-24,2020,,mmlu,48.3
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,mmlu,36.7
+Gopher 280B,DeepMind,research,2021-12-08,2021,,mmlu,60.2
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,mmlu,67.6
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,mmlu,33.7
+OPT 66B,Meta AI,research,2022-05-02,2022,,mmlu,48.4
+OPT 30B,Meta AI,research,2022-05-02,2022,,mmlu,44.8
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,mmlu,37.7
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,mmlu,24.6
+OPT 13B,Meta AI,research,2022-05-02,2022,,mmlu,41.8
+BLOOM 176B,BigScience,research,2022-07-06,2022,,mmlu,26.1
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,mmlu,24.1
+BLOOM 3B,BigScience,research,2022-07-06,2022,,mmlu,26.7
+BLOOM 560M,BigScience,research,2022-07-06,2022,,mmlu,20.9
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,mmlu,30.7
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,mmlu,44.9
+FLAN-T5 XL,Google,research,2022-10-20,2022,,mmlu,51.7
+FLAN-T5 Base,Google,research,2022-10-20,2022,,mmlu,42.7
+FLAN-T5 Large,Google,research,2022-10-20,2022,,mmlu,49.2
+FLAN-T5 Small,Google,research,2022-10-20,2022,,mmlu,38.2
+FLAN-T5 XXL,Google,research,2022-10-20,2022,,mmlu,54.9
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,mmlu,34.1
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,mmlu,46.9
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,mmlu,58.2
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,mmlu,63.7
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,mmlu,35.3
+FLAN-UL2,Google,research,2023-03-10,2023,,mmlu,55.9
+BloombergGPT,Bloomberg,research,2023-03-30,2023,,mmlu,54.1
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,mmlu,35.9
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,mmlu,30.3
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,mmlu,32.7
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,mmlu,35.9
+Dolly 12B,Databricks,research,2023-04-12,2023,,mmlu,38.3
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,mmlu,30.3
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,mmlu,24.2
+MPT 7B,MosaicML,research,2023-05-05,2023,,mmlu,27.3
+RedPajama 3B,Together AI,research,2023-05-05,2023,,mmlu,26.7
+RedPajama 7B,Together AI,research,2023-05-05,2023,,mmlu,36.0
+Falcon 40B,TII,research,2023-05-22,2023,,mmlu,55.2
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,mmlu,48.3
+MPT 30B,MosaicML,research,2023-06-22,2023,,mmlu,46.6
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,mmlu,47.9
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,mmlu,55.0
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,mmlu,55.8
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,mmlu,69.6
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,mmlu,69.7
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,mmlu,45.6
+Falcon 180B,TII,research,2023-09-06,2023,,mmlu,71.0
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,mmlu,60.3
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,mmlu,64.6
+Yi 34B,01.AI,research,2023-11-05,2023,,mmlu,76.3
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,mmlu,61.6
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,mmlu,69.1
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,mmlu,63.0
+Meditron 70B,EPFL,research,2023-11-27,2023,,mmlu,66.4
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,mmlu,61.3
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,mmlu,70.7
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,mmlu,71.3
+Phi-2,Microsoft,research,2023-12-12,2023,,mmlu,57.5
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,mmlu,72.1
+Grok 1,xAI,research,2024-03-17,2024,,mmlu,73.0
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,mmlu,78.0
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,mmlu,82.0
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,mmlu,82.3
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,mmlu,68.6
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,mmlu,69.2
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,mmlu,68.5
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,mmlu,78.7
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,mmlu,76.7
+Falcon 2 11B,TII,research,2024-05-14,2024,,mmlu,62.0
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,mmlu,77.6
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,mmlu,84.8
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,mmlu,79.1
+Gemma 2 27B,Google,research,2024-06-27,2024,,mmlu,75.5
+Gemma 2 9B,Google,research,2024-06-27,2024,,mmlu,71.1
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,mmlu,68.4
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,mmlu,88.6
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,mmlu,85.7
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,mmlu,86.2
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,mmlu,73.3
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,mmlu,73.2
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,mmlu,86.0
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,mmlu,74.0
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,mmlu,85.8
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,mmlu,57.7
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,mmlu,72.9
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,mmlu,31.9
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,mmlu,63.8
+Command R7B,Cohere,research,2024-12-05,2024,,mmlu,68.5
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,mmlu,86.2
+Phi-4,Microsoft,research,2024-12-12,2024,,mmlu,84.8
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,mmlu,79.5
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,mmlu,69.5
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,mmlu,72.8
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,mmlu,55.8
+Gemma 3 27B,Google,research,2025-03-12,2025,,mmlu,79.1
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,mmlu,85.7
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,mmlu,83.9
+Nous-70B-ties,meta-math,community,2023-01-04,2023,,mmlu,87.7
+Medusa-70B-dpo,mistralai-community,community,2023-01-24,2023,,mmlu,84.4
+Tulu-70B-franken,NousResearch,community,2023-01-28,2023,,mmlu,86.8
+Airoboros-70B-dare,NousResearch,community,2023-02-04,2023,,mmlu,83.1
+InfinityInstruct-70B-franken,mistralai-community,community,2023-02-04,2023,,mmlu,87.0
+WizardMath-70B-ties,FPHam,community,2023-02-09,2023,,mmlu,86.2
+Meridian-70B-lora,HuggingFaceH4,community,2023-03-14,2023,,mmlu,86.3
+Hermes-70B-ties,mistralai-community,community,2023-03-19,2023,,mmlu,82.9
+Nous-70B-slerp,meta-math,community,2023-03-24,2023,,mmlu,86.7
+Axiom-70B-linear,cognitivecomputations,community,2023-05-04,2023,,mmlu,89.2
+Speechless-70B-passthrough,meta-math,community,2023-05-09,2023,,mmlu,84.6
+Vertex-70B-ties,unsloth,community,2023-05-14,2023,,mmlu,88.5
+Capybara-70B-passthrough,unsloth,community,2023-05-19,2023,,mmlu,85.3
+Guanaco-70B-ties,defog,community,2023-06-09,2023,,mmlu,86.5
+SuperHOT-70B-passthrough,garage-bAInd,community,2023-06-09,2023,,mmlu,84.2
+EvolInstruct-7B-dare,FPHam,community,2023-06-14,2023,,mmlu,78.4
+Linhope-70B-dare,WizardLM,community,2023-07-09,2023,,mmlu,86.2
+Hermes-70B-linear,NousResearch,community,2023-07-19,2023,,mmlu,89.6
+Baize-70B-franken,defog,community,2023-07-24,2023,,mmlu,84.1
+Meridian-70B-franken,Gryphe,community,2023-08-09,2023,,mmlu,89.0
+OpenHermes-70B-ties,HuggingFaceH4,community,2023-08-09,2023,,mmlu,89.5
+Synthia-70B-rlhf,unsloth,community,2023-08-09,2023,,mmlu,87.9
+SciTulu-70B-dare,teknium,community,2023-08-14,2023,,mmlu,89.7
+Vicuna-FT-70B-dpo,defog,community,2023-08-28,2023,,mmlu,90.0
+Hermes-7B-dare,jondurbin,community,2023-09-04,2023,,mmlu,77.1
+OpenOrca-70B-rlhf,allenai,community,2023-09-09,2023,,mmlu,86.7
+Minotaur-70B-rlhf,HuggingFaceH4,community,2023-09-14,2023,,mmlu,86.1
+GPT4All-70B-dare,TIGER-Lab,community,2023-09-19,2023,,mmlu,85.2
+CodeAlpaca-70B-sft,Open-Orca,community,2023-09-24,2023,,mmlu,84.3
+OpenHermes-70B-sft,garage-bAInd,community,2023-09-28,2023,,mmlu,88.0
+Samantha-7B-passthrough,FPHam,community,2023-09-28,2023,,mmlu,78.2
+Hydra-70B-rlhf,cognitivecomputations,community,2023-10-19,2023,,mmlu,85.3
+OpenOrca-70B-passthrough,TheBloke,community,2023-10-19,2023,,mmlu,86.5
+Solstice-70B-passthrough,bartowski,community,2023-10-19,2023,,mmlu,82.6
+Apex-70B-franken,WizardLM,community,2023-10-24,2023,,mmlu,89.3
+Lazarus-70B-ties,bartowski,community,2023-10-24,2023,,mmlu,88.6
+Vertex-70B-lora,togethercomputer,community,2023-11-04,2023,,mmlu,85.2
+Solstice-70B-ties,Gryphe,community,2023-11-04,2023,,mmlu,89.1
+Alpagasus-7B-slerp,jondurbin,community,2023-11-14,2023,,mmlu,78.7
+Abel-70B-ties,NousResearch,community,2023-12-14,2023,,mmlu,91.0
+Lazarus-70B-franken,togethercomputer,community,2023-12-24,2023,,mmlu,87.2
+Minotaur-70B-sft,bartowski,community,2024-01-28,2024,,mmlu,82.8
+CodeAlpaca-70B-franken,TIGER-Lab,community,2024-02-04,2024,,mmlu,85.5
+ReMM-70B-passthrough,mlabonne,community,2024-02-04,2024,,mmlu,87.8
+Zenith-70B-slerp,allenai,community,2024-02-04,2024,,mmlu,88.3
+Baize-70B-sft,allenai,community,2024-02-09,2024,,mmlu,86.5
+Xwin-70B-dare,NousResearch,community,2024-03-04,2024,,mmlu,84.6
+GPT4All-70B-linear,bartowski,community,2024-03-09,2024,,mmlu,90.0
+OpenOrca-70B-ties,togethercomputer,community,2024-03-14,2024,,mmlu,88.1
+Nexus-70B-ties,defog,community,2024-03-24,2024,,mmlu,82.5
+Lazarus-70B-slerp,defog,community,2024-03-28,2024,,mmlu,89.1
+Speechless-70B-sft,garage-bAInd,community,2024-03-28,2024,,mmlu,89.4
+Hermes-70B-sft,jondurbin,community,2024-04-09,2024,,mmlu,87.9
+Morpheus-70B-slerp,jondurbin,community,2024-04-09,2024,,mmlu,82.9
+Lazarus-70B-dpo,Open-Orca,community,2024-04-14,2024,,mmlu,86.0
+Vortex-70B-dare,allenai,community,2024-04-19,2024,,mmlu,86.5
+SciTulu-70B-dpo,teknium,community,2024-05-04,2024,,mmlu,86.1
+Catalyst-70B-linear,Gryphe,community,2024-05-14,2024,,mmlu,87.1
+Notus-70B-ties,TheBloke,community,2024-05-14,2024,,mmlu,86.2
+Titan-FT-70B-rlhf,garage-bAInd,community,2024-05-24,2024,,mmlu,90.1
+Lazarus-70B-rlhf,meta-math,community,2024-05-28,2024,,mmlu,89.9
+WizardMath-70B-linear,mistralai-community,community,2024-06-04,2024,,mmlu,86.0
+EvolInstruct-70B-sft,cognitivecomputations,community,2024-06-04,2024,,mmlu,85.9
+Linhope-8B-lora,mlabonne,community,2024-06-09,2024,,mmlu,76.0
+Notus-70B-passthrough,jondurbin,community,2024-06-14,2024,,mmlu,87.9
+GPT4All-70B-passthrough,teknium,community,2024-06-19,2024,,mmlu,82.8
+Airoboros-70B-slerp,Gryphe,community,2024-06-24,2024,,mmlu,88.9
+Koala-70B-rlhf,TheBloke,community,2024-06-24,2024,,mmlu,88.0
+Manticore-70B-lora,WizardLM,community,2024-07-04,2024,,mmlu,89.6
+Guanaco-70B-rlhf,togethercomputer,community,2024-07-14,2024,,mmlu,89.4
+Nous-70B-dare,garage-bAInd,community,2024-07-28,2024,,mmlu,90.8
+ReMM-7B-passthrough,Open-Orca,community,2024-08-09,2024,,mmlu,78.5
+Axiom-70B-rlhf,allenai,community,2024-08-19,2024,,mmlu,87.6
+Minotaur-8B-linear,mlabonne,community,2024-08-19,2024,,mmlu,75.5
+LongAlpaca-70B-franken,mlabonne,community,2024-08-28,2024,,mmlu,87.1
+Aurora-8B-dare,mlabonne,community,2024-09-14,2024,,mmlu,73.7
+Hydra-70B-dpo,meta-math,community,2024-09-14,2024,,mmlu,87.3
+Starling-70B-ties,TheBloke,community,2024-09-14,2024,,mmlu,87.2
+Cascade-70B-sft,WizardLM,community,2024-09-19,2024,,mmlu,82.2
+Koala-70B-slerp,unsloth,community,2024-09-28,2024,,mmlu,87.9
+Nova-FT-70B-linear,WizardLM,community,2024-09-28,2024,,mmlu,84.7
+Abel-70B-dare,Open-Orca,community,2024-10-14,2024,,mmlu,86.3
+Pegasus-70B-ties,TIGER-Lab,community,2024-10-19,2024,,mmlu,82.8
+Pulse-70B-linear,Gryphe,community,2024-10-19,2024,,mmlu,83.2
+InfinityInstruct-70B-ties,bartowski,community,2024-10-28,2024,,mmlu,86.2
+Morpheus-70B-sft,HuggingFaceH4,community,2024-11-04,2024,,mmlu,86.8
+Chimera-70B-lora,unsloth,community,2024-11-09,2024,,mmlu,87.7
+WizardMath-70B-dpo,teknium,community,2024-11-14,2024,,mmlu,89.5
+Nereid-70B-dare,Open-Orca,community,2024-11-14,2024,,mmlu,86.2
+Sphinx-70B-linear,FPHam,community,2024-11-24,2024,,mmlu,85.6
+Koala-70B-lora,cognitivecomputations,community,2024-11-28,2024,,mmlu,85.4
+Minotaur-70B-linear,togethercomputer,community,2024-12-04,2024,,mmlu,88.5
+MetaMath-70B-linear,TIGER-Lab,community,2024-12-09,2024,,mmlu,83.2
+Platypus-70B-passthrough,teknium,community,2024-12-09,2024,,mmlu,89.2
+Titan-FT-7B-sft,FPHam,community,2024-12-09,2024,,mmlu,75.7
+EvolInstruct-70B-linear,TIGER-Lab,community,2024-12-14,2024,,mmlu,82.7
+Nereid-70B-ties,cognitivecomputations,community,2024-12-14,2024,,mmlu,89.4
+Nous-70B-dpo,mistralai-community,community,2024-12-19,2024,,mmlu,85.5
+Nexus-70B-lora,HuggingFaceH4,community,2024-12-24,2024,,mmlu,87.6
+NeuralHermes-70B-sft,TheBloke,community,2024-12-28,2024,,mmlu,86.8
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,humaneval,1.8
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,humaneval,4.0
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,humaneval,6.9
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,humaneval,11.8
+Codex 12B,OpenAI,frontier,2021-08-10,2021,,humaneval,29.1
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,humaneval,17.8
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,humaneval,21.9
+PaLM 62B,Google,frontier,2022-04-04,2022,,humaneval,15.9
+PaLM 8B,Google,frontier,2022-04-04,2022,,humaneval,3.6
+PaLM 540B,Google,frontier,2022-04-04,2022,,humaneval,26.2
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,humaneval,36.4
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,humaneval,48.1
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,humaneval,56.3
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,humaneval,67.0
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,humaneval,48.8
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,humaneval,67.4
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,humaneval,58.6
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,humaneval,71.4
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,humaneval,81.6
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,humaneval,70.4
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,humaneval,74.5
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,humaneval,71.8
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,humaneval,82.6
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,humaneval,71.8
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,humaneval,44.9
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,humaneval,76.3
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,humaneval,84.9
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,humaneval,73.4
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,humaneval,67.4
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,humaneval,90.2
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,humaneval,71.8
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,humaneval,92.0
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,humaneval,87.2
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,humaneval,92.1
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,humaneval,90.9
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,humaneval,88.1
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,humaneval,89.8
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,humaneval,92.3
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,humaneval,63.8
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,humaneval,93.4
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,humaneval,87.8
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,humaneval,64.6
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,humaneval,75.2
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,humaneval,92.3
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,humaneval,91.6
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,humaneval,88.8
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,humaneval,96.3
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,humaneval,94.2
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,humaneval,93.4
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,humaneval,82.0
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,humaneval,92.5
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,humaneval,93.1
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,humaneval,91.8
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,humaneval,90.7
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,humaneval,85.3
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,humaneval,88.2
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,humaneval,96.4
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,humaneval,94.2
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,humaneval,93.2
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,humaneval,95.6
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,humaneval,93.4
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,humaneval,88.9
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,humaneval,95.4
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,humaneval,97.6
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,humaneval,96.4
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,humaneval,92.2
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,humaneval,91.7
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,humaneval,93.1
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,humaneval,94.8
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,humaneval,95.7
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,humaneval,96.3
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,humaneval,93.6
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,humaneval,95.6
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,humaneval,96.8
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,humaneval,93.9
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,humaneval,11.4
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,humaneval,14.8
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,humaneval,21.3
+OPT 66B,Meta AI,research,2022-05-02,2022,,humaneval,4.8
+OPT 30B,Meta AI,research,2022-05-02,2022,,humaneval,3.5
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,humaneval,2.0
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,humaneval,0.9
+OPT 13B,Meta AI,research,2022-05-02,2022,,humaneval,2.4
+MPT 7B,MosaicML,research,2023-05-05,2023,,humaneval,18.5
+Falcon 40B,TII,research,2023-05-22,2023,,humaneval,20.3
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,humaneval,22.1
+MPT 30B,MosaicML,research,2023-06-22,2023,,humaneval,20.7
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,humaneval,14.0
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,humaneval,18.1
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,humaneval,19.8
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,humaneval,29.9
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,humaneval,31.6
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,humaneval,12.7
+CodeLlama 34B,Meta,research,2023-08-24,2023,,humaneval,48.7
+Falcon 180B,TII,research,2023-09-06,2023,,humaneval,24.0
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,humaneval,30.7
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,humaneval,28.1
+Yi 34B,01.AI,research,2023-11-05,2023,,humaneval,26.4
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,humaneval,22.5
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,humaneval,48.0
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,humaneval,28.1
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,humaneval,31.2
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,humaneval,39.9
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,humaneval,41.0
+Phi-2,Microsoft,research,2023-12-12,2023,,humaneval,46.9
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,humaneval,51.5
+CodeLlama 70B,Meta,research,2024-01-29,2024,,humaneval,67.6
+StarCoder2 15B,HuggingFace/ServiceNow,research,2024-02-28,2024,,humaneval,46.6
+Grok 1,xAI,research,2024-03-17,2024,,humaneval,63.5
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,humaneval,44.8
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,humaneval,81.9
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,humaneval,82.2
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,humaneval,62.5
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,humaneval,62.8
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,humaneval,57.0
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,humaneval,81.2
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,humaneval,43.1
+Falcon 2 11B,TII,research,2024-05-14,2024,,humaneval,44.8
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,humaneval,70.7
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,humaneval,86.3
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,humaneval,72.9
+Gemma 2 27B,Google,research,2024-06-27,2024,,humaneval,51.5
+Gemma 2 9B,Google,research,2024-06-27,2024,,humaneval,40.3
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,humaneval,53.9
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,humaneval,89.0
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,humaneval,80.6
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,humaneval,80.8
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,humaneval,68.1
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,humaneval,68.3
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,humaneval,86.7
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,humaneval,84.9
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,humaneval,80.6
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,humaneval,24.7
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,humaneval,64.6
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,humaneval,8.4
+Qwen 2.5 Coder 32B,Alibaba,research,2024-11-12,2024,,humaneval,92.6
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,humaneval,44.6
+Command R7B,Cohere,research,2024-12-05,2024,,humaneval,48.7
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,humaneval,87.1
+Phi-4,Microsoft,research,2024-12-12,2024,,humaneval,82.6
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,humaneval,79.3
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,humaneval,69.5
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,humaneval,72.6
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,humaneval,55.7
+Gemma 3 27B,Google,research,2025-03-12,2025,,humaneval,74.1
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,humaneval,85.3
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,humaneval,92.7
+Nous-70B-ties,meta-math,community,2023-01-04,2023,,humaneval,82.4
+Medusa-70B-dpo,mistralai-community,community,2023-01-24,2023,,humaneval,83.7
+Tulu-70B-franken,NousResearch,community,2023-01-28,2023,,humaneval,86.7
+Airoboros-70B-dare,NousResearch,community,2023-02-04,2023,,humaneval,84.4
+InfinityInstruct-70B-franken,mistralai-community,community,2023-02-04,2023,,humaneval,81.2
+WizardMath-70B-ties,FPHam,community,2023-02-09,2023,,humaneval,83.9
+Meridian-70B-lora,HuggingFaceH4,community,2023-03-14,2023,,humaneval,85.1
+Hermes-70B-ties,mistralai-community,community,2023-03-19,2023,,humaneval,83.5
+Nous-70B-slerp,meta-math,community,2023-03-24,2023,,humaneval,83.7
+Axiom-70B-linear,cognitivecomputations,community,2023-05-04,2023,,humaneval,82.9
+Speechless-70B-passthrough,meta-math,community,2023-05-09,2023,,humaneval,81.5
+Vertex-70B-ties,unsloth,community,2023-05-14,2023,,humaneval,83.1
+Capybara-70B-passthrough,unsloth,community,2023-05-19,2023,,humaneval,85.3
+Guanaco-70B-ties,defog,community,2023-06-09,2023,,humaneval,84.8
+SuperHOT-70B-passthrough,garage-bAInd,community,2023-06-09,2023,,humaneval,86.5
+EvolInstruct-7B-dare,FPHam,community,2023-06-14,2023,,humaneval,88.6
+Linhope-70B-dare,WizardLM,community,2023-07-09,2023,,humaneval,85.4
+Hermes-70B-linear,NousResearch,community,2023-07-19,2023,,humaneval,82.4
+Baize-70B-franken,defog,community,2023-07-24,2023,,humaneval,85.5
+Meridian-70B-franken,Gryphe,community,2023-08-09,2023,,humaneval,85.7
+OpenHermes-70B-ties,HuggingFaceH4,community,2023-08-09,2023,,humaneval,81.4
+Synthia-70B-rlhf,unsloth,community,2023-08-09,2023,,humaneval,85.2
+SciTulu-70B-dare,teknium,community,2023-08-14,2023,,humaneval,83.1
+Vicuna-FT-70B-dpo,defog,community,2023-08-28,2023,,humaneval,80.4
+Hermes-7B-dare,jondurbin,community,2023-09-04,2023,,humaneval,87.8
+OpenOrca-70B-rlhf,allenai,community,2023-09-09,2023,,humaneval,85.7
+Minotaur-70B-rlhf,HuggingFaceH4,community,2023-09-14,2023,,humaneval,84.8
+GPT4All-70B-dare,TIGER-Lab,community,2023-09-19,2023,,humaneval,81.9
+CodeAlpaca-70B-sft,Open-Orca,community,2023-09-24,2023,,humaneval,81.9
+OpenHermes-70B-sft,garage-bAInd,community,2023-09-28,2023,,humaneval,83.8
+Samantha-7B-passthrough,FPHam,community,2023-09-28,2023,,humaneval,84.6
+Hydra-70B-rlhf,cognitivecomputations,community,2023-10-19,2023,,humaneval,83.2
+OpenOrca-70B-passthrough,TheBloke,community,2023-10-19,2023,,humaneval,83.1
+Solstice-70B-passthrough,bartowski,community,2023-10-19,2023,,humaneval,86.9
+Apex-70B-franken,WizardLM,community,2023-10-24,2023,,humaneval,83.2
+Lazarus-70B-ties,bartowski,community,2023-10-24,2023,,humaneval,83.7
+Vertex-70B-lora,togethercomputer,community,2023-11-04,2023,,humaneval,82.6
+Solstice-70B-ties,Gryphe,community,2023-11-04,2023,,humaneval,85.0
+Alpagasus-7B-slerp,jondurbin,community,2023-11-14,2023,,humaneval,87.0
+Abel-70B-ties,NousResearch,community,2023-12-14,2023,,humaneval,84.9
+Lazarus-70B-franken,togethercomputer,community,2023-12-24,2023,,humaneval,80.3
+Minotaur-70B-sft,bartowski,community,2024-01-28,2024,,humaneval,85.7
+CodeAlpaca-70B-franken,TIGER-Lab,community,2024-02-04,2024,,humaneval,85.1
+ReMM-70B-passthrough,mlabonne,community,2024-02-04,2024,,humaneval,81.6
+Zenith-70B-slerp,allenai,community,2024-02-04,2024,,humaneval,82.5
+Baize-70B-sft,allenai,community,2024-02-09,2024,,humaneval,83.4
+Xwin-70B-dare,NousResearch,community,2024-03-04,2024,,humaneval,81.8
+GPT4All-70B-linear,bartowski,community,2024-03-09,2024,,humaneval,82.0
+OpenOrca-70B-ties,togethercomputer,community,2024-03-14,2024,,humaneval,80.4
+Nexus-70B-ties,defog,community,2024-03-24,2024,,humaneval,85.1
+Lazarus-70B-slerp,defog,community,2024-03-28,2024,,humaneval,81.2
+Speechless-70B-sft,garage-bAInd,community,2024-03-28,2024,,humaneval,81.3
+Hermes-70B-sft,jondurbin,community,2024-04-09,2024,,humaneval,83.3
+Morpheus-70B-slerp,jondurbin,community,2024-04-09,2024,,humaneval,82.5
+Lazarus-70B-dpo,Open-Orca,community,2024-04-14,2024,,humaneval,85.1
+Vortex-70B-dare,allenai,community,2024-04-19,2024,,humaneval,85.2
+SciTulu-70B-dpo,teknium,community,2024-05-04,2024,,humaneval,85.2
+Catalyst-70B-linear,Gryphe,community,2024-05-14,2024,,humaneval,85.3
+Notus-70B-ties,TheBloke,community,2024-05-14,2024,,humaneval,85.1
+Titan-FT-70B-rlhf,garage-bAInd,community,2024-05-24,2024,,humaneval,82.8
+Lazarus-70B-rlhf,meta-math,community,2024-05-28,2024,,humaneval,84.4
+WizardMath-70B-linear,mistralai-community,community,2024-06-04,2024,,humaneval,82.7
+EvolInstruct-70B-sft,cognitivecomputations,community,2024-06-04,2024,,humaneval,85.2
+Linhope-8B-lora,mlabonne,community,2024-06-09,2024,,humaneval,73.0
+Notus-70B-passthrough,jondurbin,community,2024-06-14,2024,,humaneval,79.9
+GPT4All-70B-passthrough,teknium,community,2024-06-19,2024,,humaneval,84.7
+Airoboros-70B-slerp,Gryphe,community,2024-06-24,2024,,humaneval,82.0
+Koala-70B-rlhf,TheBloke,community,2024-06-24,2024,,humaneval,83.1
+Manticore-70B-lora,WizardLM,community,2024-07-04,2024,,humaneval,82.5
+Guanaco-70B-rlhf,togethercomputer,community,2024-07-14,2024,,humaneval,84.8
+Nous-70B-dare,garage-bAInd,community,2024-07-28,2024,,humaneval,82.2
+ReMM-7B-passthrough,Open-Orca,community,2024-08-09,2024,,humaneval,89.4
+Axiom-70B-rlhf,allenai,community,2024-08-19,2024,,humaneval,82.2
+Minotaur-8B-linear,mlabonne,community,2024-08-19,2024,,humaneval,68.1
+LongAlpaca-70B-franken,mlabonne,community,2024-08-28,2024,,humaneval,81.5
+Aurora-8B-dare,mlabonne,community,2024-09-14,2024,,humaneval,72.1
+Hydra-70B-dpo,meta-math,community,2024-09-14,2024,,humaneval,81.9
+Starling-70B-ties,TheBloke,community,2024-09-14,2024,,humaneval,84.0
+Cascade-70B-sft,WizardLM,community,2024-09-19,2024,,humaneval,86.3
+Koala-70B-slerp,unsloth,community,2024-09-28,2024,,humaneval,83.9
+Nova-FT-70B-linear,WizardLM,community,2024-09-28,2024,,humaneval,86.3
+Abel-70B-dare,Open-Orca,community,2024-10-14,2024,,humaneval,81.6
+Pegasus-70B-ties,TIGER-Lab,community,2024-10-19,2024,,humaneval,84.3
+Pulse-70B-linear,Gryphe,community,2024-10-19,2024,,humaneval,86.3
+InfinityInstruct-70B-ties,bartowski,community,2024-10-28,2024,,humaneval,83.0
+Morpheus-70B-sft,HuggingFaceH4,community,2024-11-04,2024,,humaneval,82.7
+Chimera-70B-lora,unsloth,community,2024-11-09,2024,,humaneval,83.4
+WizardMath-70B-dpo,teknium,community,2024-11-14,2024,,humaneval,84.7
+Nereid-70B-dare,Open-Orca,community,2024-11-14,2024,,humaneval,84.3
+Sphinx-70B-linear,FPHam,community,2024-11-24,2024,,humaneval,83.1
+Koala-70B-lora,cognitivecomputations,community,2024-11-28,2024,,humaneval,84.6
+Minotaur-70B-linear,togethercomputer,community,2024-12-04,2024,,humaneval,85.0
+MetaMath-70B-linear,TIGER-Lab,community,2024-12-09,2024,,humaneval,84.3
+Platypus-70B-passthrough,teknium,community,2024-12-09,2024,,humaneval,81.6
+Titan-FT-7B-sft,FPHam,community,2024-12-09,2024,,humaneval,89.6
+EvolInstruct-70B-linear,TIGER-Lab,community,2024-12-14,2024,,humaneval,83.0
+Nereid-70B-ties,cognitivecomputations,community,2024-12-14,2024,,humaneval,82.8
+Nous-70B-dpo,mistralai-community,community,2024-12-19,2024,,humaneval,85.3
+Nexus-70B-lora,HuggingFaceH4,community,2024-12-24,2024,,humaneval,82.9
+NeuralHermes-70B-sft,TheBloke,community,2024-12-28,2024,,humaneval,85.0
+PaLM 540B,Google,frontier,2022-04-04,2022,,math,8.8
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,math,34.1
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,math,34.7
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,math,52.9
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,math,34.8
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,math,53.0
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,math,37.1
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,math,44.7
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,math,64.5
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,math,43.3
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,math,53.4
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,math,57.1
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,math,64.5
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,math,67.9
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,math,45.3
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,math,38.6
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,math,60.1
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,math,40.2
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,math,44.3
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,math,76.6
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,math,54.9
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,math,71.1
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,math,70.2
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,math,71.7
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,math,76.6
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,math,76.3
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,math,69.6
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,math,79.8
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,math,46.9
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,math,78.1
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,math,68.9
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,math,49.9
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,math,62.3
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,math,83.3
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,math,87.1
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,math,79.6
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,math,97.3
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,math,96.0
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,math,87.9
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,math,70.8
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,math,92.8
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,math,79.6
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,math,89.3
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,math,92.4
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,math,64.7
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,math,73.4
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,math,96.5
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,math,90.6
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,math,87.6
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,math,99.2
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,math,77.7
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,math,71.8
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,math,88.1
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,math,85.4
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,math,95.6
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,math,89.8
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,math,93.2
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,math,87.7
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,math,89.3
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,math,86.1
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,math,99.6
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,math,91.1
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,math,90.2
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,math,99.9
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,math,93.4
+FLAN-T5 XXL,Google,research,2022-10-20,2022,,math,4.9
+FLAN-UL2,Google,research,2023-03-10,2023,,math,6.4
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,math,4.7
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,math,6.6
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,math,7.4
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,math,13.1
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,math,14.0
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,math,3.9
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,math,13.2
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,math,28.0
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,math,18.3
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,math,14.1
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,math,28.2
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,math,28.7
+Phi-2,Microsoft,research,2023-12-12,2023,,math,25.7
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,math,54.5
+Grok 1,xAI,research,2024-03-17,2024,,math,23.8
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,math,41.6
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,math,50.5
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,math,50.7
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,math,29.6
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,math,30.3
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,math,37.1
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,math,73.0
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,math,50.4
+Falcon 2 11B,TII,research,2024-05-14,2024,,math,24.1
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,math,52.7
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,math,71.1
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,math,41.2
+Gemma 2 27B,Google,research,2024-06-27,2024,,math,46.1
+Gemma 2 9B,Google,research,2024-06-27,2024,,math,36.6
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,math,34.1
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,math,73.8
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,math,68.1
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,math,68.1
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,math,28.3
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,math,28.2
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,math,75.5
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,math,75.2
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,math,65.8
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,math,31.7
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,math,37.0
+Command R7B,Cohere,research,2024-12-05,2024,,math,37.2
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,math,69.9
+Phi-4,Microsoft,research,2024-12-12,2024,,math,80.4
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,math,94.5
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,math,93.9
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,math,94.5
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,math,82.7
+Gemma 3 27B,Google,research,2025-03-12,2025,,math,77.6
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,math,88.2
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,math,89.2
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,gpqa,36.1
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,gpqa,35.9
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,gpqa,35.1
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,gpqa,50.7
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,gpqa,34.2
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,gpqa,41.0
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,gpqa,50.7
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,gpqa,46.4
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,gpqa,33.1
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,gpqa,50.4
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,gpqa,39.8
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,gpqa,53.6
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,gpqa,39.3
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,gpqa,59.4
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,gpqa,40.2
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,gpqa,51.9
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,gpqa,54.0
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,gpqa,56.1
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,gpqa,59.8
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,gpqa,73.1
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,gpqa,35.1
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,gpqa,65.3
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,gpqa,40.8
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,gpqa,47.6
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,gpqa,77.0
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,gpqa,59.1
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,gpqa,61.7
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,gpqa,71.5
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,gpqa,70.3
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,gpqa,72.9
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,gpqa,49.8
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,gpqa,84.2
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,gpqa,70.4
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,gpqa,78.1
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,gpqa,83.8
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,gpqa,48.8
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,gpqa,56.0
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,gpqa,87.5
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,gpqa,78.7
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,gpqa,67.9
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,gpqa,85.4
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,gpqa,60.1
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,gpqa,47.7
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,gpqa,78.0
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,gpqa,72.0
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,gpqa,88.0
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,gpqa,80.1
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,gpqa,93.8
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,gpqa,72.1
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,gpqa,80.6
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,gpqa,73.3
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,gpqa,86.3
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,gpqa,90.8
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,gpqa,82.4
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,gpqa,88.3
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,gpqa,94.6
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,gsm8k,8.7
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,gsm8k,14.4
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,gsm8k,21.9
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,gsm8k,35.0
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,gsm8k,44.4
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,gsm8k,48.8
+PaLM 62B,Google,frontier,2022-04-04,2022,,gsm8k,65.6
+PaLM 8B,Google,frontier,2022-04-04,2022,,gsm8k,52.5
+PaLM 540B,Google,frontier,2022-04-04,2022,,gsm8k,74.2
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,gsm8k,56.1
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,gsm8k,56.9
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,gsm8k,67.7
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,gsm8k,92.2
+PaLM 2 Bison,Google,frontier,2023-05-10,2023,,gsm8k,80.1
+PaLM 2 Gecko,Google,frontier,2023-05-10,2023,,gsm8k,67.9
+PaLM 2 Unicorn,Google,frontier,2023-05-10,2023,,gsm8k,84.7
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,gsm8k,57.4
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,gsm8k,91.7
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,gsm8k,69.8
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,gsm8k,87.9
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,gsm8k,96.0
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,gsm8k,87.4
+Gemini 1.0 Nano,Google,frontier,2023-12-06,2023,,gsm8k,65.4
+Gemini 1.0 Pro,Google,frontier,2023-12-06,2023,,gsm8k,76.7
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,gsm8k,88.5
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,gsm8k,88.9
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,gsm8k,95.7
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,gsm8k,91.9
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,gsm8k,81.2
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,gsm8k,89.2
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,gsm8k,95.1
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,gsm8k,90.8
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,gsm8k,86.1
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,gsm8k,97.1
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,gsm8k,86.4
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,gsm8k,96.6
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,gsm8k,92.9
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,gsm8k,93.0
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,gsm8k,97.4
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,gsm8k,93.5
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,gsm8k,96.8
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,gsm8k,99.3
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,gsm8k,81.8
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,gsm8k,96.7
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,gsm8k,94.9
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,gsm8k,86.3
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,gsm8k,89.9
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,gsm8k,99.0
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,gsm8k,96.7
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,gsm8k,96.2
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,gsm8k,98.3
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,gsm8k,98.6
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,gsm8k,99.2
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,gsm8k,89.9
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,gsm8k,97.7
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,gsm8k,98.3
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,gsm8k,97.2
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,gsm8k,98.2
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,gsm8k,93.2
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,gsm8k,95.2
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,gsm8k,99.9
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,gsm8k,99.4
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,gsm8k,96.8
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,gsm8k,99.3
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,gsm8k,94.7
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,gsm8k,95.9
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,gsm8k,98.5
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,gsm8k,97.9
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,gsm8k,99.3
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,gsm8k,98.4
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,gsm8k,98.3
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,gsm8k,97.0
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,gsm8k,98.4
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,gsm8k,98.1
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,gsm8k,99.6
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,gsm8k,98.2
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,gsm8k,98.9
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,gsm8k,99.7
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,gsm8k,98.6
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,gsm8k,35.1
+Gopher 280B,DeepMind,research,2021-12-08,2021,,gsm8k,63.0
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,gsm8k,74.1
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,gsm8k,29.1
+OPT 66B,Meta AI,research,2022-05-02,2022,,gsm8k,4.0
+OPT 30B,Meta AI,research,2022-05-02,2022,,gsm8k,2.0
+BLOOM 176B,BigScience,research,2022-07-06,2022,,gsm8k,18.9
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,gsm8k,17.2
+BLOOM 3B,BigScience,research,2022-07-06,2022,,gsm8k,20.2
+BLOOM 560M,BigScience,research,2022-07-06,2022,,gsm8k,14.9
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,gsm8k,23.2
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,gsm8k,47.0
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,gsm8k,25.8
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,gsm8k,46.5
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,gsm8k,57.3
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,gsm8k,62.9
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,gsm8k,36.2
+BloombergGPT,Bloomberg,research,2023-03-30,2023,,gsm8k,56.2
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,gsm8k,32.7
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,gsm8k,22.0
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,gsm8k,27.8
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,gsm8k,31.2
+Dolly 12B,Databricks,research,2023-04-12,2023,,gsm8k,35.2
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,gsm8k,22.7
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,gsm8k,15.1
+MPT 7B,MosaicML,research,2023-05-05,2023,,gsm8k,30.7
+RedPajama 3B,Together AI,research,2023-05-05,2023,,gsm8k,17.9
+RedPajama 7B,Together AI,research,2023-05-05,2023,,gsm8k,30.4
+Falcon 40B,TII,research,2023-05-22,2023,,gsm8k,54.0
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,gsm8k,49.9
+MPT 30B,MosaicML,research,2023-06-22,2023,,gsm8k,51.8
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,gsm8k,20.3
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,gsm8k,29.1
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,gsm8k,33.1
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,gsm8k,56.8
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,gsm8k,58.7
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,gsm8k,14.9
+Falcon 180B,TII,research,2023-09-06,2023,,gsm8k,73.6
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,gsm8k,51.8
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,gsm8k,77.3
+Yi 34B,01.AI,research,2023-11-05,2023,,gsm8k,76.3
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,gsm8k,75.7
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,gsm8k,74.9
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,gsm8k,71.1
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,gsm8k,52.8
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,gsm8k,74.2
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,gsm8k,74.6
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,gsm8k,86.7
+Grok 1,xAI,research,2024-03-17,2024,,gsm8k,62.9
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,gsm8k,89.4
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,gsm8k,92.9
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,gsm8k,93.1
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,gsm8k,79.5
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,gsm8k,79.7
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,gsm8k,84.2
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,gsm8k,92.1
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,gsm8k,84.1
+Falcon 2 11B,TII,research,2024-05-14,2024,,gsm8k,78.2
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,gsm8k,90.0
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,gsm8k,93.8
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,gsm8k,91.9
+Gemma 2 27B,Google,research,2024-06-27,2024,,gsm8k,86.0
+Gemma 2 9B,Google,research,2024-06-27,2024,,gsm8k,82.6
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,gsm8k,78.0
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,gsm8k,97.2
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,gsm8k,94.8
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,gsm8k,95.4
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,gsm8k,83.6
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,gsm8k,84.2
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,gsm8k,95.3
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,gsm8k,92.1
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,gsm8k,93.4
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,gsm8k,60.3
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,gsm8k,85.0
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,gsm8k,23.3
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,gsm8k,82.3
+Command R7B,Cohere,research,2024-12-05,2024,,gsm8k,78.6
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,gsm8k,96.0
+Phi-4,Microsoft,research,2024-12-12,2024,,gsm8k,95.3
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,gsm8k,94.8
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,gsm8k,94.1
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,gsm8k,94.7
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,gsm8k,91.3
+Gemma 3 27B,Google,research,2025-03-12,2025,,gsm8k,93.0
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,gsm8k,97.0
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,gsm8k,95.6
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,hellaswag,47.8
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,hellaswag,60.0
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,hellaswag,70.1
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,hellaswag,79.1
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,hellaswag,80.0
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,hellaswag,82.3
+PaLM 62B,Google,frontier,2022-04-04,2022,,hellaswag,84.4
+PaLM 8B,Google,frontier,2022-04-04,2022,,hellaswag,76.7
+PaLM 540B,Google,frontier,2022-04-04,2022,,hellaswag,83.3
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,hellaswag,84.8
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,hellaswag,85.5
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,hellaswag,84.3
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,hellaswag,95.1
+PaLM 2 Bison,Google,frontier,2023-05-10,2023,,hellaswag,86.0
+PaLM 2 Gecko,Google,frontier,2023-05-10,2023,,hellaswag,80.3
+PaLM 2 Unicorn,Google,frontier,2023-05-10,2023,,hellaswag,88.2
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,hellaswag,85.3
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,hellaswag,95.7
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,hellaswag,85.3
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,hellaswag,87.4
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,hellaswag,95.8
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,hellaswag,86.2
+Gemini 1.0 Nano,Google,frontier,2023-12-06,2023,,hellaswag,79.3
+Gemini 1.0 Pro,Google,frontier,2023-12-06,2023,,hellaswag,84.3
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,hellaswag,87.6
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,hellaswag,87.0
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,hellaswag,95.4
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,hellaswag,88.9
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,hellaswag,89.1
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,hellaswag,85.7
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,hellaswag,95.5
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,hellaswag,89.0
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,hellaswag,86.9
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,hellaswag,96.1
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,hellaswag,86.1
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,hellaswag,89.2
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,hellaswag,92.8
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,hellaswag,90.0
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,hellaswag,96.0
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,hellaswag,90.1
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,hellaswag,95.1
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,hellaswag,96.5
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,hellaswag,83.3
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,hellaswag,89.7
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,hellaswag,86.6
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,hellaswag,85.9
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,hellaswag,88.8
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,hellaswag,96.4
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,hellaswag,89.6
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,hellaswag,90.8
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,hellaswag,89.9
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,hellaswag,90.3
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,hellaswag,95.6
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,hellaswag,88.3
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,hellaswag,92.0
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,hellaswag,91.3
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,hellaswag,92.6
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,hellaswag,93.4
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,hellaswag,88.0
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,hellaswag,90.4
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,hellaswag,96.6
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,hellaswag,96.9
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,hellaswag,90.2
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,hellaswag,97.3
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,hellaswag,90.7
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,hellaswag,89.3
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,hellaswag,91.6
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,hellaswag,91.9
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,hellaswag,93.3
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,hellaswag,93.2
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,hellaswag,94.4
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,hellaswag,90.7
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,hellaswag,92.6
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,hellaswag,91.7
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,hellaswag,97.3
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,hellaswag,92.0
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,hellaswag,92.7
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,hellaswag,98.3
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,hellaswag,94.9
+T5 Base,Google,research,2020-02-24,2020,,hellaswag,64.9
+T5 Large,Google,research,2020-02-24,2020,,hellaswag,67.6
+T5 Small,Google,research,2020-02-24,2020,,hellaswag,59.9
+T5 XL,Google,research,2020-02-24,2020,,hellaswag,71.2
+T5 XXL,Google,research,2020-02-24,2020,,hellaswag,74.7
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,hellaswag,66.7
+Gopher 280B,DeepMind,research,2021-12-08,2021,,hellaswag,79.3
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,hellaswag,79.8
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,hellaswag,72.0
+OPT 66B,Meta AI,research,2022-05-02,2022,,hellaswag,75.2
+OPT 30B,Meta AI,research,2022-05-02,2022,,hellaswag,72.8
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,hellaswag,67.0
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,hellaswag,54.8
+OPT 13B,Meta AI,research,2022-05-02,2022,,hellaswag,69.7
+BLOOM 176B,BigScience,research,2022-07-06,2022,,hellaswag,66.2
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,hellaswag,56.7
+BLOOM 3B,BigScience,research,2022-07-06,2022,,hellaswag,60.0
+BLOOM 560M,BigScience,research,2022-07-06,2022,,hellaswag,53.7
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,hellaswag,62.8
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,hellaswag,71.9
+FLAN-T5 XL,Google,research,2022-10-20,2022,,hellaswag,71.7
+FLAN-T5 Base,Google,research,2022-10-20,2022,,hellaswag,65.7
+FLAN-T5 Large,Google,research,2022-10-20,2022,,hellaswag,69.2
+FLAN-T5 Small,Google,research,2022-10-20,2022,,hellaswag,63.1
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,hellaswag,67.2
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,hellaswag,79.9
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,hellaswag,82.8
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,hellaswag,83.8
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,hellaswag,76.1
+BloombergGPT,Bloomberg,research,2023-03-30,2023,,hellaswag,77.6
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,hellaswag,73.1
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,hellaswag,57.3
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,hellaswag,60.0
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,hellaswag,64.1
+Dolly 12B,Databricks,research,2023-04-12,2023,,hellaswag,68.1
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,hellaswag,73.7
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,hellaswag,69.3
+MPT 7B,MosaicML,research,2023-05-05,2023,,hellaswag,75.0
+RedPajama 3B,Together AI,research,2023-05-05,2023,,hellaswag,72.5
+RedPajama 7B,Together AI,research,2023-05-05,2023,,hellaswag,76.2
+Falcon 40B,TII,research,2023-05-22,2023,,hellaswag,85.0
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,hellaswag,81.3
+MPT 30B,MosaicML,research,2023-06-22,2023,,hellaswag,79.8
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,hellaswag,78.3
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,hellaswag,80.9
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,hellaswag,81.4
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,hellaswag,87.6
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,hellaswag,88.1
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,hellaswag,76.9
+Falcon 180B,TII,research,2023-09-06,2023,,hellaswag,88.6
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,hellaswag,81.6
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,hellaswag,83.3
+Yi 34B,01.AI,research,2023-11-05,2023,,hellaswag,85.8
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,hellaswag,84.9
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,hellaswag,83.7
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,hellaswag,79.2
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,hellaswag,81.6
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,hellaswag,86.4
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,hellaswag,86.8
+Phi-2,Microsoft,research,2023-12-12,2023,,hellaswag,73.0
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,hellaswag,85.2
+Grok 1,xAI,research,2024-03-17,2024,,hellaswag,83.8
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,hellaswag,89.0
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,hellaswag,87.9
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,hellaswag,88.1
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,hellaswag,81.9
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,hellaswag,82.1
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,hellaswag,73.6
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,hellaswag,88.1
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,hellaswag,85.8
+Falcon 2 11B,TII,research,2024-05-14,2024,,hellaswag,81.9
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,hellaswag,82.9
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,hellaswag,89.6
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,hellaswag,88.1
+Gemma 2 27B,Google,research,2024-06-27,2024,,hellaswag,83.0
+Gemma 2 9B,Google,research,2024-06-27,2024,,hellaswag,81.4
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,hellaswag,84.6
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,hellaswag,89.2
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,hellaswag,88.6
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,hellaswag,88.6
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,hellaswag,82.1
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,hellaswag,82.7
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,hellaswag,89.8
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,hellaswag,81.9
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,hellaswag,88.6
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,hellaswag,78.2
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,hellaswag,83.3
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,hellaswag,60.6
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,hellaswag,77.0
+Command R7B,Cohere,research,2024-12-05,2024,,hellaswag,83.4
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,hellaswag,89.1
+Phi-4,Microsoft,research,2024-12-12,2024,,hellaswag,88.3
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,hellaswag,89.0
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,hellaswag,85.1
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,hellaswag,87.0
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,hellaswag,79.3
+Gemma 3 27B,Google,research,2025-03-12,2025,,hellaswag,84.8
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,hellaswag,88.9
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,hellaswag,88.3
+Nous-70B-ties,meta-math,community,2023-01-04,2023,,hellaswag,90.1
+Medusa-70B-dpo,mistralai-community,community,2023-01-24,2023,,hellaswag,88.3
+Tulu-70B-franken,NousResearch,community,2023-01-28,2023,,hellaswag,88.9
+Airoboros-70B-dare,NousResearch,community,2023-02-04,2023,,hellaswag,87.6
+InfinityInstruct-70B-franken,mistralai-community,community,2023-02-04,2023,,hellaswag,89.1
+WizardMath-70B-ties,FPHam,community,2023-02-09,2023,,hellaswag,88.4
+Meridian-70B-lora,HuggingFaceH4,community,2023-03-14,2023,,hellaswag,88.7
+Hermes-70B-ties,mistralai-community,community,2023-03-19,2023,,hellaswag,88.7
+Nous-70B-slerp,meta-math,community,2023-03-24,2023,,hellaswag,89.4
+Axiom-70B-linear,cognitivecomputations,community,2023-05-04,2023,,hellaswag,90.0
+Speechless-70B-passthrough,meta-math,community,2023-05-09,2023,,hellaswag,88.2
+Vertex-70B-ties,unsloth,community,2023-05-14,2023,,hellaswag,90.3
+Capybara-70B-passthrough,unsloth,community,2023-05-19,2023,,hellaswag,89.1
+Guanaco-70B-ties,defog,community,2023-06-09,2023,,hellaswag,88.2
+SuperHOT-70B-passthrough,garage-bAInd,community,2023-06-09,2023,,hellaswag,89.1
+Linhope-70B-dare,WizardLM,community,2023-07-09,2023,,hellaswag,89.1
+Hermes-70B-linear,NousResearch,community,2023-07-19,2023,,hellaswag,88.3
+Baize-70B-franken,defog,community,2023-07-24,2023,,hellaswag,88.3
+Meridian-70B-franken,Gryphe,community,2023-08-09,2023,,hellaswag,90.0
+OpenHermes-70B-ties,HuggingFaceH4,community,2023-08-09,2023,,hellaswag,88.0
+Synthia-70B-rlhf,unsloth,community,2023-08-09,2023,,hellaswag,89.6
+SciTulu-70B-dare,teknium,community,2023-08-14,2023,,hellaswag,89.2
+Vicuna-FT-70B-dpo,defog,community,2023-08-28,2023,,hellaswag,89.8
+OpenOrca-70B-rlhf,allenai,community,2023-09-09,2023,,hellaswag,89.5
+Minotaur-70B-rlhf,HuggingFaceH4,community,2023-09-14,2023,,hellaswag,88.7
+GPT4All-70B-dare,TIGER-Lab,community,2023-09-19,2023,,hellaswag,89.1
+CodeAlpaca-70B-sft,Open-Orca,community,2023-09-24,2023,,hellaswag,88.8
+OpenHermes-70B-sft,garage-bAInd,community,2023-09-28,2023,,hellaswag,88.8
+Hydra-70B-rlhf,cognitivecomputations,community,2023-10-19,2023,,hellaswag,89.6
+OpenOrca-70B-passthrough,TheBloke,community,2023-10-19,2023,,hellaswag,88.8
+Solstice-70B-passthrough,bartowski,community,2023-10-19,2023,,hellaswag,88.5
+Apex-70B-franken,WizardLM,community,2023-10-24,2023,,hellaswag,88.9
+Lazarus-70B-ties,bartowski,community,2023-10-24,2023,,hellaswag,88.0
+Vertex-70B-lora,togethercomputer,community,2023-11-04,2023,,hellaswag,89.7
+Solstice-70B-ties,Gryphe,community,2023-11-04,2023,,hellaswag,88.4
+Abel-70B-ties,NousResearch,community,2023-12-14,2023,,hellaswag,89.6
+Lazarus-70B-franken,togethercomputer,community,2023-12-24,2023,,hellaswag,89.3
+Minotaur-70B-sft,bartowski,community,2024-01-28,2024,,hellaswag,88.3
+CodeAlpaca-70B-franken,TIGER-Lab,community,2024-02-04,2024,,hellaswag,88.3
+ReMM-70B-passthrough,mlabonne,community,2024-02-04,2024,,hellaswag,88.7
+Zenith-70B-slerp,allenai,community,2024-02-04,2024,,hellaswag,89.0
+Baize-70B-sft,allenai,community,2024-02-09,2024,,hellaswag,88.8
+Xwin-70B-dare,NousResearch,community,2024-03-04,2024,,hellaswag,88.7
+GPT4All-70B-linear,bartowski,community,2024-03-09,2024,,hellaswag,89.3
+OpenOrca-70B-ties,togethercomputer,community,2024-03-14,2024,,hellaswag,89.5
+Nexus-70B-ties,defog,community,2024-03-24,2024,,hellaswag,89.1
+Lazarus-70B-slerp,defog,community,2024-03-28,2024,,hellaswag,88.8
+Speechless-70B-sft,garage-bAInd,community,2024-03-28,2024,,hellaswag,89.3
+Hermes-70B-sft,jondurbin,community,2024-04-09,2024,,hellaswag,90.0
+Morpheus-70B-slerp,jondurbin,community,2024-04-09,2024,,hellaswag,87.4
+Lazarus-70B-dpo,Open-Orca,community,2024-04-14,2024,,hellaswag,88.3
+Vortex-70B-dare,allenai,community,2024-04-19,2024,,hellaswag,88.8
+SciTulu-70B-dpo,teknium,community,2024-05-04,2024,,hellaswag,87.9
+Catalyst-70B-linear,Gryphe,community,2024-05-14,2024,,hellaswag,89.6
+Notus-70B-ties,TheBloke,community,2024-05-14,2024,,hellaswag,87.6
+Titan-FT-70B-rlhf,garage-bAInd,community,2024-05-24,2024,,hellaswag,90.2
+Lazarus-70B-rlhf,meta-math,community,2024-05-28,2024,,hellaswag,88.6
+WizardMath-70B-linear,mistralai-community,community,2024-06-04,2024,,hellaswag,90.1
+EvolInstruct-70B-sft,cognitivecomputations,community,2024-06-04,2024,,hellaswag,89.0
+Linhope-8B-lora,mlabonne,community,2024-06-09,2024,,hellaswag,83.7
+Notus-70B-passthrough,jondurbin,community,2024-06-14,2024,,hellaswag,88.5
+GPT4All-70B-passthrough,teknium,community,2024-06-19,2024,,hellaswag,89.3
+Airoboros-70B-slerp,Gryphe,community,2024-06-24,2024,,hellaswag,87.9
+Koala-70B-rlhf,TheBloke,community,2024-06-24,2024,,hellaswag,89.7
+Manticore-70B-lora,WizardLM,community,2024-07-04,2024,,hellaswag,88.2
+Guanaco-70B-rlhf,togethercomputer,community,2024-07-14,2024,,hellaswag,89.1
+Nous-70B-dare,garage-bAInd,community,2024-07-28,2024,,hellaswag,88.0
+Axiom-70B-rlhf,allenai,community,2024-08-19,2024,,hellaswag,88.5
+Minotaur-8B-linear,mlabonne,community,2024-08-19,2024,,hellaswag,83.0
+LongAlpaca-70B-franken,mlabonne,community,2024-08-28,2024,,hellaswag,88.2
+Aurora-8B-dare,mlabonne,community,2024-09-14,2024,,hellaswag,82.9
+Hydra-70B-dpo,meta-math,community,2024-09-14,2024,,hellaswag,88.6
+Starling-70B-ties,TheBloke,community,2024-09-14,2024,,hellaswag,89.5
+Cascade-70B-sft,WizardLM,community,2024-09-19,2024,,hellaswag,89.3
+Koala-70B-slerp,unsloth,community,2024-09-28,2024,,hellaswag,89.6
+Nova-FT-70B-linear,WizardLM,community,2024-09-28,2024,,hellaswag,88.5
+Abel-70B-dare,Open-Orca,community,2024-10-14,2024,,hellaswag,89.6
+Pegasus-70B-ties,TIGER-Lab,community,2024-10-19,2024,,hellaswag,87.8
+Pulse-70B-linear,Gryphe,community,2024-10-19,2024,,hellaswag,88.8
+InfinityInstruct-70B-ties,bartowski,community,2024-10-28,2024,,hellaswag,88.4
+Morpheus-70B-sft,HuggingFaceH4,community,2024-11-04,2024,,hellaswag,89.7
+Chimera-70B-lora,unsloth,community,2024-11-09,2024,,hellaswag,88.5
+WizardMath-70B-dpo,teknium,community,2024-11-14,2024,,hellaswag,89.1
+Nereid-70B-dare,Open-Orca,community,2024-11-14,2024,,hellaswag,89.9
+Sphinx-70B-linear,FPHam,community,2024-11-24,2024,,hellaswag,89.2
+Koala-70B-lora,cognitivecomputations,community,2024-11-28,2024,,hellaswag,89.0
+Minotaur-70B-linear,togethercomputer,community,2024-12-04,2024,,hellaswag,89.3
+MetaMath-70B-linear,TIGER-Lab,community,2024-12-09,2024,,hellaswag,88.1
+Platypus-70B-passthrough,teknium,community,2024-12-09,2024,,hellaswag,88.3
+EvolInstruct-70B-linear,TIGER-Lab,community,2024-12-14,2024,,hellaswag,87.8
+Nereid-70B-ties,cognitivecomputations,community,2024-12-14,2024,,hellaswag,89.5
+Nous-70B-dpo,mistralai-community,community,2024-12-19,2024,,hellaswag,89.3
+Nexus-70B-lora,HuggingFaceH4,community,2024-12-24,2024,,hellaswag,89.6
+NeuralHermes-70B-sft,TheBloke,community,2024-12-28,2024,,hellaswag,88.0
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,arc_challenge,27.2
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,arc_challenge,34.9
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,arc_challenge,42.7
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,arc_challenge,51.2
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,arc_challenge,53.0
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,arc_challenge,54.7
+PaLM 62B,Google,frontier,2022-04-04,2022,,arc_challenge,70.4
+PaLM 8B,Google,frontier,2022-04-04,2022,,arc_challenge,58.0
+PaLM 540B,Google,frontier,2022-04-04,2022,,arc_challenge,76.9
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,arc_challenge,62.6
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,arc_challenge,66.3
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,arc_challenge,72.0
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,arc_challenge,96.0
+PaLM 2 Bison,Google,frontier,2023-05-10,2023,,arc_challenge,79.8
+PaLM 2 Gecko,Google,frontier,2023-05-10,2023,,arc_challenge,69.9
+PaLM 2 Unicorn,Google,frontier,2023-05-10,2023,,arc_challenge,82.7
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,arc_challenge,66.4
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,arc_challenge,96.5
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,arc_challenge,73.1
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,arc_challenge,78.2
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,arc_challenge,96.3
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,arc_challenge,77.7
+Gemini 1.0 Nano,Google,frontier,2023-12-06,2023,,arc_challenge,65.9
+Gemini 1.0 Pro,Google,frontier,2023-12-06,2023,,arc_challenge,76.2
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,arc_challenge,86.9
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,arc_challenge,82.9
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,arc_challenge,96.9
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,arc_challenge,88.5
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,arc_challenge,80.8
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,arc_challenge,80.1
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,arc_challenge,90.0
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,arc_challenge,84.7
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,arc_challenge,83.7
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,arc_challenge,96.3
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,arc_challenge,82.6
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,arc_challenge,93.4
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,arc_challenge,93.7
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,arc_challenge,90.1
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,arc_challenge,96.8
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,arc_challenge,90.7
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,arc_challenge,95.3
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,arc_challenge,96.8
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,arc_challenge,78.9
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,arc_challenge,93.7
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,arc_challenge,87.1
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,arc_challenge,83.3
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,arc_challenge,86.8
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,arc_challenge,97.4
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,arc_challenge,89.7
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,arc_challenge,92.3
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,arc_challenge,90.8
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,arc_challenge,90.7
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,arc_challenge,96.2
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,arc_challenge,87.9
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,arc_challenge,93.5
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,arc_challenge,95.2
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,arc_challenge,93.7
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,arc_challenge,94.7
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,arc_challenge,88.6
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,arc_challenge,91.0
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,arc_challenge,97.8
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,arc_challenge,96.9
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,arc_challenge,91.0
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,arc_challenge,98.8
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,arc_challenge,90.8
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,arc_challenge,91.0
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,arc_challenge,96.1
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,arc_challenge,95.7
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,arc_challenge,95.3
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,arc_challenge,93.8
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,arc_challenge,95.0
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,arc_challenge,92.0
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,arc_challenge,96.8
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,arc_challenge,96.1
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,arc_challenge,98.8
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,arc_challenge,93.4
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,arc_challenge,96.9
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,arc_challenge,98.7
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,arc_challenge,95.6
+T5 Base,Google,research,2020-02-24,2020,,arc_challenge,40.0
+T5 Large,Google,research,2020-02-24,2020,,arc_challenge,43.8
+T5 Small,Google,research,2020-02-24,2020,,arc_challenge,34.7
+T5 XL,Google,research,2020-02-24,2020,,arc_challenge,47.9
+T5 XXL,Google,research,2020-02-24,2020,,arc_challenge,53.3
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,arc_challenge,36.4
+Gopher 280B,DeepMind,research,2021-12-08,2021,,arc_challenge,58.8
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,arc_challenge,65.1
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,arc_challenge,48.3
+OPT 66B,Meta AI,research,2022-05-02,2022,,arc_challenge,57.0
+OPT 30B,Meta AI,research,2022-05-02,2022,,arc_challenge,53.3
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,arc_challenge,44.1
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,arc_challenge,31.4
+OPT 13B,Meta AI,research,2022-05-02,2022,,arc_challenge,48.3
+BLOOM 176B,BigScience,research,2022-07-06,2022,,arc_challenge,37.9
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,arc_challenge,34.2
+BLOOM 3B,BigScience,research,2022-07-06,2022,,arc_challenge,37.0
+BLOOM 560M,BigScience,research,2022-07-06,2022,,arc_challenge,31.0
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,arc_challenge,39.6
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,arc_challenge,51.3
+FLAN-T5 XL,Google,research,2022-10-20,2022,,arc_challenge,51.8
+FLAN-T5 Base,Google,research,2022-10-20,2022,,arc_challenge,43.7
+FLAN-T5 Large,Google,research,2022-10-20,2022,,arc_challenge,48.3
+FLAN-T5 Small,Google,research,2022-10-20,2022,,arc_challenge,39.9
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,arc_challenge,41.4
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,arc_challenge,59.5
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,arc_challenge,66.6
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,arc_challenge,72.9
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,arc_challenge,51.5
+BloombergGPT,Bloomberg,research,2023-03-30,2023,,arc_challenge,61.9
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,arc_challenge,53.1
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,arc_challenge,37.3
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,arc_challenge,40.6
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,arc_challenge,44.0
+Dolly 12B,Databricks,research,2023-04-12,2023,,arc_challenge,47.2
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,arc_challenge,47.2
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,arc_challenge,40.7
+MPT 7B,MosaicML,research,2023-05-05,2023,,arc_challenge,48.8
+RedPajama 3B,Together AI,research,2023-05-05,2023,,arc_challenge,43.9
+RedPajama 7B,Together AI,research,2023-05-05,2023,,arc_challenge,50.6
+Falcon 40B,TII,research,2023-05-22,2023,,arc_challenge,61.1
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,arc_challenge,59.7
+MPT 30B,MosaicML,research,2023-06-22,2023,,arc_challenge,58.0
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,arc_challenge,54.8
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,arc_challenge,59.0
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,arc_challenge,60.8
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,arc_challenge,67.2
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,arc_challenge,68.4
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,arc_challenge,53.6
+Falcon 180B,TII,research,2023-09-06,2023,,arc_challenge,70.0
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,arc_challenge,60.0
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,arc_challenge,64.0
+Yi 34B,01.AI,research,2023-11-05,2023,,arc_challenge,75.3
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,arc_challenge,62.4
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,arc_challenge,73.4
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,arc_challenge,66.6
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,arc_challenge,60.6
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,arc_challenge,69.9
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,arc_challenge,70.5
+Phi-2,Microsoft,research,2023-12-12,2023,,arc_challenge,61.2
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,arc_challenge,80.3
+Grok 1,xAI,research,2024-03-17,2024,,arc_challenge,73.7
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,arc_challenge,82.0
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,arc_challenge,87.8
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,arc_challenge,88.1
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,arc_challenge,78.4
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,arc_challenge,79.3
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,arc_challenge,77.9
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,arc_challenge,85.3
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,arc_challenge,79.0
+Falcon 2 11B,TII,research,2024-05-14,2024,,arc_challenge,78.0
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,arc_challenge,83.4
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,arc_challenge,88.2
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,arc_challenge,88.4
+Gemma 2 27B,Google,research,2024-06-27,2024,,arc_challenge,81.6
+Gemma 2 9B,Google,research,2024-06-27,2024,,arc_challenge,77.1
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,arc_challenge,78.7
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,arc_challenge,89.8
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,arc_challenge,89.4
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,arc_challenge,89.5
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,arc_challenge,79.9
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,arc_challenge,79.5
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,arc_challenge,89.2
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,arc_challenge,82.1
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,arc_challenge,89.1
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,arc_challenge,67.3
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,arc_challenge,79.9
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,arc_challenge,39.7
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,arc_challenge,72.2
+Command R7B,Cohere,research,2024-12-05,2024,,arc_challenge,78.5
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,arc_challenge,89.5
+Phi-4,Microsoft,research,2024-12-12,2024,,arc_challenge,88.7
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,arc_challenge,88.0
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,arc_challenge,79.3
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,arc_challenge,83.8
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,arc_challenge,72.7
+Gemma 3 27B,Google,research,2025-03-12,2025,,arc_challenge,84.8
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,arc_challenge,89.4
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,arc_challenge,89.4
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,truthfulqa,30.8
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,truthfulqa,38.1
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,truthfulqa,42.1
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,truthfulqa,47.2
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,truthfulqa,50.3
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,truthfulqa,53.2
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,truthfulqa,57.0
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,truthfulqa,47.3
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,truthfulqa,55.0
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,truthfulqa,58.9
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,truthfulqa,47.0
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,truthfulqa,59.1
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,truthfulqa,56.1
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,truthfulqa,57.1
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,truthfulqa,59.5
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,truthfulqa,57.0
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,truthfulqa,52.9
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,truthfulqa,47.2
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,truthfulqa,59.3
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,truthfulqa,44.9
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,truthfulqa,45.7
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,truthfulqa,41.5
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,truthfulqa,52.0
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,truthfulqa,44.9
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,truthfulqa,46.0
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,truthfulqa,60.1
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,truthfulqa,39.6
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,truthfulqa,56.6
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,truthfulqa,51.7
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,truthfulqa,49.9
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,truthfulqa,59.9
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,truthfulqa,50.6
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,truthfulqa,55.2
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,truthfulqa,61.0
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,truthfulqa,37.9
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,truthfulqa,57.7
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,truthfulqa,47.8
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,truthfulqa,42.7
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,truthfulqa,46.8
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,truthfulqa,61.1
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,truthfulqa,51.7
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,truthfulqa,56.3
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,truthfulqa,51.7
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,truthfulqa,53.4
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,truthfulqa,57.8
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,truthfulqa,47.7
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,truthfulqa,62.2
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,truthfulqa,62.1
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,truthfulqa,60.1
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,truthfulqa,63.0
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,truthfulqa,50.0
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,truthfulqa,52.3
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,truthfulqa,65.1
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,truthfulqa,61.9
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,truthfulqa,52.0
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,truthfulqa,66.8
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,truthfulqa,52.8
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,truthfulqa,53.9
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,truthfulqa,63.9
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,truthfulqa,63.2
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,truthfulqa,64.7
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,truthfulqa,61.9
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,truthfulqa,66.0
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,truthfulqa,57.3
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,truthfulqa,64.9
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,truthfulqa,63.9
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,truthfulqa,67.7
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,truthfulqa,58.3
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,truthfulqa,66.0
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,truthfulqa,69.4
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,truthfulqa,66.7
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,truthfulqa,29.5
+Gopher 280B,DeepMind,research,2021-12-08,2021,,truthfulqa,43.3
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,truthfulqa,45.1
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,truthfulqa,31.8
+OPT 66B,Meta AI,research,2022-05-02,2022,,truthfulqa,38.9
+OPT 30B,Meta AI,research,2022-05-02,2022,,truthfulqa,37.4
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,truthfulqa,35.6
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,truthfulqa,31.3
+OPT 13B,Meta AI,research,2022-05-02,2022,,truthfulqa,36.9
+BLOOM 176B,BigScience,research,2022-07-06,2022,,truthfulqa,25.0
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,truthfulqa,24.0
+BLOOM 3B,BigScience,research,2022-07-06,2022,,truthfulqa,26.1
+BLOOM 560M,BigScience,research,2022-07-06,2022,,truthfulqa,21.6
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,truthfulqa,27.7
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,truthfulqa,33.1
+FLAN-T5 XL,Google,research,2022-10-20,2022,,truthfulqa,43.1
+FLAN-T5 Base,Google,research,2022-10-20,2022,,truthfulqa,35.8
+FLAN-T5 Large,Google,research,2022-10-20,2022,,truthfulqa,38.7
+FLAN-T5 Small,Google,research,2022-10-20,2022,,truthfulqa,32.7
+FLAN-T5 XXL,Google,research,2022-10-20,2022,,truthfulqa,52.3
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,truthfulqa,37.2
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,truthfulqa,36.2
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,truthfulqa,37.7
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,truthfulqa,42.3
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,truthfulqa,32.7
+FLAN-UL2,Google,research,2023-03-10,2023,,truthfulqa,52.9
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,truthfulqa,30.6
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,truthfulqa,29.0
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,truthfulqa,30.9
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,truthfulqa,33.1
+Dolly 12B,Databricks,research,2023-04-12,2023,,truthfulqa,40.1
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,truthfulqa,29.1
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,truthfulqa,25.1
+MPT 7B,MosaicML,research,2023-05-05,2023,,truthfulqa,30.8
+RedPajama 3B,Together AI,research,2023-05-05,2023,,truthfulqa,27.2
+RedPajama 7B,Together AI,research,2023-05-05,2023,,truthfulqa,31.9
+Falcon 40B,TII,research,2023-05-22,2023,,truthfulqa,33.0
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,truthfulqa,43.9
+MPT 30B,MosaicML,research,2023-06-22,2023,,truthfulqa,35.3
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,truthfulqa,45.9
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,truthfulqa,41.7
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,truthfulqa,48.1
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,truthfulqa,45.2
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,truthfulqa,50.4
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,truthfulqa,38.6
+Falcon 180B,TII,research,2023-09-06,2023,,truthfulqa,40.3
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,truthfulqa,41.7
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,truthfulqa,52.3
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,truthfulqa,58.5
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,truthfulqa,52.0
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,truthfulqa,50.9
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,truthfulqa,50.1
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,truthfulqa,46.2
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,truthfulqa,51.7
+Grok 1,xAI,research,2024-03-17,2024,,truthfulqa,45.0
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,truthfulqa,49.1
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,truthfulqa,44.8
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,truthfulqa,52.2
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,truthfulqa,43.8
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,truthfulqa,51.6
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,truthfulqa,45.1
+Falcon 2 11B,TII,research,2024-05-14,2024,,truthfulqa,42.8
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,truthfulqa,47.3
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,truthfulqa,46.6
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,truthfulqa,47.8
+Gemma 2 27B,Google,research,2024-06-27,2024,,truthfulqa,48.0
+Gemma 2 9B,Google,research,2024-06-27,2024,,truthfulqa,45.8
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,truthfulqa,43.1
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,truthfulqa,48.0
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,truthfulqa,46.7
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,truthfulqa,53.5
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,truthfulqa,44.5
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,truthfulqa,51.8
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,truthfulqa,50.2
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,truthfulqa,45.7
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,truthfulqa,40.2
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,truthfulqa,44.2
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,truthfulqa,36.6
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,truthfulqa,39.9
+Command R7B,Cohere,research,2024-12-05,2024,,truthfulqa,44.8
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,truthfulqa,52.9
+Phi-4,Microsoft,research,2024-12-12,2024,,truthfulqa,51.7
+Gemma 3 27B,Google,research,2025-03-12,2025,,truthfulqa,49.1
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,truthfulqa,54.3
+GPT-3 Ada,OpenAI,frontier,2020-06-11,2020,,winogrande,43.9
+GPT-3 Babbage,OpenAI,frontier,2020-06-11,2020,,winogrande,51.8
+GPT-3 Curie,OpenAI,frontier,2020-06-11,2020,,winogrande,60.3
+GPT-3 Davinci,OpenAI,frontier,2020-06-11,2020,,winogrande,69.9
+InstructGPT text-davinci-001,OpenAI,frontier,2022-01-27,2022,,winogrande,72.1
+InstructGPT text-davinci-002,OpenAI,frontier,2022-03-15,2022,,winogrande,73.1
+PaLM 62B,Google,frontier,2022-04-04,2022,,winogrande,77.7
+PaLM 8B,Google,frontier,2022-04-04,2022,,winogrande,73.0
+PaLM 540B,Google,frontier,2022-04-04,2022,,winogrande,76.9
+InstructGPT text-davinci-003,OpenAI,frontier,2022-11-28,2022,,winogrande,76.3
+GPT-3.5 Turbo,OpenAI,frontier,2022-11-30,2022,1106.0,winogrande,76.7
+Claude 1,Anthropic,frontier,2023-03-14,2023,1100.0,winogrande,78.4
+GPT-4,OpenAI,frontier,2023-03-14,2023,1163.0,winogrande,87.2
+PaLM 2 Bison,Google,frontier,2023-05-10,2023,,winogrande,78.2
+PaLM 2 Gecko,Google,frontier,2023-05-10,2023,,winogrande,71.3
+PaLM 2 Unicorn,Google,frontier,2023-05-10,2023,,winogrande,79.9
+GPT-3.5 Turbo 16k,OpenAI,frontier,2023-06-13,2023,1108.0,winogrande,76.9
+GPT-4 0613,OpenAI,frontier,2023-06-13,2023,1152.0,winogrande,87.8
+Claude 1.3,Anthropic,frontier,2023-07-10,2023,1105.0,winogrande,78.6
+Claude 2,Anthropic,frontier,2023-07-11,2023,1115.0,winogrande,80.5
+GPT-4 Turbo 1106,OpenAI,frontier,2023-11-06,2023,1243.0,winogrande,88.2
+Claude 2.1,Anthropic,frontier,2023-11-21,2023,1119.0,winogrande,80.3
+Gemini 1.0 Nano,Google,frontier,2023-12-06,2023,,winogrande,70.2
+Gemini 1.0 Pro,Google,frontier,2023-12-06,2023,,winogrande,75.3
+Gemini 1.0 Ultra,Google,frontier,2023-12-06,2023,,winogrande,82.3
+GLM-4,Zhipu AI,frontier,2024-01-16,2024,1178.0,winogrande,78.3
+GPT-4 Turbo 0125,OpenAI,frontier,2024-01-25,2024,1248.0,winogrande,87.7
+Gemini 1.5 Pro,Google,frontier,2024-02-15,2024,1262.0,winogrande,80.5
+Mistral Large,Mistral AI,frontier,2024-02-26,2024,1157.0,winogrande,78.9
+Claude 3 Haiku,Anthropic,frontier,2024-03-04,2024,1179.0,winogrande,75.8
+Claude 3 Opus,Anthropic,frontier,2024-03-04,2024,1249.0,winogrande,83.2
+Claude 3 Sonnet,Anthropic,frontier,2024-03-04,2024,1201.0,winogrande,79.7
+Command R+,Cohere,frontier,2024-04-04,2024,1195.0,winogrande,79.3
+GPT-4o,OpenAI,frontier,2024-05-13,2024,1285.0,winogrande,88.2
+Gemini 1.5 Flash,Google,frontier,2024-05-14,2024,1234.0,winogrande,78.3
+Claude 3.5 Sonnet,Anthropic,frontier,2024-06-21,2024,1306.0,winogrande,84.7
+GPT-4o mini,OpenAI,frontier,2024-07-18,2024,1272.0,winogrande,84.2
+Mistral Large 2,Mistral AI,frontier,2024-07-24,2024,1251.0,winogrande,83.1
+GPT-4o 2024-08-06,OpenAI,frontier,2024-08-06,2024,1290.0,winogrande,88.4
+Grok 2,xAI,frontier,2024-08-13,2024,1268.0,winogrande,83.6
+o1 mini,OpenAI,frontier,2024-09-12,2024,1304.0,winogrande,85.7
+o1-preview,OpenAI,frontier,2024-09-12,2024,1312.0,winogrande,88.6
+Gemini 1.5 Flash 8B,Google,frontier,2024-10-03,2024,,winogrande,75.4
+Claude 3.5 Sonnet v2,Anthropic,frontier,2024-10-22,2024,,winogrande,85.5
+Claude 3.5 Haiku,Anthropic,frontier,2024-11-04,2024,1262.0,winogrande,79.0
+Nova Lite,Amazon,frontier,2024-12-03,2024,1150.0,winogrande,77.2
+Nova Pro,Amazon,frontier,2024-12-03,2024,1200.0,winogrande,80.7
+o1,OpenAI,frontier,2024-12-05,2024,1320.0,winogrande,88.3
+DeepSeek V3,DeepSeek,frontier,2024-12-26,2024,1370.0,winogrande,83.9
+Gemini 2.0 Flash,Google,frontier,2025-01-15,2025,1354.0,winogrande,85.2
+DeepSeek R1,DeepSeek,frontier,2025-01-20,2025,1380.0,winogrande,85.3
+Kimi K1.5,Moonshot AI,frontier,2025-01-22,2025,1320.0,winogrande,84.1
+o3 mini,OpenAI,frontier,2025-01-31,2025,1355.0,winogrande,87.6
+Gemini 2.0 Flash Lite,Google,frontier,2025-02-01,2025,,winogrande,80.7
+Grok 3,xAI,frontier,2025-02-17,2025,1402.0,winogrande,87.3
+Claude 3.7 Sonnet,Anthropic,frontier,2025-02-24,2025,1360.0,winogrande,87.1
+Gemini 2.5 Flash,Google,frontier,2025-03-25,2025,1390.0,winogrande,86.4
+Gemini 2.5 Pro,Google,frontier,2025-03-25,2025,1430.0,winogrande,87.9
+LLaMA 4 Scout,Meta,frontier,2025-04-05,2025,1340.0,winogrande,81.1
+LLaMA 4 Maverick,Meta,frontier,2025-04-05,2025,1380.0,winogrande,84.2
+o3,OpenAI,frontier,2025-04-16,2025,1390.0,winogrande,90.3
+o4 mini,OpenAI,frontier,2025-04-16,2025,1400.0,winogrande,89.1
+Qwen3 235B MoE,Alibaba,frontier,2025-04-28,2025,1390.0,winogrande,84.6
+GPT-5,OpenAI,frontier,2025-05-01,2025,1450.0,winogrande,90.9
+Mistral Large 3,Mistral AI,frontier,2025-05-01,2025,1370.0,winogrande,84.6
+Claude Haiku 4.5,Anthropic,frontier,2025-07-01,2025,,winogrande,82.1
+Claude Opus 4.5,Anthropic,frontier,2025-07-01,2025,,winogrande,88.2
+Claude Sonnet 4.5,Anthropic,frontier,2025-07-01,2025,,winogrande,87.8
+Grok 4,xAI,frontier,2025-07-01,2025,1491.0,winogrande,89.2
+Gemini 3 Flash,Google,frontier,2025-08-01,2025,1445.0,winogrande,87.4
+Gemini 3 Pro,Google,frontier,2025-09-01,2025,1480.0,winogrande,89.9
+Mercury 2,Inception Labs,frontier,2025-09-01,2025,1280.0,winogrande,85.6
+Claude Opus 4.6,Anthropic,frontier,2025-10-01,2025,1503.0,winogrande,88.9
+Claude Sonnet 4.6,Anthropic,frontier,2025-10-01,2025,1420.0,winogrande,88.2
+GPT-5.1,OpenAI,frontier,2025-11-13,2025,1460.0,winogrande,91.4
+Kimi K2.6,Moonshot AI,frontier,2025-12-01,2025,1350.0,winogrande,86.7
+Claude Opus 4.7,Anthropic,frontier,2026-02-01,2026,,winogrande,89.3
+GPT-5.4,OpenAI,frontier,2026-02-01,2026,1484.0,winogrande,92.1
+Gemini 3.1 Pro,Google,frontier,2026-03-01,2026,1500.0,winogrande,90.1
+T5 Base,Google,research,2020-02-24,2020,,winogrande,57.8
+T5 Large,Google,research,2020-02-24,2020,,winogrande,59.8
+T5 Small,Google,research,2020-02-24,2020,,winogrande,54.8
+T5 XL,Google,research,2020-02-24,2020,,winogrande,62.2
+T5 XXL,Google,research,2020-02-24,2020,,winogrande,64.1
+GPT-J 6B,EleutherAI,research,2021-06-04,2021,,winogrande,63.8
+Gopher 280B,DeepMind,research,2021-12-08,2021,,winogrande,69.9
+Chinchilla 70B,DeepMind,research,2022-03-29,2022,,winogrande,74.4
+GPT-NeoX 20B,EleutherAI,research,2022-04-14,2022,,winogrande,68.3
+OPT 66B,Meta AI,research,2022-05-02,2022,,winogrande,69.3
+OPT 30B,Meta AI,research,2022-05-02,2022,,winogrande,67.3
+OPT 6.7B,Meta AI,research,2022-05-02,2022,,winogrande,65.3
+OPT 1.3B,Meta AI,research,2022-05-02,2022,,winogrande,59.4
+OPT 13B,Meta AI,research,2022-05-02,2022,,winogrande,66.2
+BLOOM 176B,BigScience,research,2022-07-06,2022,,winogrande,61.4
+BLOOM 1B7,BigScience,research,2022-07-06,2022,,winogrande,56.8
+BLOOM 3B,BigScience,research,2022-07-06,2022,,winogrande,60.1
+BLOOM 560M,BigScience,research,2022-07-06,2022,,winogrande,53.8
+BLOOM 7B1,BigScience,research,2022-07-06,2022,,winogrande,63.8
+GLM-130B,Tsinghua/Zhipu,research,2022-10-05,2022,,winogrande,64.9
+FLAN-T5 XL,Google,research,2022-10-20,2022,,winogrande,62.6
+FLAN-T5 Base,Google,research,2022-10-20,2022,,winogrande,59.0
+FLAN-T5 Large,Google,research,2022-10-20,2022,,winogrande,61.3
+FLAN-T5 Small,Google,research,2022-10-20,2022,,winogrande,55.7
+BLOOMZ 176B,BigScience,research,2022-11-03,2022,,winogrande,61.9
+LLaMA 1 13B,Meta,research,2023-02-24,2023,,winogrande,73.0
+LLaMA 1 30B,Meta,research,2023-02-24,2023,,winogrande,75.9
+LLaMA 1 65B,Meta,research,2023-02-24,2023,,winogrande,76.7
+LLaMA 1 7B,Meta,research,2023-02-24,2023,,winogrande,70.2
+BloombergGPT,Bloomberg,research,2023-03-30,2023,,winogrande,71.7
+Pythia 12B,EleutherAI,research,2023-04-03,2023,,winogrande,70.4
+Pythia 1B,EleutherAI,research,2023-04-03,2023,,winogrande,59.7
+Pythia 2.8B,EleutherAI,research,2023-04-03,2023,,winogrande,62.0
+Pythia 6.9B,EleutherAI,research,2023-04-03,2023,,winogrande,65.1
+Dolly 12B,Databricks,research,2023-04-12,2023,,winogrande,63.9
+StableLM Alpha 7B,Stability AI,research,2023-04-19,2023,,winogrande,66.7
+StableLM Alpha 3B,Stability AI,research,2023-04-19,2023,,winogrande,63.2
+MPT 7B,MosaicML,research,2023-05-05,2023,,winogrande,68.7
+RedPajama 3B,Together AI,research,2023-05-05,2023,,winogrande,64.7
+RedPajama 7B,Together AI,research,2023-05-05,2023,,winogrande,69.1
+Falcon 40B,TII,research,2023-05-22,2023,,winogrande,77.8
+WizardLM 13B,WizardLM,research,2023-05-26,2023,,winogrande,73.2
+MPT 30B,MosaicML,research,2023-06-22,2023,,winogrande,73.5
+LLaMA 2 7B Chat,Meta,research,2023-07-18,2023,,winogrande,70.8
+LLaMA 2 13B,Meta,research,2023-07-18,2023,,winogrande,72.9
+LLaMA 2 13B Chat,Meta,research,2023-07-18,2023,,winogrande,73.6
+LLaMA 2 70B,Meta,research,2023-07-18,2023,,winogrande,78.6
+LLaMA 2 70B Chat,Meta,research,2023-07-18,2023,,winogrande,79.8
+LLaMA 2 7B,Meta,research,2023-07-18,2023,,winogrande,69.7
+Falcon 180B,TII,research,2023-09-06,2023,,winogrande,79.9
+Mistral 7B,Mistral AI,research,2023-09-27,2023,,winogrande,73.0
+OpenChat 3.5,OpenChat,research,2023-10-12,2023,,winogrande,78.9
+Yi 34B,01.AI,research,2023-11-05,2023,,winogrande,79.0
+Zephyr 7B Beta,HuggingFace H4,research,2023-11-08,2023,,winogrande,77.8
+OpenHermes 2.5,NousResearch,research,2023-11-10,2023,,winogrande,75.7
+Orca 2 13B,Microsoft Research,research,2023-11-18,2023,,winogrande,73.8
+Mistral 7B Instruct v0.2,Mistral AI,research,2023-12-11,2023,,winogrande,74.1
+Mixtral 8x7B,Mistral AI,research,2023-12-11,2023,,winogrande,79.4
+Mixtral 8x7B Instruct,Mistral AI,research,2023-12-11,2023,,winogrande,80.0
+Phi-2,Microsoft,research,2023-12-12,2023,,winogrande,73.3
+InternLM2 20B,Shanghai AI Lab,research,2024-01-17,2024,,winogrande,79.0
+Grok 1,xAI,research,2024-03-17,2024,,winogrande,73.7
+Mixtral 8x22B,Mistral AI,research,2024-04-10,2024,,winogrande,82.7
+LLaMA 3 70B,Meta,research,2024-04-18,2024,,winogrande,81.8
+LLaMA 3 70B Instruct,Meta,research,2024-04-18,2024,,winogrande,81.5
+LLaMA 3 8B,Meta,research,2024-04-18,2024,,winogrande,73.2
+LLaMA 3 8B Instruct,Meta,research,2024-04-18,2024,,winogrande,73.1
+Phi-3 Mini 128K,Microsoft,research,2024-04-23,2024,,winogrande,73.7
+DeepSeek V2,DeepSeek,research,2024-05-06,2024,,winogrande,80.8
+Yi 1.5 34B,01.AI,research,2024-05-13,2024,,winogrande,79.8
+Falcon 2 11B,TII,research,2024-05-14,2024,,winogrande,76.1
+Phi-3 Medium 4K,Microsoft,research,2024-05-21,2024,,winogrande,77.7
+Qwen 2 72B Instruct,Alibaba,research,2024-06-07,2024,,winogrande,82.1
+Nemotron 4 340B,NVIDIA,research,2024-06-14,2024,,winogrande,81.4
+Gemma 2 27B,Google,research,2024-06-27,2024,,winogrande,78.1
+Gemma 2 9B,Google,research,2024-06-27,2024,,winogrande,76.0
+Mistral Nemo,Mistral AI,research,2024-07-18,2024,,winogrande,76.1
+LLaMA 3.1 405B,Meta,research,2024-07-23,2024,,winogrande,84.2
+LLaMA 3.1 70B,Meta,research,2024-07-23,2024,,winogrande,82.3
+LLaMA 3.1 70B Instruct,Meta,research,2024-07-23,2024,,winogrande,83.0
+LLaMA 3.1 8B,Meta,research,2024-07-23,2024,,winogrande,73.6
+LLaMA 3.1 8B Instruct,Meta,research,2024-07-23,2024,,winogrande,74.5
+Qwen 2.5 72B,Alibaba,research,2024-09-19,2024,,winogrande,83.4
+Qwen 2.5 7B,Alibaba,research,2024-09-19,2024,,winogrande,78.3
+LLaMA 3.2 90B Vision,Meta,research,2024-09-25,2024,,winogrande,82.3
+LLaMA 3.2 3B,Meta,research,2024-09-25,2024,,winogrande,66.7
+LLaMA 3.2 11B Vision,Meta,research,2024-09-25,2024,,winogrande,74.1
+LLaMA 3.2 1B,Meta,research,2024-09-25,2024,,winogrande,57.7
+OLMo 2 7B,AllenAI,research,2024-11-21,2024,,winogrande,74.3
+Command R7B,Cohere,research,2024-12-05,2024,,winogrande,77.9
+LLaMA 3.3 70B Instruct,Meta,research,2024-12-06,2024,,winogrande,83.0
+Phi-4,Microsoft,research,2024-12-12,2024,,winogrande,81.1
+DeepSeek R1 Distill Llama 70B,DeepSeek,research,2025-01-20,2025,,winogrande,82.0
+DeepSeek R1 Distill Qwen 14B,DeepSeek,research,2025-01-20,2025,,winogrande,78.1
+DeepSeek R1 Distill Qwen 32B,DeepSeek,research,2025-01-20,2025,,winogrande,79.9
+DeepSeek R1 Distill Qwen 7B,DeepSeek,research,2025-01-20,2025,,winogrande,73.8
+Gemma 3 27B,Google,research,2025-03-12,2025,,winogrande,80.2
+Phi-4 Reasoning,Microsoft,research,2025-04-01,2025,,winogrande,82.3
+Qwen3 32B,Alibaba,research,2025-04-28,2025,,winogrande,82.5

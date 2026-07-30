@@ -1,0 +1,107 @@
+model_name,provider,release_date,model_version,model_type,open_source,license_type,parameters_b,context_window_k,training_cutoff,multimodal,supported_languages,api_available,mmlu_score,humaneval_score,math_score,gsm8k_score,hellaswag_score,arc_challenge_score,truthfulqa_score,winogrande_score,memory_footprint_gb,reasoning_model,fine_tuned_variant,base_model,parameter_tier,benchmark_completeness,benchmark_source,notes
+T5 Base,Google,2020-02-24,v1.0,LLM,Yes,Apache-2.0,0.22,0.5,2019-10,No,en,No,29.6,,,,64.9,40.0,,57.8,0.15,No,No,,Small,36,Raffel et al. 2020,
+T5 Large,Google,2020-02-24,v1.0,LLM,Yes,Apache-2.0,0.77,0.5,2019-10,No,en,No,35.2,,,,67.6,43.8,,59.8,0.5,No,No,,Small,36,Raffel et al. 2020,
+T5 Small,Google,2020-02-24,v1.0,LLM,Yes,Apache-2.0,0.06,0.5,2019-10,No,en,No,24.7,,,,59.9,34.7,,54.8,0.04,No,No,,Mini,36,Raffel et al. 2020 (arXiv:1910.10683),Text-to-Text Transfer Transformer
+T5 XL,Google,2020-02-24,v1.0,LLM,Yes,Apache-2.0,3.0,0.5,2019-10,No,en,No,39.9,,,,71.2,47.9,,62.2,2.0,No,No,,Small,36,Raffel et al. 2020,
+T5 XXL,Google,2020-02-24,v1.0,LLM,Yes,Apache-2.0,11.0,0.5,2019-10,No,en,No,48.3,,,,74.7,53.3,,64.1,6.0,No,No,,Large,36,Raffel et al. 2020,Largest T5
+GPT-J 6B,EleutherAI,2021-06-04,v1.0,LLM,Yes,Apache-2.0,6.0,2.0,2021-04,No,en,No,36.7,11.4,,35.1,66.7,36.4,29.5,63.8,4.0,No,No,,Small,55,EleutherAI (2021),First open GPT-3 class model
+Gopher 280B,DeepMind,2021-12-08,v1.0,LLM,No,Research-only,280.0,4.0,2021-06,No,en,No,60.2,,,63.0,79.3,58.8,43.3,69.9,160.0,No,No,,XL,55,Rae et al. 2021 (arXiv:2112.11446),DeepMind 280B; MassiveText
+Chinchilla 70B,DeepMind,2022-03-29,v1.0,LLM,No,Research-only,70.0,4.0,2022-01,No,en,No,67.6,14.8,,74.1,79.8,65.1,45.1,74.4,40.0,No,No,,XL,55,Hoffmann et al. 2022 (arXiv:2203.15556),Compute-optimal; beat Gopher at 70B
+GPT-NeoX 20B,EleutherAI,2022-04-14,v1.0,LLM,Yes,Apache-2.0,20.0,4.0,2022-01,No,en,No,33.7,21.3,,29.1,72.0,48.3,31.8,68.3,12.0,No,No,,XL,55,Black et al. 2022 (arXiv:2204.06745),Open replication of GPT-3
+OPT 66B,Meta AI,2022-05-02,v1.0,LLM,Yes,OPT-NC,66.0,2.0,2022-01,No,en,No,48.4,4.8,,4.0,75.2,57.0,38.9,69.3,38.0,No,No,,XL,45,Zhang et al. 2022,Largest OPT released
+OPT 30B,Meta AI,2022-05-02,v1.0,LLM,Yes,OPT-NC,30.0,2.0,2022-01,No,en,No,44.8,3.5,,2.0,72.8,53.3,37.4,67.3,18.0,No,No,,Large,45,Zhang et al. 2022,
+OPT 6.7B,Meta AI,2022-05-02,v1.0,LLM,Yes,OPT-NC,6.7,2.0,2022-01,No,en,No,37.7,2.0,,,67.0,44.1,35.6,65.3,4.0,No,No,,Small,45,Zhang et al. 2022,
+OPT 1.3B,Meta AI,2022-05-02,v1.0,LLM,Yes,OPT-NC,1.3,2.0,2022-01,No,en,No,24.6,0.9,,,54.8,31.4,31.3,59.4,0.7,No,No,,Small,45,Zhang et al. 2022 (arXiv:2205.01068),Open Pretrained Transformer
+OPT 13B,Meta AI,2022-05-02,v1.0,LLM,Yes,OPT-NC,13.0,2.0,2022-01,No,en,No,41.8,2.4,,,69.7,48.3,36.9,66.2,8.0,No,No,,Medium,45,Zhang et al. 2022,
+BLOOM 176B,BigScience,2022-07-06,v1.0,LLM,Yes,BLOOM Rail,176.0,4.0,2022-02,No,multilingual_46,No,26.1,,,18.9,66.2,37.9,25.0,61.4,100.0,No,No,,XL,55,BigScience (2022); arXiv:2211.05100,176B 46 languages
+BLOOM 1B7,BigScience,2022-07-06,v1.0,LLM,Yes,BLOOM Rail,1.7,4.0,2022-02,No,multilingual_46,No,24.1,,,17.2,56.7,34.2,24.0,56.8,1.0,No,No,,Small,55,BigScience (2022),
+BLOOM 3B,BigScience,2022-07-06,v1.0,LLM,Yes,BLOOM Rail,3.0,4.0,2022-02,No,multilingual_46,No,26.7,,,20.2,60.0,37.0,26.1,60.1,2.0,No,No,,Small,55,BigScience (2022),
+BLOOM 560M,BigScience,2022-07-06,v1.0,LLM,Yes,BLOOM Rail,0.56,4.0,2022-02,No,multilingual_46,No,20.9,,,14.9,53.7,31.0,21.6,53.8,0.35,No,No,,Mini,55,BigScience (2022); arXiv:2211.05100,46 languages
+BLOOM 7B1,BigScience,2022-07-06,v1.0,LLM,Yes,BLOOM Rail,7.1,4.0,2022-02,No,multilingual_46,No,30.7,,,23.2,62.8,39.6,27.7,63.8,4.0,No,No,,Small,55,BigScience (2022),
+GLM-130B,Tsinghua/Zhipu,2022-10-05,v1.0,LLM,Yes,GLM-130B,130.0,4.0,2022-06,No,"en,zh",No,44.9,,,47.0,71.9,51.3,33.1,64.9,75.0,No,No,,XL,45,Zeng et al. 2022 (arXiv:2210.02414),Bilingual; 400B token training
+FLAN-T5 XL,Google,2022-10-20,v1.0,LLM,Yes,Apache-2.0,3.0,0.5,2022-06,No,multilingual,No,51.7,,,,71.7,51.8,43.1,62.6,2.0,No,Yes,T5,Small,45,Chung et al. 2022,
+FLAN-T5 Base,Google,2022-10-20,v1.0,LLM,Yes,Apache-2.0,0.25,0.5,2022-06,No,multilingual,No,42.7,,,,65.7,43.7,35.8,59.0,0.16,No,Yes,T5,Small,45,Chung et al. 2022,
+FLAN-T5 Large,Google,2022-10-20,v1.0,LLM,Yes,Apache-2.0,0.78,0.5,2022-06,No,multilingual,No,49.2,,,,69.2,48.3,38.7,61.3,0.5,No,Yes,T5,Small,45,Chung et al. 2022,
+FLAN-T5 Small,Google,2022-10-20,v1.0,LLM,Yes,Apache-2.0,0.08,0.5,2022-06,No,multilingual,No,38.2,,,,63.1,39.9,32.7,55.7,0.05,No,Yes,T5,Mini,45,Chung et al. 2022 (arXiv:2210.11416),Instruction-tuned T5
+FLAN-T5 XXL,Google,2022-10-20,v1.0,LLM,Yes,Apache-2.0,11.0,0.5,2022-06,No,multilingual,No,54.9,,4.9,,,,52.3,,6.0,No,Yes,T5,Large,27,Chung et al. 2022,Flan instruction-tuned T5 11B
+BLOOMZ 176B,BigScience,2022-11-03,v1.0,LLM,Yes,BLOOM Rail,176.0,4.0,2022-02,No,multilingual_46,No,34.1,,,25.8,67.2,41.4,37.2,61.9,100.0,No,Yes,BLOOM,XL,55,Muennighoff et al. 2022 (arXiv:2211.01786),Multitask instruct-tuned BLOOM
+LLaMA 1 13B,Meta,2023-02-24,v1.0,LLM,Yes,GPL-3.0,13.0,4.0,2022-10,No,en,No,46.9,,,46.5,79.9,59.5,36.2,73.0,8.0,No,No,,Medium,55,Touvron et al. 2023,
+LLaMA 1 30B,Meta,2023-02-24,v1.0,LLM,Yes,GPL-3.0,30.0,4.0,2022-10,No,en,No,58.2,,,57.3,82.8,66.6,37.7,75.9,18.0,No,No,,Large,55,Touvron et al. 2023,
+LLaMA 1 65B,Meta,2023-02-24,v1.0,LLM,Yes,GPL-3.0,65.0,4.0,2022-10,No,en,No,63.7,,,62.9,83.8,72.9,42.3,76.7,36.0,No,No,,XL,55,Touvron et al. 2023,Best open 65B; matched GPT-3
+LLaMA 1 7B,Meta,2023-02-24,v1.0,LLM,Yes,GPL-3.0,7.0,4.0,2022-10,No,en,No,35.3,,,36.2,76.1,51.5,32.7,70.2,4.0,No,No,,Small,55,Touvron et al. 2023 (arXiv:2302.13971),Research only release
+FLAN-UL2,Google,2023-03-10,v1.0,LLM,Yes,Apache-2.0,20.0,0.5,2022-06,No,multilingual,No,55.9,,6.4,,,,52.9,,12.0,No,Yes,T5,Large,27,Tay et al. 2023 (arXiv:2205.05131),Mixture-of-Denoisers
+BloombergGPT,Bloomberg,2023-03-30,v1.0,LLM,No,Proprietary,50.0,4.0,2022-12,No,en,No,54.1,,,56.2,77.6,61.9,,71.7,30.0,No,No,,XL,45,Wu et al. 2023 (arXiv:2303.17564),Finance domain LLM
+Pythia 12B,EleutherAI,2023-04-03,v1.0,LLM,Yes,Apache-2.0,12.0,4.0,2022-12,No,en,No,35.9,,,32.7,73.1,53.1,30.6,70.4,7.0,No,No,,Large,55,Biderman et al. 2023,
+Pythia 1B,EleutherAI,2023-04-03,v1.0,LLM,Yes,Apache-2.0,1.0,4.0,2022-12,No,en,No,30.3,,,22.0,57.3,37.3,29.0,59.7,0.6,No,No,,Small,55,Biderman et al. 2023 (arXiv:2304.01373),Interpretability research suite
+Pythia 2.8B,EleutherAI,2023-04-03,v1.0,LLM,Yes,Apache-2.0,2.8,4.0,2022-12,No,en,No,32.7,,,27.8,60.0,40.6,30.9,62.0,2.0,No,No,,Small,55,Biderman et al. 2023,
+Pythia 6.9B,EleutherAI,2023-04-03,v1.0,LLM,Yes,Apache-2.0,6.9,4.0,2022-12,No,en,No,35.9,,,31.2,64.1,44.0,33.1,65.1,4.0,No,No,,Small,55,Biderman et al. 2023,
+Dolly 12B,Databricks,2023-04-12,v2.0,LLM,Yes,MIT,12.0,4.0,2023-01,No,en,No,38.3,,,35.2,68.1,47.2,40.1,63.9,7.0,No,Yes,Pythia,Large,55,Databricks (Apr 2023),First truly open instruct LLM
+StableLM Alpha 7B,Stability AI,2023-04-19,v1.0,LLM,Yes,CC BY-SA-4.0,7.0,4.0,2023-01,No,en,No,30.3,,,22.7,73.7,47.2,29.1,66.7,4.0,No,No,,Small,55,Stability AI (Apr 2023),
+StableLM Alpha 3B,Stability AI,2023-04-19,v1.0,LLM,Yes,CC BY-SA-4.0,3.0,4.0,2023-01,No,en,No,24.2,,,15.1,69.3,40.7,25.1,63.2,2.0,No,No,,Small,55,Stability AI (Apr 2023),
+MPT 7B,MosaicML,2023-05-05,v1.0,LLM,Yes,Apache-2.0,7.0,2.0,2023-01,No,en,No,27.3,18.5,,30.7,75.0,48.8,30.8,68.7,4.0,No,No,,Small,64,MosaicML (May 2023),ALiBi positional encoding
+RedPajama 3B,Together AI,2023-05-05,v1.0,LLM,Yes,Apache-2.0,3.0,4.0,2023-01,No,en,No,26.7,,,17.9,72.5,43.9,27.2,64.7,2.0,No,No,,Small,55,Together AI (May 2023),Open LLaMA reproduction
+RedPajama 7B,Together AI,2023-05-05,v1.0,LLM,Yes,Apache-2.0,7.0,4.0,2023-01,No,en,No,36.0,,,30.4,76.2,50.6,31.9,69.1,4.0,No,No,,Small,55,Together AI (May 2023),
+Falcon 40B,TII,2023-05-22,v1.0,LLM,Yes,Apache-2.0,40.0,2.0,2023-01,No,multilingual,No,55.2,20.3,,54.0,85.0,61.1,33.0,77.8,22.0,No,No,,XL,73,TII (May 2023); HF Leaderboard,Best open briefly mid-2023
+WizardLM 13B,WizardLM,2023-05-26,v1.0,LLM,Yes,Non-commercial,13.0,4.0,2023-01,No,en,No,48.3,22.1,,49.9,81.3,59.7,43.9,73.2,8.0,No,Yes,LLaMA 1,Medium,73,Xu et al. 2023 (arXiv:2304.12244),Evol-Instruct
+MPT 30B,MosaicML,2023-06-22,v1.0,LLM,Yes,Apache-2.0,30.0,8.0,2023-01,No,en,No,46.6,20.7,,51.8,79.8,58.0,35.3,73.5,18.0,No,No,,Large,64,MosaicML (Jun 2023),
+LLaMA 2 7B Chat,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,7.0,4.0,2023-01,No,multilingual,Yes,47.9,14.0,4.7,20.3,78.3,54.8,45.9,70.8,4.0,No,Yes,LLaMA 2,Small,82,Meta Llama 2 Report,RLHF instruct-tuned
+LLaMA 2 13B,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,13.0,4.0,2023-01,No,multilingual,Yes,55.0,18.1,6.6,29.1,80.9,59.0,41.7,72.9,8.0,No,No,,Medium,82,Meta Llama 2 Report,
+LLaMA 2 13B Chat,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,13.0,4.0,2023-01,No,multilingual,Yes,55.8,19.8,7.4,33.1,81.4,60.8,48.1,73.6,8.0,No,Yes,LLaMA 2,Medium,82,Meta Llama 2 Report,
+LLaMA 2 70B,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,70.0,4.0,2023-01,No,multilingual,Yes,69.6,29.9,13.1,56.8,87.6,67.2,45.2,78.6,36.0,No,No,,XL,82,Meta Llama 2 Report,Best open-source mid-2023
+LLaMA 2 70B Chat,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,70.0,4.0,2023-01,No,multilingual,Yes,69.7,31.6,14.0,58.7,88.1,68.4,50.4,79.8,36.0,No,Yes,LLaMA 2,XL,82,Meta Llama 2 Report,
+LLaMA 2 7B,Meta,2023-07-18,v2.0,LLM,Yes,Llama 2,7.0,4.0,2023-01,No,multilingual,Yes,45.6,12.7,3.9,14.9,76.9,53.6,38.6,69.7,4.0,No,No,,Small,82,Meta Llama 2 Report (arXiv:2307.09288),Open weights commercial
+CodeLlama 34B,Meta,2023-08-24,v1.0,LLM,Yes,Llama 2,34.0,16.0,2023-01,No,multilingual,No,,48.7,,,,,,,20.0,No,Yes,LLaMA 2,Large,9,Roziere et al. 2023 (arXiv:2308.12950),Code-tuned Llama 2
+Falcon 180B,TII,2023-09-06,v1.0,LLM,Yes,Falcon-180B,180.0,2.0,2023-01,No,multilingual,No,71.0,24.0,,73.6,88.6,70.0,40.3,79.9,100.0,No,No,,XL,73,TII (Sep 2023),3.5T tokens
+Mistral 7B,Mistral AI,2023-09-27,v1.0,LLM,Yes,Apache-2.0,7.0,8.0,2023-06,No,multilingual,Yes,60.3,30.7,13.2,51.8,81.6,60.0,41.7,73.0,4.0,No,No,,Small,82,Mistral AI (Sep 2023),Outperformed Llama 2 13B
+OpenChat 3.5,OpenChat,2023-10-12,v3.5,LLM,Yes,Apache-2.0,7.0,8.0,2023-06,No,en,No,64.6,28.1,,77.3,83.3,64.0,52.3,78.9,4.0,No,Yes,Mistral 7B,Small,73,Wang et al. 2023 (arXiv:2309.11235),C-RLFT beat GPT-3.5 on some tasks
+Yi 34B,01.AI,2023-11-05,v1.0,LLM,Yes,Yi,34.0,4.0,2023-06,No,"en,zh",Yes,76.3,26.4,,76.3,85.8,75.3,,79.0,20.0,No,No,,Large,64,01.AI (Nov 2023),Top open bilingual late 2023
+Zephyr 7B Beta,HuggingFace H4,2023-11-08,v1.0,LLM,Yes,MIT,7.0,32.0,2023-06,No,en,No,61.6,22.5,,75.7,84.9,62.4,58.5,77.8,4.0,No,Yes,Mistral 7B,Small,73,HuggingFace H4 (Nov 2023),DPO improved version
+OpenHermes 2.5,NousResearch,2023-11-10,v2.5,LLM,Yes,Apache-2.0,7.0,8.0,2023-06,No,en,No,69.1,48.0,28.0,74.9,83.7,73.4,52.0,75.7,4.0,No,Yes,Mistral 7B,Small,82,NousResearch (Nov 2023),High-quality synthetic data fine-tune
+Orca 2 13B,Microsoft Research,2023-11-18,v2.0,LLM,Yes,MIT,13.0,4.0,2023-06,No,en,No,63.0,28.1,18.3,71.1,79.2,66.6,50.9,73.8,8.0,No,Yes,LLaMA 2,Medium,73,Mitra et al. 2023 (arXiv:2311.11045),Teacher-student reasoning
+Meditron 70B,EPFL,2023-11-27,v1.0,LLM,Yes,Llama 2,70.0,4.0,2023-01,No,en,No,66.4,,,,,,,,38.0,No,Yes,LLaMA 2,XL,9,Chen et al. 2023 (arXiv:2311.16079),Medical knowledge LLM
+Mistral 7B Instruct v0.2,Mistral AI,2023-12-11,v0.2,LLM,Yes,Apache-2.0,7.0,32.0,2023-06,No,multilingual,Yes,61.3,31.2,14.1,52.8,81.6,60.6,50.1,74.1,4.0,No,Yes,Mistral 7B,Small,82,Mistral AI (Dec 2023),32k context
+Mixtral 8x7B,Mistral AI,2023-12-11,v1.0,LLM (MoE),Yes,Apache-2.0,47.0,32.0,2023-06,No,multilingual,Yes,70.7,39.9,28.2,74.2,86.4,69.9,46.2,79.4,26.0,No,No,,Large,82,Mistral AI (Dec 2023),First public MoE
+Mixtral 8x7B Instruct,Mistral AI,2023-12-11,v1.0,LLM (MoE),Yes,Apache-2.0,47.0,32.0,2023-06,No,multilingual,Yes,71.3,41.0,28.7,74.6,86.8,70.5,51.7,80.0,26.0,No,Yes,Mixtral 8x7B,Large,91,Mistral AI,Instruct version
+Phi-2,Microsoft,2023-12-12,v2.0,LLM,Yes,MIT,2.7,2.0,2023-06,No,en,No,57.5,46.9,25.7,,73.0,61.2,,73.3,1.5,No,No,,Small,55,Microsoft (Dec 2023),2.7B outperforms 7B models
+InternLM2 20B,Shanghai AI Lab,2024-01-17,v2.0,LLM,Yes,Apache-2.0,20.0,200.0,2023-12,No,"en,zh",No,72.1,51.5,54.5,86.7,85.2,80.3,,79.0,12.0,No,No,,Large,64,InternLM2 (Jan 2024),
+CodeLlama 70B,Meta,2024-01-29,v1.1,LLM,Yes,Llama 2,70.0,100.0,2023-06,No,multilingual,No,,67.6,,,,,,,38.0,No,Yes,LLaMA 2,XL,9,Meta (Jan 2024),Best open code before SC2
+StarCoder2 15B,HuggingFace/ServiceNow,2024-02-28,v2.0,LLM,Yes,BigCode OpenRAIL-M,15.0,16.0,2024-01,No,multilingual,No,,46.6,,,,,,,8.0,No,No,,Medium,9,Li et al. 2024 (arXiv:2402.19173),Best open code 15B
+Grok 1,xAI,2024-03-17,v1.0,LLM,Yes,Apache-2.0,314.0,8.0,2023-10,No,en,No,73.0,63.5,23.8,62.9,83.8,73.7,45.0,73.7,160.0,No,No,,XL,82,xAI (Mar 2024),First open-weight Grok
+Mixtral 8x22B,Mistral AI,2024-04-10,v1.0,LLM (MoE),Yes,Apache-2.0,141.0,65.0,2024-01,No,multilingual,Yes,78.0,44.8,41.6,89.4,89.0,82.0,49.1,82.7,80.0,No,No,,XL,82,Mistral AI (Apr 2024),Larger MoE
+LLaMA 3 70B,Meta,2024-04-18,v3.0,LLM,Yes,Llama 3,70.0,8.0,2023-12,No,multilingual,Yes,82.0,81.9,50.5,92.9,87.9,87.8,44.8,81.8,38.0,No,No,,XL,82,Meta Llama 3 release,
+LLaMA 3 70B Instruct,Meta,2024-04-18,v3.0,LLM,Yes,Llama 3,70.0,8.0,2023-12,No,multilingual,Yes,82.3,82.2,50.7,93.1,88.1,88.1,52.2,81.5,38.0,No,Yes,LLaMA 3,XL,91,Meta Llama 3 release,Best open instruct Apr 2024
+LLaMA 3 8B,Meta,2024-04-18,v3.0,LLM,Yes,Llama 3,8.0,8.0,2023-12,No,multilingual,Yes,68.6,62.5,29.6,79.5,81.9,78.4,43.8,73.2,5.0,No,No,,Small,82,Meta Llama 3 release (Apr 2024),Outperforms Llama 2 70B
+LLaMA 3 8B Instruct,Meta,2024-04-18,v3.0,LLM,Yes,Llama 3,8.0,8.0,2023-12,No,multilingual,Yes,69.2,62.8,30.3,79.7,82.1,79.3,51.6,73.1,5.0,No,Yes,LLaMA 3,Small,82,Meta Llama 3 release,
+Phi-3 Mini 128K,Microsoft,2024-04-23,v3.0,LLM,Yes,MIT,3.8,128.0,2023-10,No,en,Yes,68.5,57.0,37.1,84.2,73.6,77.9,45.1,73.7,2.0,No,No,,Small,73,Microsoft (Apr 2024),Mobile-capable 3.8B
+DeepSeek V2,DeepSeek,2024-05-06,v2.0,LLM (MoE),Yes,DeepSeek,236.0,128.0,2023-12,No,"en,zh",Yes,78.7,81.2,73.0,92.1,88.1,85.3,,80.8,,No,No,,XL,73,DeepSeek-AI (May 2024),MoE 236B total 21B active
+Yi 1.5 34B,01.AI,2024-05-13,v1.5,LLM,Yes,Apache-2.0,34.0,200.0,2023-12,No,"en,zh",Yes,76.7,43.1,50.4,84.1,85.8,79.0,,79.8,20.0,No,No,,Large,73,01.AI (May 2024),200k context
+Falcon 2 11B,TII,2024-05-14,v2.0,LLM,Yes,Apache-2.0,11.0,8.0,2023-12,No,multilingual,No,62.0,44.8,24.1,78.2,81.9,78.0,42.8,76.1,6.0,No,No,,Medium,73,TII (May 2024),Updated architecture
+Phi-3 Medium 4K,Microsoft,2024-05-21,v3.0,LLM,Yes,MIT,14.0,4.0,2023-10,No,multilingual,Yes,77.6,70.7,52.7,90.0,82.9,83.4,47.3,77.7,8.0,No,No,,Medium,73,Microsoft (May 2024),Strong STEM reasoning
+Qwen 2 72B Instruct,Alibaba,2024-06-07,v2.0,LLM,Yes,Apache-2.0,72.0,128.0,2024-04,No,multilingual,Yes,84.8,86.3,71.1,93.8,89.6,88.2,46.6,82.1,40.0,No,Yes,Qwen 2,XL,82,Alibaba Qwen 2 release,Beat LLaMA 3.1 70B on many tasks
+Nemotron 4 340B,NVIDIA,2024-06-14,v4.0,LLM,Yes,NVIDIA Open Model,340.0,4.0,2023-12,No,multilingual,Yes,79.1,72.9,41.2,91.9,88.1,88.4,47.8,81.4,180.0,No,No,,XL,82,NVIDIA (Jun 2024),Synthetic data specialist
+Gemma 2 27B,Google,2024-06-27,v2.0,LLM,Yes,Gemma,27.0,8.0,2024-03,No,en,No,75.5,51.5,46.1,86.0,83.0,81.6,48.0,78.1,15.0,No,No,,Large,82,Google Gemma 2,Best open <30B mid-2024
+Gemma 2 9B,Google,2024-06-27,v2.0,LLM,Yes,Gemma,9.0,8.0,2024-03,No,en,No,71.1,40.3,36.6,82.6,81.4,77.1,45.8,76.0,5.0,No,No,,Small,82,Google Gemma 2 (Jun 2024),
+Mistral Nemo,Mistral AI,2024-07-18,v1.0,LLM,Yes,Apache-2.0,12.0,128.0,2024-04,No,multilingual,Yes,68.4,53.9,34.1,78.0,84.6,78.7,43.1,76.1,7.0,No,No,,Medium,82,Mistral AI/NVIDIA (Jul 2024),12B NVIDIA collab
+LLaMA 3.1 405B,Meta,2024-07-23,v3.1,LLM,Yes,Llama 3.1,405.0,128.0,2023-12,No,multilingual,Yes,88.6,89.0,73.8,97.2,89.2,89.8,48.0,84.2,220.0,No,No,,XL,91,Meta Llama 3.1; vellum.ai,First open to rival GPT-4o
+LLaMA 3.1 70B,Meta,2024-07-23,v3.1,LLM,Yes,Llama 3.1,70.0,128.0,2023-12,No,multilingual,Yes,85.7,80.6,68.1,94.8,88.6,89.4,46.7,82.3,38.0,No,No,,Large,91,Meta Llama 3.1; vellum.ai,
+LLaMA 3.1 70B Instruct,Meta,2024-07-23,v3.1,LLM,Yes,Llama 3.1,70.0,128.0,2023-12,No,multilingual,Yes,86.2,80.8,68.1,95.4,88.6,89.5,53.5,83.0,38.0,No,Yes,LLaMA 3.1,Large,91,Meta; vellum.ai Sep 2024,
+LLaMA 3.1 8B,Meta,2024-07-23,v3.1,LLM,Yes,Llama 3.1,8.0,128.0,2023-12,No,multilingual,Yes,73.3,68.1,28.3,83.6,82.1,79.9,44.5,73.6,5.0,No,No,,Small,82,Meta Llama 3.1 (Jul 2024),128k context
+LLaMA 3.1 8B Instruct,Meta,2024-07-23,v3.1,LLM,Yes,Llama 3.1,8.0,128.0,2023-12,No,multilingual,Yes,73.2,68.3,28.2,84.2,82.7,79.5,51.8,74.5,5.0,No,Yes,LLaMA 3.1,Small,91,Meta Llama 3.1,
+Qwen 2.5 72B,Alibaba,2024-09-19,v2.5,LLM,Yes,Apache-2.0,72.0,128.0,2024-06,No,multilingual,Yes,86.0,86.7,75.5,95.3,89.8,89.2,50.2,83.4,40.0,No,No,,XL,91,Alibaba Qwen 2.5; vellum.ai,Best open model Q4 2024
+Qwen 2.5 7B,Alibaba,2024-09-19,v2.5,LLM,Yes,Apache-2.0,7.0,128.0,2024-06,No,multilingual,Yes,74.0,84.9,75.2,92.1,81.9,82.1,,78.3,4.0,No,No,,Small,64,Alibaba Qwen 2.5 (Sep 2024),Strong 7B
+LLaMA 3.2 90B Vision,Meta,2024-09-25,v3.2,Multimodal,Yes,Llama 3.2,90.0,128.0,2023-12,Yes,multilingual,Yes,85.8,80.6,65.8,93.4,88.6,89.1,45.7,82.3,50.0,No,No,,Large,91,Meta Llama 3.2,Best open multimodal late 2024
+LLaMA 3.2 3B,Meta,2024-09-25,v3.2,LLM,Yes,Llama 3.2,3.0,128.0,2023-12,No,multilingual,Yes,57.7,24.7,,60.3,78.2,67.3,40.2,66.7,1.5,No,No,,Small,73,Meta Llama 3.2,Edge 3B
+LLaMA 3.2 11B Vision,Meta,2024-09-25,v3.2,Multimodal,Yes,Llama 3.2,11.0,128.0,2023-12,Yes,multilingual,Yes,72.9,64.6,31.7,85.0,83.3,79.9,44.2,74.1,6.0,No,No,,Medium,82,Meta Llama 3.2,Vision 11B
+LLaMA 3.2 1B,Meta,2024-09-25,v3.2,LLM,Yes,Llama 3.2,1.0,128.0,2023-12,No,multilingual,Yes,31.9,8.4,,23.3,60.6,39.7,36.6,57.7,0.5,No,No,,Mini,73,Meta Llama 3.2,Edge/mobile 1B
+Qwen 2.5 Coder 32B,Alibaba,2024-11-12,v2.5,LLM,Yes,Apache-2.0,32.0,128.0,2024-06,No,multilingual,Yes,,92.6,,,,,,,18.0,No,Yes,Qwen 2.5,Large,9,Alibaba (Nov 2024),Topped HumanEval open models
+OLMo 2 7B,AllenAI,2024-11-21,v2.0,LLM,Yes,Apache-2.0,7.0,4.0,2024-08,No,en,No,63.8,44.6,37.0,82.3,77.0,72.2,39.9,74.3,4.0,No,No,,Small,73,AllenAI (Nov 2024),Fully open
+Command R7B,Cohere,2024-12-05,v1.0,LLM,Yes,CC BY-NC,7.0,128.0,2024-04,No,multilingual,Yes,68.5,48.7,37.2,78.6,83.4,78.5,44.8,77.9,4.0,No,No,,Small,82,Cohere (Dec 2024),Open-weights 7B Command R
+LLaMA 3.3 70B Instruct,Meta,2024-12-06,v3.3,LLM,Yes,Llama 3.3,70.0,128.0,2024-06,No,multilingual,Yes,86.2,87.1,69.9,96.0,89.1,89.5,52.9,83.0,38.0,No,Yes,LLaMA 3.3,Large,91,Meta (Dec 2024),Near 405B perf at 70B size
+Phi-4,Microsoft,2024-12-12,v4.0,LLM,Yes,MIT,14.0,16.0,2024-06,No,multilingual,Yes,84.8,82.6,80.4,95.3,88.3,88.7,51.7,81.1,8.0,No,No,,Medium,82,Microsoft (Dec 2024) Phi-4 technical report,STEM-focused; beat larger models on math
+DeepSeek R1 Distill Llama 70B,DeepSeek,2025-01-20,v1.0,Reasoning,Yes,DeepSeek,70.0,128.0,2024-10,No,"en,zh",Yes,79.5,79.3,94.5,94.8,89.0,88.0,,82.0,40.0,Yes,Yes,DeepSeek R1,Large,64,DeepSeek R1 paper,70B Llama backbone distill
+DeepSeek R1 Distill Qwen 14B,DeepSeek,2025-01-20,v1.0,Reasoning,Yes,DeepSeek,14.0,128.0,2024-10,No,"en,zh",Yes,69.5,69.5,93.9,94.1,85.1,79.3,,78.1,8.0,Yes,Yes,DeepSeek R1,Medium,64,DeepSeek R1 paper,14B distill
+DeepSeek R1 Distill Qwen 32B,DeepSeek,2025-01-20,v1.0,Reasoning,Yes,DeepSeek,32.0,128.0,2024-10,No,"en,zh",Yes,72.8,72.6,94.5,94.7,87.0,83.8,,79.9,18.0,Yes,Yes,DeepSeek R1,Large,64,DeepSeek R1 paper,32B distill
+DeepSeek R1 Distill Qwen 7B,DeepSeek,2025-01-20,v1.0,Reasoning,Yes,DeepSeek,7.0,128.0,2024-10,No,"en,zh",Yes,55.8,55.7,82.7,91.3,79.3,72.7,,73.8,4.0,Yes,Yes,DeepSeek R1,Small,64,DeepSeek R1 paper,7B distill; strong math
+Gemma 3 27B,Google,2025-03-12,v3.0,Multimodal,Yes,Gemma,27.0,128.0,2024-10,Yes,multilingual,No,79.1,74.1,77.6,93.0,84.8,84.8,49.1,80.2,15.0,No,No,,Large,82,Google (Mar 2025),
+Phi-4 Reasoning,Microsoft,2025-04-01,v4.0,Reasoning,Yes,MIT,14.0,16.0,2024-06,No,multilingual,Yes,85.7,85.3,88.2,97.0,88.9,89.4,54.3,82.3,8.0,Yes,Yes,Phi-4,Medium,82,Microsoft (Apr 2025),Reasoning fine-tune of Phi-4
+Qwen3 32B,Alibaba,2025-04-28,v3.0,LLM,Yes,Apache-2.0,32.0,128.0,2024-12,No,multilingual,Yes,83.9,92.7,89.2,95.6,88.3,89.4,,82.5,18.0,Yes,No,,Large,73,Alibaba Qwen3,
