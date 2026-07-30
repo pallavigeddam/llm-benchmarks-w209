@@ -48,7 +48,6 @@ The original exploratory D3 work lives on Observable: https://observablehq.com/d
 index.html      the live site
 data/           the three CSVs behind the charts
 observable/     original Observable and D3 exploration
-notebooks/      data pipeline notebook (Colab)
 docs/           exploratory analysis writeup, usability study
 presentations/  midterm and final decks
 ```
