@@ -1,0 +1,14 @@
+{
+  "name": "llm-benchmarks-d3-exploration",
+  "main": "LLMBenchMarkD3Observable.js",
+  "version": "224.0.0",
+  "homepage": "https://observablehq.com/d/f52de3b8ff1fb482",
+  "author": {
+    "name": "Berkeley MIDS W209 Information Visualization Course",
+    "url": "https://observablehq.com/@berkeleyvis"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}

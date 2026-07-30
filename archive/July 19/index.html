@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Benchmarks Are Broken — UC Berkeley MIDS W209</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+:root {
+  --blue:#003262; --gold:#FDB515; --sky:#00B0DA; --red:#C4202B;
+  --paper:#FFFFFF; --page:#F0EEE8; --ink:#1A1A1A; --muted:#6B6A65;
+  --mono:"IBM Plex Mono",monospace; --sans:"IBM Plex Sans",-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--page);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+
+
+/* ── D3 TOOLTIP (shared) ── */
+.d3tip{position:fixed;z-index:500;pointer-events:none;display:none;background:#001A3A;border:1px solid rgba(253,181,21,.4);padding:10px 12px;font-family:var(--mono);font-size:12px;line-height:1.5;color:rgba(255,255,255,.85);max-width:260px}
+.d3tip b{color:var(--gold);font-weight:600;display:block;margin-bottom:2px}
+
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;background:#002648;border-bottom:2px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem}
+.nav-brand{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:.4rem}
+.nav-links a{font-size:12px;color:rgba(255,255,255,.55);text-decoration:none;cursor:pointer;font-weight:500;letter-spacing:.02em;transition:all .15s;padding:7px 12px;border-radius:4px}
+.nav-links a:hover{color:#fff;background:rgba(253,181,21,.12)}
+.nav-links a.active{color:var(--blue);background:var(--gold)}
+.nav-right{font-family:var(--mono);font-size:10px;color:rgba(253,181,21,.4);letter-spacing:.05em}
+
+/* ── HERO ── */
+#hero{
+  position:relative; min-height:100vh;
+  display:flex; align-items:center;
+  background:var(--blue);
+  border-bottom:3px solid var(--gold);
+  overflow:hidden; padding:120px 0 80px;
+}
+/* canvas fills the ENTIRE hero — before content */
+#hero-canvas{
+  position:absolute; top:0; left:0;
+  width:100%; height:100%;
+  z-index:0; pointer-events:none;
+}
+.hero-inner{
+  position:relative; z-index:1;
+  width:100%; max-width:1200px;
+  margin:0 auto; padding:0 2.5rem;
+  display:grid; grid-template-columns:3fr 2fr; gap:5rem; align-items:center;
+}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--blue);font-family:var(--mono);font-size:10px;font-weight:600;padding:5px 12px;letter-spacing:.08em;margin-bottom:1.5rem}
+.hero-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h1{font-size:clamp(2.8rem,5vw,4.8rem);font-weight:600;line-height:.95;letter-spacing:-.03em;color:var(--paper);margin-bottom:1.5rem}
+.cross{position:relative;color:rgba(255,255,255,.28)}
+.cross::after{content:"";position:absolute;left:-3px;right:-3px;top:52%;height:5px;background:var(--red);transform:rotate(-.4deg)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.6);max-width:460px;margin-bottom:2rem;line-height:1.7;font-weight:300}
+.hero-sub strong{color:var(--gold);font-weight:500}
+.hero-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--blue);font-family:var(--mono);font-size:12px;font-weight:600;padding:13px 24px;letter-spacing:.06em;border:none;cursor:pointer;transition:background .15s}
+.hero-btn:hover{background:#fff}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hstat{padding:20px 18px;border:1px solid rgba(253,181,21,.25);background:rgba(0,0,0,.25);backdrop-filter:blur(6px)}
+.hstat.hl{background:rgba(253,181,21,.15);border-color:rgba(253,181,21,.5)}
+.hstat-val{font-family:var(--mono);font-size:1.9rem;font-weight:600;line-height:1;margin-bottom:6px;color:var(--gold)}
+.hstat-lbl{font-size:12px;color:rgba(255,255,255,.65);line-height:1.4}
+.hero-defs{margin:14px 0 22px;max-width:520px;border-left:3px solid var(--gold);padding-left:14px}
+.hero-defs p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;margin:0 0 6px}
+.hero-defs b{color:var(--gold);font-weight:600}
+
+/* ── SECTIONS — two flavors ── */
+/* LIGHT: white chart cards on page-background */
+.sec{padding:72px 2.5rem;border-bottom:2px solid rgba(0,50,98,.15)}
+.sec.dark{background:var(--blue);border-bottom-color:rgba(253,181,21,.2);position:relative;overflow:hidden}
+.sec-anim{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55}
+.sec.dark .sec-inner{position:relative;z-index:1}
+.sec.light{background:var(--page)}
+.sec-inner{max-width:1100px;margin:0 auto}
+
+/* SECTION HEADER */
+.sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid rgba(0,50,98,.12)}
+.dark .sec-hdr{border-bottom-color:rgba(253,181,21,.15)}
+.sec-num{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:44px}
+.dark .sec-num{color:rgba(253,181,21,.4)}
+.sec-title{font-size:1.75rem;font-weight:600;letter-spacing:-.02em;flex:1}
+.light .sec-title{color:var(--blue)}
+.dark .sec-title{color:var(--gold)}
+.sec-badge{font-family:var(--mono);font-size:10px;font-weight:600;padding:4px 10px;letter-spacing:.08em;border:1.5px solid var(--red);color:var(--red)}
+.dark .sec-badge{border-color:var(--gold);color:var(--gold)}
+.sec-sub{font-size:14px;color:var(--muted);max-width:660px;line-height:1.7;margin-bottom:24px;font-weight:300}
+.dark .sec-sub{color:rgba(255,255,255,.55)}
+
+/* FINDING BLOCK */
+.finding{display:flex;align-items:flex-start;gap:20px;padding:22px 28px;margin-bottom:28px;border-left:4px solid var(--gold)}
+.light .finding{background:var(--blue)}
+.dark .finding{background:rgba(253,181,21,.08)}
+.finding-num{font-family:var(--mono);font-size:2.4rem;font-weight:600;color:var(--gold);line-height:1;flex-shrink:0;min-width:72px}
+.finding-txt{font-size:14px;color:rgba(255,255,255,.75);line-height:1.65}
+.dark .finding-txt{color:rgba(255,255,255,.7)}
+.finding-txt b{color:var(--gold);font-weight:600}
+
+/* CHART CARD — always white */
+.chart-card{background:var(--paper);border:1px solid rgba(0,50,98,.12);padding:24px 24px 16px;margin-bottom:28px;border-radius:4px}
+.dark .chart-card{background:#fff;border-color:rgba(0,50,98,.2)}
+.chart-hdr{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(0,50,98,.08)}
+.chart-step{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em}
+.chart-name{font-size:13px;font-weight:500;color:var(--ink)}
+.atlas-hint{font-size:14px;color:var(--gold);font-weight:500;margin:0 0 14px;padding:10px 14px;border:1px solid rgba(253,181,21,.35);background:rgba(253,181,21,.06);display:inline-block}
+.atlas-hint b{font-weight:700}
+.chart-why{font-size:12px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px;margin-top:14px;line-height:1.55}
+.chart-why b{color:var(--ink)}
+.iter{display:flex;align-items:center;gap:10px;padding:8px 0 20px;font-family:var(--mono);font-size:12px;color:#3D4F63;letter-spacing:.04em}
+.dark .iter{color:rgba(253,181,21,.6)}
+.iter::before,.iter::after{content:"";flex:1;height:1px;background:rgba(0,50,98,.1)}
+.dark .iter::before,.dark .iter::after{background:rgba(253,181,21,.15)}
+.iter-arrow{color:var(--red);font-weight:700}
+
+/* LEGEND inside card */
+.clegend{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 4px;font-size:11px;color:var(--muted)}
+.clegend span{display:flex;align-items:center;gap:5px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0}
+.sq{width:10px;height:10px;border-radius:2px;display:inline-block;flex-shrink:0}
+
+/* CHART CONTROLS (view toggles) */
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+.tbtn{font-family:var(--mono);font-size:11px;padding:6px 14px;border:1.5px solid rgba(0,50,98,.3);background:#fff;color:var(--muted);cursor:pointer;letter-spacing:.04em;transition:all .15s}
+.tbtn:hover{border-color:var(--gold)}
+.tbtn.active{background:var(--gold);border-color:var(--gold);color:var(--blue);font-weight:600}
+
+/* CALLOUT */
+.callout{background:var(--paper);border:1.5px solid var(--gold);padding:22px 26px;margin-bottom:28px;display:grid;grid-template-columns:3fr 1fr;gap:24px;align-items:center}
+.dark .callout{background:rgba(255,255,255,.06)}
+.callout h3{font-size:15px;font-weight:600;color:var(--blue);margin-bottom:8px}
+.dark .callout h3{color:var(--gold)}
+.callout p{font-size:13px;color:var(--muted);line-height:1.6}
+.dark .callout p{color:rgba(255,255,255,.55)}
+.callout p strong{color:var(--ink)}
+.dark .callout p strong{color:#fff}
+.cstat .big{font-family:var(--mono);font-size:2.6rem;font-weight:600;color:var(--red);line-height:1;text-align:center}
+.cstat .lbl{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4;text-align:center}
+.dark .cstat .lbl{color:rgba(255,255,255,.4)}
+
+/* GRAVEYARD */
+.graveyard{background:rgba(0,0,0,.7);border:1px solid rgba(253,181,21,.2);padding:28px;margin-bottom:28px}
+.graveyard h3{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--gold);margin-bottom:20px;text-transform:uppercase}
+.grave-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.gi{padding:14px 12px;position:relative;transition:transform .2s}
+.gi:hover{transform:translateY(-2px)}
+.gi.dead{background:rgba(196,32,43,.08);border:1px solid rgba(196,32,43,.3)}
+.gi.dying{background:rgba(253,181,21,.06);border:1px solid rgba(253,181,21,.3)}
+.gi.alive{background:rgba(0,176,218,.06);border:1px solid rgba(0,176,218,.3)}
+.gi-yr{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.3);margin-bottom:5px}
+.gi-name{font-size:12px;font-weight:600;color:rgba(255,255,255,.88);margin-bottom:4px}
+.gi-score{font-family:var(--mono);font-size:11px;margin-bottom:5px}
+.gi.dead .gi-score{color:var(--red)}
+.gi.dying .gi-score{color:var(--gold)}
+.gi.alive .gi-score{color:var(--sky)}
+.gi-status{font-size:10px;font-family:var(--mono)}
+.gi.dead .gi-status{color:rgba(196,32,43,.75)}
+.gi.dying .gi-status{color:rgba(253,181,21,.75)}
+.gi.alive .gi-status{color:rgba(0,176,218,.75)}
+.gi-skull{position:absolute;top:8px;right:10px;font-size:12px;opacity:.4}
+
+/* USE GRID */
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.use-card{background:var(--paper);border:1.5px solid rgba(0,50,98,.2);padding:20px;transition:border-color .2s,transform .2s}
+.use-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.use-card.featured{border-color:var(--gold);background:rgba(253,181,21,.04)}
+.use-card h4{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--sky);margin-bottom:10px;text-transform:uppercase}
+.use-card.featured h4{color:var(--gold)}
+.use-card p{font-size:12px;color:var(--muted);line-height:1.6}
+.use-card p strong{color:var(--ink)}
+.rec-badge{display:inline-block;background:var(--gold);color:var(--blue);font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;margin-bottom:10px;letter-spacing:.06em}
+
+/* TWO-PANEL */
+.two-panel{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel-label{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:.05em}
+
+/* NETWORK */
+#net-svg{width:100%;height:500px;background:#0a1628;border-radius:4px;display:block}
+#net-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:11px;color:var(--muted);font-family:var(--mono)}
+#net-legend span{display:flex;align-items:center;gap:5px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.about-item h4{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--gold);margin-bottom:8px;text-transform:uppercase}
+.about-item p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+.about-item p strong{color:rgba(255,255,255,.88)}
+
+/* FOOTER */
+footer{background:#000d1a;border-top:1px solid rgba(253,181,21,.15);padding:14px 2.5rem;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">LLM Benchmarks Are Broken</span>
+  <div class="nav-links">
+    <a data-t="h1" onclick="go('h1')">H1 · Saturation</a>
+    <a data-t="h2" onclick="go('h2')">H2 · Frontier Gap</a>
+    <a data-t="h3" onclick="go('h3')">H3 · Cost</a>
+    <a data-t="context" onclick="go('context')">Context</a>
+    <a data-t="verdict" onclick="go('verdict')">Verdict</a>
+    <a data-t="atlas" onclick="go('atlas')">Model Atlas</a>
+    <a data-t="about" onclick="go('about')">About</a>
+  </div>
+  <span class="nav-right">UC Berkeley · MIDS W209</span>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">W209 DATA VISUALIZATION · GROUP 03 · 2026</div>
+      <h1>LLM Bench<span class="cross">marks</span><br>Are Broken.</h1>
+      <p class="hero-sub">Every model launch leads with a headline MMLU score. We tested it against the <strong>only metric that cannot be gamed</strong> — real human preference in blind evaluations.</p>
+      <div class="hero-defs">
+        <p><b>MMLU</b> — a 57-subject multiple-choice exam for AI models, scored 0–100%.</p>
+        <p><b>Arena ELO</b> — a ranking built from millions of blind human votes comparing model answers. Higher = humans prefer it.</p>
+      </div>
+      <button class="hero-btn" onclick="go('h1')">See the evidence ↓</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat hl"><div class="hstat-val">σ=0.9</div><div class="hstat-lbl">MMLU std dev 2026<br>(was 19.0 in 2023)</div></div>
+      <div class="hstat"><div class="hstat-val">0.666</div><div class="hstat-lbl">MMLU–ELO r at<br>top-20 frontier</div></div>
+      <div class="hstat"><div class="hstat-val">r=0.066</div><div class="hstat-lbl">Cost vs real-world<br>ELO performance</div></div>
+      <div class="hstat"><div class="hstat-val">29%</div><div class="hstat-lbl">MMLU questions in<br>model training data</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ H1 — LIGHT ═══ -->
+<section class="sec light" id="h1">
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">H1 · 01 —</span><span class="sec-title">Benchmark Saturation</span><span class="sec-badge">Confirmed</span></div>
+    <p class="sec-sub">MMLU scores are rapidly approaching the 100% theoretical ceiling. As spread collapses, the benchmark loses its ability to differentiate model quality at all.</p>
+    <div class="finding"><div class="finding-num">60pt</div><div class="finding-txt">Mean MMLU climbed from <b>33% in 2020</b> to <b>93% in 2026</b>. Std dev collapsed from <b>σ=19.0 to σ=0.9</b>. Models are no longer meaningfully spread — all clustering at the same ceiling. <b>One caveat we surface deliberately:</b> the 2026 figure rests on the <b>n=3</b> models released so far this year, so we read it as directional. The compression trend is already established by 2024 (σ=8.5, n=115) and 2025 (σ=7.9, n=34).</div></div>
+
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 1 / 3 · line chart</span><span class="chart-name">Is the score still climbing, and how much runway is left? (hover dots for details)</span></div>
+      <div style="position:relative;width:100%;height:220px"><canvas id="c1" role="img" aria-label="Mean MMLU by year rising from 33% to 93%">Mean MMLU rose from 33% in 2020 to 93% in 2026.</canvas></div>
+      <p class="chart-why"><b>Why this view first:</b> The steep climb and shrinking runway are immediately legible. <b>What's missing:</b> Does the spread also collapse, or do outliers pull the mean up?</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> added ±1σ bands to reveal the compression story</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 2 / 3 · banded line</span><span class="chart-name">Is the spread of scores collapsing? (hover for σ values)</span></div>
+      <div style="position:relative;width:100%;height:240px"><canvas id="c2" role="img" aria-label="Banded line showing sigma collapse from 19 to 0.9">Sigma peaked at 19.0 in 2023, collapsed to 0.9 by 2026.</canvas></div>
+      <p class="chart-why"><b>Key signal:</b> σ band peaks wide in 2023 (σ=19.0, n=92 models) then nearly disappears by 2026 (σ=0.9). <b>What's missing:</b> Individual models — is this outlier-driven?</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> broke to individual model level to rule out outlier effects</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 3 / 3 · beeswarm — final</span><span class="chart-name">Where does every individual model land? All 281 models, MMLU by release year (hover to identify)</span></div>
+      <svg id="c3" role="img" aria-label="Beeswarm of individual model MMLU scores by year converging above 90% by 2026, with per-year sample sizes annotated" style="width:100%;height:330px;display:block">By 2026 nearly all frontier models score above 90%. The 2026 group has only 3 models and is directional.</svg>
+      <div class="clegend">
+        <span><span class="dot" style="background:#003262"></span>Frontier</span>
+        <span><span class="dot" style="background:#2E9BB5"></span>Research / open flagship</span>
+        <span><span class="dot" style="background:#D85A30"></span>Community / fine-tuned</span>
+        <span style="margin-left:8px;color:#C4202B;font-family:var(--mono);font-size:11px">— 100% ceiling</span>
+        <span style="color:#C4202B;font-family:var(--mono);font-size:11px">n=3 in 2026 → directional</span>
+      </div>
+      <p class="chart-why"><b>H1 confirmed:</b> Saturation is systemic. Nearly all 2026 models score above 90%. MMLU can no longer differentiate elite models. <b>Sample size, stated plainly:</b> only 3 models have shipped in 2026 to date (labeled on the chart), so the σ=0.9 endpoint is directional rather than definitive. The verdict does not depend on it: 2024's n=115 and 2025's n=34 already show the spread collapsing toward the ceiling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ H2 — DARK ═══ -->
+<section class="sec dark" id="h2">
+  <canvas class="sec-anim" id="anim-h2"></canvas>
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">H2 · 02 —</span><span class="sec-title">Frontier Gap</span><span class="sec-badge">Confirmed</span></div>
+    <p class="sec-sub">Models that score highest on MMLU do not rank highest in human preference. The correlation weakens exactly at the frontier where model selection matters most.</p>
+    <div class="finding"><div class="finding-num">↓25%</div><div class="finding-txt">MMLU–ELO correlation drops from <b>r=0.841</b> across all frontier models to <b>r=0.666</b> among the top-20 ELO models. More MMLU score predicts almost nothing about human preference at the frontier.</div></div>
+
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 1 / 3 · scatter</span><span class="chart-name">Does a higher MMLU score mean humans prefer the model? All 56 frontier models (hover for model name)</span></div>
+      <div style="position:relative;width:100%;height:260px"><canvas id="c4" role="img" aria-label="MMLU vs ELO scatter, positive but noisy r=0.841">Positive but noisy correlation, r=0.841 overall.</canvas></div>
+      <div class="clegend">
+        <span style="font-family:var(--mono);font-size:11px;color:var(--muted)">Overall r = 0.841 &nbsp;·&nbsp; Color intensity = MMLU score</span>
+      </div>
+      <p class="chart-why"><b>What this shows:</b> Positive but noisy. Models with 85%+ MMLU still land below 1,300 ELO. <b>Plain terms:</b> r measures how tightly two quantities move together; 1.0 is lockstep, 0 is unrelated. <b>What's missing:</b> Does correlation hold specifically at the very top?</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> isolated top-20 ELO tier — split trend lines</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 2 / 3 · dual-trend scatter</span><span class="chart-name">Does that hold among the top-20 models? Gold = top 20 by human preference (hover to explore)</span></div>
+      <div style="position:relative;width:100%;height:260px"><canvas id="c5" role="img" aria-label="Top-20 ELO in gold with flat trend r=0.666">Top-20 ELO trend is flat at r=0.666.</canvas></div>
+      <div class="clegend">
+        <span><span class="dot" style="background:#FDB515"></span>Top-20 by Arena ELO (r=0.666 — flat)</span>
+        <span><span class="dot" style="background:#8B9DAF"></span>Other frontier (r=0.841 overall)</span>
+      </div>
+      <p class="chart-why"><b>Key signal:</b> Gold trend line is nearly flat. More MMLU score doesn't predict more ELO at the frontier. <b>What's missing:</b> Which specific models are inverting?</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> switched to rank space — named every inversion</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 3 / 3 · slope chart — final</span><span class="chart-name">Which specific models does the benchmark misjudge? MMLU rank vs ELO rank (hover any line)</span></div>
+      <div class="ctrl" id="c6-ctrl">
+        <button class="tbtn active" data-mode="focus">Biggest inversions · rank gap ≥ 8</button>
+        <button class="tbtn" data-mode="all">All 56 models</button>
+      </div>
+      <svg id="c6" role="img" aria-label="Slope chart of MMLU rank vs ELO rank showing the largest inversions by default, expandable to all 56 models" style="width:100%;height:620px;display:block">o1: MMLU #9 but ELO #25. LLaMA 4 Maverick: MMLU #37 but ELO #16.</svg>
+      <div class="clegend">
+        <span id="c6-legend" style="font-family:var(--mono);font-size:11px;color:var(--muted)">Default view shows only inversions with rank gap ≥ 8 — the models that make the case. Toggle to see the full field.</span>
+      </div>
+      <p class="chart-why"><b>H2 confirmed:</b> o1 is MMLU rank #9 but ELO rank #25 (−16). LLaMA 4 Maverick: MMLU #37, ELO #16 (+21). The benchmark actively misleads at the frontier. The default view isolates the biggest inversions so the story is legible at a glance; the full field is one click away.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ H3 — LIGHT ═══ -->
+<section class="sec light" id="h3">
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">H3 · 03 —</span><span class="sec-title">Cost Disconnect</span><span class="sec-badge">Confirmed</span></div>
+    <p class="sec-sub">Almost no relationship between price and real-world performance. But cost does track MMLU — meaning expensive models over-optimize for benchmarks, not quality.</p>
+    <div class="finding"><div class="finding-num">5×</div><div class="finding-txt">Among near-equal Arena ELO models, prices vary by <b>5× or more</b>. Cost–ELO: <b>r=0.066</b>. Cost–MMLU: <b>r=0.31</b>. You're paying for benchmark score, not human-preferred quality.</div></div>
+
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 1 / 3 · log scatter</span><span class="chart-name">Does paying more buy a better model? Cost vs human preference, 49 models with published pricing (hover to explore)</span></div>
+      <div style="position:relative;width:100%;height:240px"><canvas id="c7" role="img" aria-label="Cost vs ELO scatter flat r=0.066">Cost vs ELO: r=0.066 — essentially random.</canvas></div>
+      <div class="clegend"><span style="font-family:var(--mono);font-size:11px;color:var(--muted)">r = 0.066 — trend line is nearly horizontal &nbsp;·&nbsp; Color = cost (yellow=cheap, red=expensive)</span></div>
+      <p class="chart-why"><b>What this shows:</b> r=0.066. A $0.24 model matches a $75 model on ELO. <b>What's missing:</b> Side-by-side with cost vs MMLU to expose the asymmetry.</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> side-by-side comparison exposes the asymmetry</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 2 / 3 · two-panel scatter</span><span class="chart-name">What is cost actually buying? Human preference (flat) vs benchmark score (rising) (hover to explore)</span></div>
+      <div class="two-panel">
+        <div>
+          <div class="panel-label">ARENA ELO vs COST — r = 0.066 (flat)</div>
+          <div style="position:relative;height:200px"><canvas id="c8a" role="img" aria-label="Cost vs ELO flat">Flat, r=0.066.</canvas></div>
+        </div>
+        <div>
+          <div class="panel-label">MMLU SCORE vs COST — r = 0.31 (rising)</div>
+          <div style="position:relative;height:200px"><canvas id="c8b" role="img" aria-label="Cost vs MMLU rising">Rising, r=0.31.</canvas></div>
+        </div>
+      </div>
+      <p class="chart-why"><b>Key signal:</b> Left flat (r=0.066), right rises (r=0.31). Cost tracks the benchmark, not real-world preference. <b>What's missing:</b> Best-value models at equivalent quality?</p>
+    </div>
+    <div class="iter"><span class="iter-arrow">↓</span> filtered to equivalent ELO band — revealed the price spread</div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">view 3 / 3 · bar chart — final</span><span class="chart-name">Which models match the best for far less money? Within 25 ELO of the top, ranked by price (hover for details)</span></div>
+      <div style="position:relative;width:100%;height:185px"><canvas id="c9" role="img" aria-label="Bar chart of top ELO models by cost showing 5x variation">Near-equal quality, 5× price variation.</canvas></div>
+      <p class="chart-why"><b>H3 confirmed:</b> Near-identical real-world quality, 5× price variation. Cost is a business decision, not a quality signal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTEXT — DARK ═══ -->
+<section class="sec dark" id="context">
+  <canvas class="sec-anim" id="anim-context"></canvas>
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">04 —</span><span class="sec-title">Why Benchmarks Break: The Missing Context</span></div>
+    <p class="sec-sub">Two forces degrade every static benchmark — saturation and contamination. Our hypotheses capture saturation. Here's what makes it structurally worse.</p>
+    <div class="callout">
+      <div>
+        <h3>The contamination problem: 29% of MMLU was compromised before the race started</h3>
+        <p>Independent audits found <strong>29.1% of MMLU questions appear in LLM training data</strong> (NAACL 2024). Models tested on a clean parallel dataset dropped <strong>13 points on GSM8K</strong> (Scale AI, 2024). Some of the apparent "improvement" reflects memorization, not reasoning. Static benchmarks lose ranking signal in <strong>under two years</strong> on average.</p>
+      </div>
+      <div class="cstat"><div class="big">29%</div><div class="lbl">MMLU questions<br>found in training<br>corpora</div></div>
+    </div>
+    <div class="graveyard">
+      <h3>The benchmark graveyard — every generation's gold standard saturates</h3>
+      <div class="grave-row">
+        <div class="gi dead"><div class="gi-skull">☠</div><div class="gi-yr">Est. 2021</div><div class="gi-name">GSM8K</div><div class="gi-score">Frontier: 99%</div><div class="gi-status">☠ saturated</div></div>
+        <div class="gi dead"><div class="gi-skull">☠</div><div class="gi-yr">Est. 2021</div><div class="gi-name">HumanEval</div><div class="gi-score">Frontier: 99%</div><div class="gi-status">☠ saturated</div></div>
+        <div class="gi dead"><div class="gi-skull">☠</div><div class="gi-yr">Est. 2020</div><div class="gi-name">MMLU</div><div class="gi-score">Frontier: 93%</div><div class="gi-status">☠ saturated</div></div>
+        <div class="gi dying"><div class="gi-yr">Est. 2023</div><div class="gi-name">MMLU-Pro</div><div class="gi-score">Frontier: ~90%</div><div class="gi-status">⚠ approaching</div></div>
+        <div class="gi alive"><div class="gi-yr">Est. 2025</div><div class="gi-name">Humanity's Last Exam</div><div class="gi-score">Frontier: ~46%</div><div class="gi-status">✓ still viable</div></div>
+      </div>
+      <p style="margin-top:14px;font-size:10px;color:rgba(255,255,255,.25);font-family:var(--mono)">Sources: Scale AI · arXiv:2502.17521 · digitalapplied.com · Static benchmarks lose ranking signal in under 2 years on average</p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">context · multi-benchmark</span><span class="chart-name">MMLU is not alone — four benchmarks all hit the same ceiling</span></div>
+      <div style="position:relative;width:100%;height:240px"><canvas id="c10" role="img" aria-label="MMLU GSM8K HumanEval HellaSwag all saturating by 2026">All four benchmarks saturated by 2026.</canvas></div>
+      <div class="clegend">
+        <span><span class="sq" style="background:#003262"></span>MMLU</span>
+        <span><span class="sq" style="background:#FDB515"></span>GSM8K</span>
+        <span><span class="sq" style="background:#00B0DA"></span>HumanEval</span>
+        <span><span class="sq" style="background:#C4202B"></span>HellaSwag</span>
+        <span style="margin-left:8px;color:#C4202B;font-size:11px;font-family:var(--mono)">— 100% ceiling</span>
+      </div>
+      <p class="chart-why"><b>The broader pattern:</b> MMLU saturation is the predictable fate of every static benchmark. GSM8K hit 99% by 2025. HumanEval 99%. HellaSwag 95%+. The same mechanism plays out within 2–4 years of release.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VERDICT — LIGHT ═══ -->
+<section class="sec light" id="verdict">
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">05 —</span><span class="sec-title">What You Should Actually Use Instead</span></div>
+    <p class="sec-sub">If MMLU is saturated, cost doesn't signal quality, and rank inversions are common at the frontier — here is how practitioners should actually evaluate models.</p>
+    <div class="finding"><div class="finding-num" style="font-size:1.5rem;min-width:80px;padding-top:4px">Rule</div><div class="finding-txt">Never trust a single benchmark. Triangulate across three types: a <b>static academic eval</b> (MMLU-Pro, GPQA-Diamond), a <b>human-preference arena</b> (LM Arena ELO — the metric that can't be gamed), and an <b>agentic task suite</b> (SWE-bench, GAIA). Agreement across all three is the signal.</div></div>
+    <div class="use-grid" style="margin-bottom:28px">
+      <div class="use-card"><div class="rec-badge">LAYER 1 · STATIC</div><h4>Academic benchmark</h4><p><strong>MMLU-Pro / GPQA-Diamond</strong> — use instead of plain MMLU. 10-choice format forces reasoning over recall. Longer signal runway than MMLU.</p></div>
+      <div class="use-card featured"><div class="rec-badge">LAYER 2 · GROUND TRUTH</div><h4>Arena ELO — the ungameable metric</h4><p><strong>LM Arena ELO</strong> — real humans, blind A/B preference voting. No answer key to memorize. No contamination possible. This is the ground truth in all three hypotheses.</p></div>
+      <div class="use-card"><div class="rec-badge">LAYER 3 · AGENTIC</div><h4>Task-completion benchmark</h4><p><strong>SWE-bench / GAIA / ARC-AGI-2</strong> — real software engineering tasks. Tests deployment performance, not training data memorization.</p></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-hdr"><span class="chart-step">verdict · radar comparison</span><span class="chart-name">MMLU vs Arena ELO across five evaluation criteria</span></div>
+      <div class="two-panel">
+        <div>
+          <div class="panel-label" style="color:#C4202B;font-weight:600">MMLU — current benchmark</div>
+          <div style="position:relative;height:260px"><canvas id="c11a" role="img" aria-label="Radar of MMLU weaknesses">MMLU scores low on all criteria.</canvas></div>
+        </div>
+        <div>
+          <div class="panel-label" style="color:#003262;font-weight:600">Arena ELO — ground truth</div>
+          <div style="position:relative;height:260px"><canvas id="c11b" role="img" aria-label="Radar of Arena ELO strengths">Arena ELO scores high on all criteria.</canvas></div>
+        </div>
+      </div>
+      <p class="chart-why"><b>Read this chart:</b> Higher score = better evaluation metric. MMLU scores 1/5 on “Resists contamination” and “Cannot be gamed.” Arena ELO scores 5/5 on both, because you cannot memorize a human’s preference.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ATLAS — DARK ═══ -->
+<section class="sec dark" id="atlas">
+  <canvas class="sec-anim" id="anim-atlas"></canvas>
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">06 —</span><span class="sec-title">Which Models Are Interchangeable?</span></div>
+    <p class="sec-sub">All 56 frontier models on a single honest axis: horizontal position is Arena ELO, the human vote. Circle size is MMLU score. Gold links connect benchmark twins, models within 3% MMLU and 50 ELO of each other. If MMLU measured real quality, the biggest circles would all sit at the far right. They don’t.</p>
+    <p class="atlas-hint"><b>Hover any model</b> to light up its benchmark twins. Models further right are the ones humans prefer — that is what quality means on this chart.</p>
+    <svg id="net-svg" role="img" aria-label="56 frontier models positioned by Arena ELO, sized by MMLU, linked when benchmark scores are nearly identical">Models with nearly identical MMLU scores spread widely along the Arena ELO axis.</svg>
+    <div id="net-legend"></div>
+    <p class="chart-why" style="margin-top:12px"><b>What this reveals:</b> Big circles stranded left of center are models the benchmark overrates: high MMLU, mediocre human preference. Hover any model to light up its benchmark twins and watch how far they spread along the ELO axis. Twins by test score are not twins by quality, which is the entire argument of this site in one picture.</p>
+  </div>
+</section>
+
+<!-- ═══ ABOUT — DARK ═══ -->
+<section class="sec dark" id="about">
+  <div class="sec-inner">
+    <div class="sec-hdr"><span class="sec-num">07 —</span><span class="sec-title">About this project</span></div>
+    <div class="about-grid">
+      <div class="about-item"><h4>Team</h4><p><strong>Pallavi Geddam · Gunhui Kim<br>Mehek Bhargava · Sahana Venkatesh</strong><br><br>UC Berkeley School of Information<br>MIDS W209 · Group 03 · Section 04<br>Spring 2026</p></div>
+      <div class="about-item"><h4>Dataset</h4><p><strong>Kaggle LLM Benchmark Tracker 2020–2026</strong> · 43 columns<br>+ Arena AI GitHub ELO snapshots<br><br><strong>281 models</strong> with MMLU scores (79 frontier · 102 research · 100 community)<br>Usable analysis core: <strong>56 frontier models</strong> with both MMLU score and Arena ELO · <strong>49</strong> with published pricing.</p></div>
+      <div class="about-item"><h4>Why D3?</h4><p>Chosen over Tableau and Altair to demonstrate engineering depth. Force simulation, slope charts, and log-scale dual panels require SVG-level control unavailable in drag-and-drop tools.</p></div>
+      <div class="about-item"><h4>H3 pivot</h4><p>Original plan used model parameters (parameters_b) — 71% null in the frontier core. Output cost was fully populated and told a stronger story. Pivot driven entirely by data availability.</p></div>
+      <div class="about-item"><h4>Limitations</h4><p>Arena ELO is our ground truth because it cannot be memorized, but it is not perfect: human voters reward style, confidence, and verbosity, and length controlled ELO variants exist for exactly that reason. Our claim is comparative: a metric that resists gaming beats one that no longer separates models.</p></div>
+      <div class="about-item"><h4>Context sources</h4><p>NAACL 2024 contamination audit<br>arXiv:2502.17521<br>Scale AI GSM1k study<br>digitalapplied.com benchmark guide<br>benchmarkingagents.com</p></div>
+      <div class="about-item"><h4>Contact</h4><p><strong>group03-w209@berkeley.edu</strong><br><br>Observable notebook:<br>observablehq.com/d/f52de3b8ff1fb482</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>LLM Benchmarks Are Broken · W209 · UC Berkeley MIDS · Spring 2026</span>
+  <span>Pallavi Geddam · Gunhui Kim · Mehek Bhargava · Sahana Venkatesh</span>
+</footer>
+
+<script>
+const go=id=>document.getElementById(id).scrollIntoView({behavior:"smooth"});
+
+/* ═══ SCROLL-SPY: highlight active nav link ═══ */
+(function(){
+  const ids=["h1","h2","h3","context","verdict","atlas","about"];
+  const links={};
+  document.querySelectorAll(".nav-links a").forEach(a=>links[a.dataset.t]=a);
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        Object.values(links).forEach(a=>a.classList.remove("active"));
+        if(links[e.target.id])links[e.target.id].classList.add("active");
+      }
+    });
+  },{rootMargin:"-45% 0px -50% 0px"});
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+})();
+
+/* ═══ HERO CANVAS — fills entire section ═══ */
+(function(){
+  const canvas=document.getElementById("hero-canvas");
+  const ctx=canvas.getContext("2d");
+  let W,H,pts,t=0,raf;
+  function resize(){
+    W=canvas.width=canvas.offsetWidth;
+    H=canvas.height=canvas.offsetHeight;
+    pts=Array.from({length:90},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4,
+      r:Math.random()*2.5+1.5, phase:Math.random()*Math.PI*2
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=.008;
+    // edges
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<160){
+          const a=(1-d/160)*0.55*(Math.abs(Math.sin(t+i*.2))*0.6+0.4);
+          ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle=`rgba(253,181,21,${a})`; ctx.lineWidth=1; ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    pts.forEach((p,i)=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+      const b=Math.sin(t*1.4+p.phase)*.4+.6;
+      // outer glow
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);
+      ctx.fillStyle=`rgba(0,176,218,${b*.18})`; ctx.fill();
+      // core dot — bright gold
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(253,181,21,${b})`; ctx.fill();
+    });
+    raf=requestAnimationFrame(draw);
+  }
+  window.addEventListener("resize",()=>{ cancelAnimationFrame(raf); resize(); draw(); });
+  resize(); draw();
+})();
+
+/* ═══ SECTION ANIMATIONS — IntersectionObserver-gated for performance ═══ */
+function animateWhenVisible(canvas, makeDrawer){
+  if(!canvas) return;
+  const ctx=canvas.getContext("2d");
+  let raf=null, drawer=null, running=false;
+  function size(){
+    canvas.width=canvas.offsetWidth;
+    canvas.height=canvas.offsetHeight;
+    drawer=makeDrawer(ctx,canvas.width,canvas.height);
+  }
+  function loop(){ drawer(); raf=requestAnimationFrame(loop); }
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting && !running){ running=true; size(); loop(); }
+      else if(!e.isIntersecting && running){ running=false; cancelAnimationFrame(raf); }
+    });
+  },{threshold:0.01});
+  io.observe(canvas);
+  window.addEventListener("resize",()=>{ if(running) size(); });
+}
+
+/* ── H2 Frontier Gap: flowing contour waves ── */
+animateWhenVisible(document.getElementById("anim-h2"),(ctx,W,H)=>{
+  let t=0;
+  const lines=7;
+  return ()=>{
+    ctx.clearRect(0,0,W,H);
+    t+=0.005;
+    for(let l=0;l<lines;l++){
+      const yBase=H*(l+0.5)/lines;
+      const amp=24+l*6;
+      const hue=l/lines;
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=8){
+        const y=yBase
+          +Math.sin(x*0.006+t+l*0.7)*amp
+          +Math.sin(x*0.013-t*1.3+l)*amp*0.4;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      // gold to cyan gradient per line
+      const g=ctx.createLinearGradient(0,0,W,0);
+      g.addColorStop(0,`rgba(253,181,21,${0.10+hue*0.12})`);
+      g.addColorStop(0.5,`rgba(0,176,218,${0.16+hue*0.10})`);
+      g.addColorStop(1,`rgba(253,181,21,${0.10+hue*0.12})`);
+      ctx.strokeStyle=g;
+      ctx.lineWidth=1.6;
+      ctx.stroke();
+    }
+  };
+});
+
+/* ── Context: rising benchmark-number rain ── */
+animateWhenVisible(document.getElementById("anim-context"),(ctx,W,H)=>{
+  const tokens=["94.4","1503","MMLU","0.666","ELO","r=0.066","σ=0.9","GSM8K","99%","93.2","HLE","SWE","GPQA","1491","29%","0.31","HumanEval","46%","0.841"];
+  const cols=Math.floor(W/95);
+  const drops=Array.from({length:cols},(_,i)=>({
+    x:i*95+30+Math.random()*30,
+    y:Math.random()*H,
+    speed:0.25+Math.random()*0.45,
+    txt:tokens[Math.floor(Math.random()*tokens.length)],
+    size:10+Math.random()*5,
+    alpha:0.12+Math.random()*0.30
+  }));
+  ctx.font="600 12px 'IBM Plex Mono',monospace";
+  return ()=>{
+    ctx.clearRect(0,0,W,H);
+    drops.forEach(d=>{
+      d.y-=d.speed;
+      if(d.y<-20){ d.y=H+20; d.txt=tokens[Math.floor(Math.random()*tokens.length)]; d.x=Math.random()*W; }
+      ctx.font=`600 ${d.size}px 'IBM Plex Mono',monospace`;
+      ctx.fillStyle=`rgba(253,181,21,${d.alpha})`;
+      ctx.fillText(d.txt,d.x,d.y);
+    });
+  };
+});
+
+/* ── Atlas: pulsing blueprint grid ── */
+animateWhenVisible(document.getElementById("anim-atlas"),(ctx,W,H)=>{
+  let t=0;
+  const gap=46;
+  const cols=Math.ceil(W/gap)+1, rows=Math.ceil(H/gap)+1;
+  return ()=>{
+    ctx.clearRect(0,0,W,H);
+    t+=0.018;
+    // faint grid lines
+    ctx.strokeStyle="rgba(0,176,218,0.07)";
+    ctx.lineWidth=1;
+    for(let c=0;c<cols;c++){ ctx.beginPath(); ctx.moveTo(c*gap,0); ctx.lineTo(c*gap,H); ctx.stroke(); }
+    for(let r=0;r<rows;r++){ ctx.beginPath(); ctx.moveTo(0,r*gap); ctx.lineTo(W,r*gap); ctx.stroke(); }
+    // pulsing intersection nodes (ripple wave across grid)
+    for(let c=0;c<cols;c++){
+      for(let r=0;r<rows;r++){
+        const dist=Math.sqrt((c-cols/2)**2+(r-rows/2)**2);
+        const pulse=Math.sin(t-dist*0.5);
+        if(pulse>0.3){
+          const a=(pulse-0.3)*0.9;
+          const rad=1.5+pulse*3;
+          ctx.beginPath();
+          ctx.arc(c*gap,r*gap,rad,0,Math.PI*2);
+          ctx.fillStyle=`rgba(253,181,21,${a*0.7})`;
+          ctx.fill();
+        }
+      }
+    }
+  };
+});
+
+const SAT=[{y:2020,m:33.2,s:9.8,n:9},{y:2021,m:48.5,s:16.6,n:2},{y:2022,m:44.9,s:14.8,n:26},{y:2023,m:70.7,s:19.0,n:92},{y:2024,m:82.1,s:8.5,n:115},{y:2025,m:86.4,s:7.9,n:34},{y:2026,m:93.2,s:0.9,n:3}];
+const DATA=[{m:"GPT-3.5 Turbo",p:"OpenAI",mmlu:70.0,elo:1106,cost:1.5,mr:56,er:54,gap:2},{m:"Claude 1",p:"Anthropic",mmlu:77.0,elo:1100,cost:24,mr:49,er:56,gap:-7},{m:"GPT-4",p:"OpenAI",mmlu:86.4,elo:1163,cost:60,mr:33,er:47,gap:-14},{m:"GPT-3.5 Turbo 16k",p:"OpenAI",mmlu:70.8,elo:1108,cost:2,mr:55,er:53,gap:2},{m:"GPT-4 0613",p:"OpenAI",mmlu:86.4,elo:1152,cost:60,mr:33,er:49,gap:-16},{m:"Claude 1.3",p:"Anthropic",mmlu:78.2,elo:1105,cost:24,mr:47,er:55,gap:-8},{m:"Claude 2",p:"Anthropic",mmlu:78.5,elo:1115,cost:24,mr:46,er:52,gap:-6},{m:"GPT-4 Turbo 1106",p:"OpenAI",mmlu:86.5,elo:1243,cost:30,mr:32,er:40,gap:-8},{m:"Claude 2.1",p:"Anthropic",mmlu:76.7,elo:1119,cost:24,mr:50,er:51,gap:-1},{m:"GLM-4",p:"Zhipu AI",mmlu:73.8,elo:1178,cost:null,mr:53,er:46,gap:7},{m:"GPT-4 Turbo 0125",p:"OpenAI",mmlu:86.4,elo:1248,cost:30,mr:33,er:39,gap:-6},{m:"Gemini 1.5 Pro",p:"Google",mmlu:85.8,elo:1262,cost:10.5,mr:36,er:35,gap:1},{m:"Mistral Large",p:"Mistral AI",mmlu:81.2,elo:1157,cost:12,mr:41,er:48,gap:-7},{m:"Claude 3 Sonnet",p:"Anthropic",mmlu:78.8,elo:1201,cost:15,mr:45,er:42,gap:3},{m:"Claude 3 Haiku",p:"Anthropic",mmlu:75.2,elo:1179,cost:1.25,mr:52,er:45,gap:7},{m:"Claude 3 Opus",p:"Anthropic",mmlu:86.8,elo:1249,cost:75,mr:31,er:38,gap:-7},{m:"Command R+",p:"Cohere",mmlu:75.4,elo:1195,cost:15,mr:51,er:44,gap:7},{m:"GPT-4o",p:"OpenAI",mmlu:88.7,elo:1285,cost:15,mr:24,er:31,gap:-7},{m:"Gemini 1.5 Flash",p:"Google",mmlu:79.3,elo:1234,cost:0.3,mr:44,er:41,gap:3},{m:"Claude 3.5 Sonnet",p:"Anthropic",mmlu:88.7,elo:1306,cost:15,mr:24,er:28,gap:-4},{m:"GPT-4o mini",p:"OpenAI",mmlu:82.0,elo:1272,cost:0.6,mr:40,er:33,gap:7},{m:"Mistral Large 2",p:"Mistral AI",mmlu:84.0,elo:1251,cost:9,mr:39,er:37,gap:2},{m:"GPT-4o 2024-08-06",p:"OpenAI",mmlu:89.1,elo:1290,cost:10,mr:22,er:30,gap:-8},{m:"Grok 2",p:"xAI",mmlu:87.3,elo:1268,cost:15,mr:28,er:34,gap:-6},{m:"o1 mini",p:"OpenAI",mmlu:84.6,elo:1304,cost:12,mr:38,er:29,gap:9},{m:"o1-preview",p:"OpenAI",mmlu:90.8,elo:1312,cost:60,mr:12,er:27,gap:-15},{m:"Claude 3.5 Haiku",p:"Anthropic",mmlu:78.0,elo:1262,cost:4,mr:48,er:35,gap:13},{m:"Nova Pro",p:"Amazon",mmlu:80.8,elo:1200,cost:3.2,mr:42,er:43,gap:-1},{m:"Nova Lite",p:"Amazon",mmlu:71.7,elo:1150,cost:0.24,mr:54,er:50,gap:4},{m:"o1",p:"OpenAI",mmlu:91.8,elo:1320,cost:60,mr:9,er:25,gap:-16},{m:"DeepSeek V3",p:"DeepSeek",mmlu:88.5,elo:1370,cost:1.1,mr:26,er:18,gap:8},{m:"Gemini 2.0 Flash",p:"Google",mmlu:89.4,elo:1354,cost:0.4,mr:20,er:22,gap:-2},{m:"DeepSeek R1",p:"DeepSeek",mmlu:90.8,elo:1380,cost:2.19,mr:12,er:16,gap:-4},{m:"Kimi K1.5",p:"Moonshot AI",mmlu:88.5,elo:1320,cost:null,mr:26,er:25,gap:1},{m:"o3 mini",p:"OpenAI",mmlu:86.9,elo:1355,cost:4.4,mr:29,er:21,gap:8},{m:"Grok 3",p:"xAI",mmlu:90.7,elo:1402,cost:15,mr:15,er:11,gap:4},{m:"Claude 3.7 Sonnet",p:"Anthropic",mmlu:91.9,elo:1360,cost:15,mr:8,er:20,gap:-12},{m:"Gemini 2.5 Flash",p:"Google",mmlu:89.5,elo:1390,cost:1,mr:19,er:13,gap:6},{m:"Gemini 2.5 Pro",p:"Google",mmlu:91.6,elo:1430,cost:15,mr:10,er:9,gap:1},{m:"LLaMA 4 Scout",p:"Meta",mmlu:79.8,elo:1340,cost:null,mr:43,er:24,gap:19},{m:"LLaMA 4 Maverick",p:"Meta",mmlu:85.6,elo:1380,cost:null,mr:37,er:16,gap:21},{m:"o4 mini",p:"OpenAI",mmlu:89.2,elo:1400,cost:4.4,mr:21,er:12,gap:9},{m:"o3",p:"OpenAI",mmlu:93.4,elo:1390,cost:40,mr:3,er:13,gap:-10},{m:"Qwen3 235B MoE",p:"Alibaba",mmlu:89.7,elo:1390,cost:null,mr:17,er:13,gap:4},{m:"GPT-5",p:"OpenAI",mmlu:92.3,elo:1450,cost:75,mr:7,er:7,gap:0},{m:"Mistral Large 3",p:"Mistral AI",mmlu:86.9,elo:1370,cost:9,mr:29,er:18,gap:11},{m:"Grok 4",p:"xAI",mmlu:94.4,elo:1491,cost:30,mr:1,er:3,gap:-2},{m:"Gemini 3 Flash",p:"Google",mmlu:90.3,elo:1445,cost:3.12,mr:16,er:8,gap:8},{m:"Gemini 3 Pro",p:"Google",mmlu:92.4,elo:1480,cost:null,mr:6,er:5,gap:1},{m:"Mercury 2",p:"Inception Labs",mmlu:89.1,elo:1280,cost:null,mr:22,er:32,gap:-10},{m:"Claude Opus 4.6",p:"Anthropic",mmlu:91.6,elo:1503,cost:75,mr:10,er:1,gap:9},{m:"Claude Sonnet 4.6",p:"Anthropic",mmlu:90.8,elo:1420,cost:15,mr:12,er:10,gap:2},{m:"GPT-5.1",p:"OpenAI",mmlu:92.7,elo:1460,cost:8.88,mr:5,er:6,gap:-1},{m:"Kimi K2.6",p:"Moonshot AI",mmlu:89.7,elo:1350,cost:3.8,mr:17,er:23,gap:-6},{m:"GPT-5.4",p:"OpenAI",mmlu:94.2,elo:1484,cost:15.56,mr:2,er:4,gap:-2},{m:"Gemini 3.1 Pro",p:"Google",mmlu:93.1,elo:1500,cost:15.56,mr:4,er:2,gap:2}];
+
+
+/* ═══ SHARED D3 TOOLTIP ═══ */
+const d3tip=document.createElement("div");d3tip.className="d3tip";document.body.appendChild(d3tip);
+function showTip(e,htmlStr){d3tip.innerHTML=htmlStr;d3tip.style.display="block";moveTip(e);}
+function moveTip(e){const pad=14,tw=d3tip.offsetWidth,th=d3tip.offsetHeight;
+  let lx=e.clientX+pad, ty=e.clientY-th-pad;
+  if(lx+tw>window.innerWidth-8)lx=e.clientX-tw-pad;
+  if(ty<8)ty=e.clientY+pad;
+  d3tip.style.left=lx+"px";d3tip.style.top=ty+"px";}
+function hideTip(){d3tip.style.display="none";}
+
+/* ═══ CHART.JS GLOBALS ═══ */
+const BLUE="#003262",GOLD="#FDB515",SKY="#00B0DA",RED="#C4202B",MUTED="#6B6A65",INK="#1A1A1A";
+const GRID="rgba(0,50,98,0.07)";
+Chart.defaults.font.family="'IBM Plex Mono',monospace";
+Chart.defaults.font.size=11;
+Chart.defaults.color=MUTED;
+
+/* single tooltip style — always readable on white card */
+const TT={
+  backgroundColor:"#001A3A",
+  titleColor:GOLD,
+  bodyColor:"rgba(255,255,255,0.8)",
+  borderColor:"rgba(253,181,21,0.4)",
+  borderWidth:1,padding:12,cornerRadius:0,
+  titleFont:{weight:"600",size:12},
+  bodyFont:{size:12},
+  callbacks:{}   /* overridden per chart */
+};
+
+const AXES={
+  x:{grid:{color:GRID},ticks:{color:MUTED}},
+  y:{grid:{color:GRID},ticks:{color:MUTED}}
+};
+
+const BASE={
+  responsive:true,
+  maintainAspectRatio:false,
+  animation:{duration:600},
+  interaction:{mode:"nearest",intersect:false,axis:"xy"},
+  hover:{mode:"nearest",intersect:false},
+  onHover:(e,els)=>{if(e.native&&e.native.target)e.native.target.style.cursor=els.length?"pointer":"default";},
+  plugins:{legend:{display:false},tooltip:{...TT}}
+};
+
+/* ── C1: Line mean MMLU ── */
+new Chart("c1",{type:"line",data:{
+  labels:SAT.map(d=>d.y),
+  datasets:[
+    {data:SAT.map(d=>d.m),borderColor:BLUE,borderWidth:2.5,
+     pointBackgroundColor:GOLD,pointBorderColor:BLUE,pointBorderWidth:2,pointRadius:7,
+     fill:false,tension:.35,label:"Mean MMLU"},
+    {data:SAT.map(()=>100),borderColor:RED,borderWidth:1.5,borderDash:[6,4],
+     pointRadius:0,fill:false,label:"100% ceiling"}
+  ]
+},options:{...BASE,scales:{...AXES,y:{...AXES.y,min:0,max:105,ticks:{color:MUTED,callback:v=>v+"%"}}},
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>["Year: "+ctx[0].label],
+    label:ctx=>{
+      if(ctx.datasetIndex!==0)return null;
+      const d=SAT[ctx.dataIndex];
+      return ["Mean MMLU: "+d.m.toFixed(1)+"%","σ = "+d.s.toFixed(1),"n = "+d.n+" models"];
+    }
+  }}}}});
+
+/* ── C2: Banded line ── */
+new Chart("c2",{type:"line",data:{
+  labels:SAT.map(d=>d.y),
+  datasets:[
+    {data:SAT.map(d=>Math.min(100,d.m+d.s)),borderColor:"transparent",
+     backgroundColor:"rgba(0,50,98,0.10)",fill:"+1",pointRadius:0,label:"upper"},
+    {data:SAT.map(d=>Math.max(0,d.m-d.s)),borderColor:"transparent",
+     backgroundColor:"rgba(0,50,98,0.10)",fill:false,pointRadius:0,label:"lower"},
+    {data:SAT.map(d=>d.m),borderColor:BLUE,borderWidth:2.5,
+     pointBackgroundColor:GOLD,pointBorderColor:BLUE,pointBorderWidth:2,pointRadius:7,
+     fill:false,tension:.35,label:"Mean"},
+    {data:SAT.map(()=>100),borderColor:RED,borderWidth:1.5,borderDash:[6,4],
+     pointRadius:0,fill:false,label:"ceiling"}
+  ]
+},options:{...BASE,scales:{...AXES,y:{...AXES.y,min:0,max:105,ticks:{color:MUTED,callback:v=>v+"%"}}},
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>["Year: "+ctx[0].label],
+    label:ctx=>{
+      if(ctx.datasetIndex!==2)return null;
+      const d=SAT[ctx.dataIndex];
+      return ["Mean: "+d.m.toFixed(1)+"%","± σ = "+d.s.toFixed(1),"n = "+d.n+" models"];
+    }
+  }}}}});
+
+/* ── C3: Beeswarm — every real model, D3 force-packed ── */
+(function(){
+  const catC={frontier:"#003262",research:"#2E9BB5",community:"#D85A30"};
+  const CATS=["frontier","research","community"];
+  const B=[["GPT-3 Ada","OpenAI",2020,17.9,0],["GPT-3 Babbage","OpenAI",2020,25.1,0],["GPT-3 Curie","OpenAI",2020,34.3,0],["GPT-3 Davinci","OpenAI",2020,43.8,0],["InstructGPT text-davinci-001","OpenAI",2022,50.6,0],["InstructGPT text-davinci-002","OpenAI",2022,56.4,0],["PaLM 62B","Google",2022,63.2,0],["PaLM 8B","Google",2022,49.6,0],["PaLM 540B","Google",2022,69.1,0],["InstructGPT text-davinci-003","OpenAI",2022,64.4,0],["GPT-3.5 Turbo","OpenAI",2022,70.0,0],["Claude 1","Anthropic",2023,77.0,0],["GPT-4","OpenAI",2023,86.4,0],["PaLM 2 Bison","Google",2023,74.8,0],["PaLM 2 Gecko","Google",2023,58.9,0],["PaLM 2 Unicorn","Google",2023,81.4,0],["GPT-3.5 Turbo 16k","OpenAI",2023,70.8,0],["GPT-4 0613","OpenAI",2023,86.4,0],["Claude 1.3","Anthropic",2023,78.2,0],["Claude 2","Anthropic",2023,78.5,0],["GPT-4 Turbo 1106","OpenAI",2023,86.5,0],["Claude 2.1","Anthropic",2023,76.7,0],["Gemini 1.0 Nano","Google",2023,55.4,0],["Gemini 1.0 Pro","Google",2023,72.2,0],["Gemini 1.0 Ultra","Google",2023,83.7,0],["GLM-4","Zhipu AI",2024,73.8,0],["GPT-4 Turbo 0125","OpenAI",2024,86.4,0],["Gemini 1.5 Pro","Google",2024,85.8,0],["Mistral Large","Mistral AI",2024,81.2,0],["Claude 3 Haiku","Anthropic",2024,75.2,0],["Claude 3 Opus","Anthropic",2024,86.8,0],["Claude 3 Sonnet","Anthropic",2024,78.8,0],["Command R+","Cohere",2024,75.4,0],["GPT-4o","OpenAI",2024,88.7,0],["Gemini 1.5 Flash","Google",2024,79.3,0],["Claude 3.5 Sonnet","Anthropic",2024,88.7,0],["GPT-4o mini","OpenAI",2024,82.0,0],["Mistral Large 2","Mistral AI",2024,84.0,0],["GPT-4o 2024-08-06","OpenAI",2024,89.1,0],["Grok 2","xAI",2024,87.3,0],["o1 mini","OpenAI",2024,84.6,0],["o1-preview","OpenAI",2024,90.8,0],["Gemini 1.5 Flash 8B","Google",2024,72.0,0],["Claude 3.5 Sonnet v2","Anthropic",2024,88.7,0],["Claude 3.5 Haiku","Anthropic",2024,78.0,0],["Nova Lite","Amazon",2024,71.7,0],["Nova Pro","Amazon",2024,80.8,0],["o1","OpenAI",2024,91.8,0],["DeepSeek V3","DeepSeek",2024,88.5,0],["Gemini 2.0 Flash","Google",2025,89.4,0],["DeepSeek R1","DeepSeek",2025,90.8,0],["Kimi K1.5","Moonshot AI",2025,88.5,0],["o3 mini","OpenAI",2025,86.9,0],["Gemini 2.0 Flash Lite","Google",2025,81.6,0],["Grok 3","xAI",2025,90.7,0],["Claude 3.7 Sonnet","Anthropic",2025,91.9,0],["Gemini 2.5 Flash","Google",2025,89.5,0],["Gemini 2.5 Pro","Google",2025,91.6,0],["LLaMA 4 Scout","Meta",2025,79.8,0],["LLaMA 4 Maverick","Meta",2025,85.6,0],["o3","OpenAI",2025,93.4,0],["o4 mini","OpenAI",2025,89.2,0],["Qwen3 235B MoE","Alibaba",2025,89.7,0],["GPT-5","OpenAI",2025,92.3,0],["Mistral Large 3","Mistral AI",2025,86.9,0],["Claude Haiku 4.5","Anthropic",2025,82.1,0],["Claude Opus 4.5","Anthropic",2025,91.7,0],["Claude Sonnet 4.5","Anthropic",2025,90.1,0],["Grok 4","xAI",2025,94.4,0],["Gemini 3 Flash","Google",2025,90.3,0],["Gemini 3 Pro","Google",2025,92.4,0],["Mercury 2","Inception Labs",2025,89.1,0],["Claude Opus 4.6","Anthropic",2025,91.6,0],["Claude Sonnet 4.6","Anthropic",2025,90.8,0],["GPT-5.1","OpenAI",2025,92.7,0],["Kimi K2.6","Moonshot AI",2025,89.7,0],["Claude Opus 4.7","Anthropic",2026,92.4,0],["GPT-5.4","OpenAI",2026,94.2,0],["Gemini 3.1 Pro","Google",2026,93.1,0],["T5 Base","Google",2020,29.6,1],["T5 Large","Google",2020,35.2,1],["T5 Small","Google",2020,24.7,1],["T5 XL","Google",2020,39.9,1],["T5 XXL","Google",2020,48.3,1],["GPT-J 6B","EleutherAI",2021,36.7,1],["Gopher 280B","DeepMind",2021,60.2,1],["Chinchilla 70B","DeepMind",2022,67.6,1],["GPT-NeoX 20B","EleutherAI",2022,33.7,1],["OPT 66B","Meta AI",2022,48.4,1],["OPT 30B","Meta AI",2022,44.8,1],["OPT 6.7B","Meta AI",2022,37.7,1],["OPT 1.3B","Meta AI",2022,24.6,1],["OPT 13B","Meta AI",2022,41.8,1],["BLOOM 176B","BigScience",2022,26.1,1],["BLOOM 1B7","BigScience",2022,24.1,1],["BLOOM 3B","BigScience",2022,26.7,1],["BLOOM 560M","BigScience",2022,20.9,1],["BLOOM 7B1","BigScience",2022,30.7,1],["GLM-130B","Tsinghua/Zhipu",2022,44.9,1],["FLAN-T5 XL","Google",2022,51.7,1],["FLAN-T5 Base","Google",2022,42.7,1],["FLAN-T5 Large","Google",2022,49.2,1],["FLAN-T5 Small","Google",2022,38.2,1],["FLAN-T5 XXL","Google",2022,54.9,1],["BLOOMZ 176B","BigScience",2022,34.1,1],["LLaMA 1 13B","Meta",2023,46.9,1],["LLaMA 1 30B","Meta",2023,58.2,1],["LLaMA 1 65B","Meta",2023,63.7,1],["LLaMA 1 7B","Meta",2023,35.3,1],["FLAN-UL2","Google",2023,55.9,1],["BloombergGPT","Bloomberg",2023,54.1,1],["Pythia 12B","EleutherAI",2023,35.9,1],["Pythia 1B","EleutherAI",2023,30.3,1],["Pythia 2.8B","EleutherAI",2023,32.7,1],["Pythia 6.9B","EleutherAI",2023,35.9,1],["Dolly 12B","Databricks",2023,38.3,1],["StableLM Alpha 7B","Stability AI",2023,30.3,1],["StableLM Alpha 3B","Stability AI",2023,24.2,1],["MPT 7B","MosaicML",2023,27.3,1],["RedPajama 3B","Together AI",2023,26.7,1],["RedPajama 7B","Together AI",2023,36.0,1],["Falcon 40B","TII",2023,55.2,1],["WizardLM 13B","WizardLM",2023,48.3,1],["MPT 30B","MosaicML",2023,46.6,1],["LLaMA 2 7B Chat","Meta",2023,47.9,1],["LLaMA 2 13B","Meta",2023,55.0,1],["LLaMA 2 13B Chat","Meta",2023,55.8,1],["LLaMA 2 70B","Meta",2023,69.6,1],["LLaMA 2 70B Chat","Meta",2023,69.7,1],["LLaMA 2 7B","Meta",2023,45.6,1],["Falcon 180B","TII",2023,71.0,1],["Mistral 7B","Mistral AI",2023,60.3,1],["OpenChat 3.5","OpenChat",2023,64.6,1],["Yi 34B","01.AI",2023,76.3,1],["Zephyr 7B Beta","HuggingFace H4",2023,61.6,1],["OpenHermes 2.5","NousResearch",2023,69.1,1],["Orca 2 13B","Microsoft Research",2023,63.0,1],["Meditron 70B","EPFL",2023,66.4,1],["Mistral 7B Instruct v0.2","Mistral AI",2023,61.3,1],["Mixtral 8x7B","Mistral AI",2023,70.7,1],["Mixtral 8x7B Instruct","Mistral AI",2023,71.3,1],["Phi-2","Microsoft",2023,57.5,1],["InternLM2 20B","Shanghai AI Lab",2024,72.1,1],["Grok 1","xAI",2024,73.0,1],["Mixtral 8x22B","Mistral AI",2024,78.0,1],["LLaMA 3 70B","Meta",2024,82.0,1],["LLaMA 3 70B Instruct","Meta",2024,82.3,1],["LLaMA 3 8B","Meta",2024,68.6,1],["LLaMA 3 8B Instruct","Meta",2024,69.2,1],["Phi-3 Mini 128K","Microsoft",2024,68.5,1],["DeepSeek V2","DeepSeek",2024,78.7,1],["Yi 1.5 34B","01.AI",2024,76.7,1],["Falcon 2 11B","TII",2024,62.0,1],["Phi-3 Medium 4K","Microsoft",2024,77.6,1],["Qwen 2 72B Instruct","Alibaba",2024,84.8,1],["Nemotron 4 340B","NVIDIA",2024,79.1,1],["Gemma 2 27B","Google",2024,75.5,1],["Gemma 2 9B","Google",2024,71.1,1],["Mistral Nemo","Mistral AI",2024,68.4,1],["LLaMA 3.1 405B","Meta",2024,88.6,1],["LLaMA 3.1 70B","Meta",2024,85.7,1],["LLaMA 3.1 70B Instruct","Meta",2024,86.2,1],["LLaMA 3.1 8B","Meta",2024,73.3,1],["LLaMA 3.1 8B Instruct","Meta",2024,73.2,1],["Qwen 2.5 72B","Alibaba",2024,86.0,1],["Qwen 2.5 7B","Alibaba",2024,74.0,1],["LLaMA 3.2 90B Vision","Meta",2024,85.8,1],["LLaMA 3.2 3B","Meta",2024,57.7,1],["LLaMA 3.2 11B Vision","Meta",2024,72.9,1],["LLaMA 3.2 1B","Meta",2024,31.9,1],["OLMo 2 7B","AllenAI",2024,63.8,1],["Command R7B","Cohere",2024,68.5,1],["LLaMA 3.3 70B Instruct","Meta",2024,86.2,1],["Phi-4","Microsoft",2024,84.8,1],["DeepSeek R1 Distill Llama 70B","DeepSeek",2025,79.5,1],["DeepSeek R1 Distill Qwen 14B","DeepSeek",2025,69.5,1],["DeepSeek R1 Distill Qwen 32B","DeepSeek",2025,72.8,1],["DeepSeek R1 Distill Qwen 7B","DeepSeek",2025,55.8,1],["Gemma 3 27B","Google",2025,79.1,1],["Phi-4 Reasoning","Microsoft",2025,85.7,1],["Qwen3 32B","Alibaba",2025,83.9,1],["Nous-70B-ties","meta-math",2023,87.7,2],["Medusa-70B-dpo","mistralai-community",2023,84.4,2],["Tulu-70B-franken","NousResearch",2023,86.8,2],["Airoboros-70B-dare","NousResearch",2023,83.1,2],["InfinityInstruct-70B-franken","mistralai-community",2023,87.0,2],["WizardMath-70B-ties","FPHam",2023,86.2,2],["Meridian-70B-lora","HuggingFaceH4",2023,86.3,2],["Hermes-70B-ties","mistralai-community",2023,82.9,2],["Nous-70B-slerp","meta-math",2023,86.7,2],["Axiom-70B-linear","cognitivecomputations",2023,89.2,2],["Speechless-70B-passthrough","meta-math",2023,84.6,2],["Vertex-70B-ties","unsloth",2023,88.5,2],["Capybara-70B-passthrough","unsloth",2023,85.3,2],["Guanaco-70B-ties","defog",2023,86.5,2],["SuperHOT-70B-passthrough","garage-bAInd",2023,84.2,2],["EvolInstruct-7B-dare","FPHam",2023,78.4,2],["Linhope-70B-dare","WizardLM",2023,86.2,2],["Hermes-70B-linear","NousResearch",2023,89.6,2],["Baize-70B-franken","defog",2023,84.1,2],["Meridian-70B-franken","Gryphe",2023,89.0,2],["OpenHermes-70B-ties","HuggingFaceH4",2023,89.5,2],["Synthia-70B-rlhf","unsloth",2023,87.9,2],["SciTulu-70B-dare","teknium",2023,89.7,2],["Vicuna-FT-70B-dpo","defog",2023,90.0,2],["Hermes-7B-dare","jondurbin",2023,77.1,2],["OpenOrca-70B-rlhf","allenai",2023,86.7,2],["Minotaur-70B-rlhf","HuggingFaceH4",2023,86.1,2],["GPT4All-70B-dare","TIGER-Lab",2023,85.2,2],["CodeAlpaca-70B-sft","Open-Orca",2023,84.3,2],["OpenHermes-70B-sft","garage-bAInd",2023,88.0,2],["Samantha-7B-passthrough","FPHam",2023,78.2,2],["Hydra-70B-rlhf","cognitivecomputations",2023,85.3,2],["OpenOrca-70B-passthrough","TheBloke",2023,86.5,2],["Solstice-70B-passthrough","bartowski",2023,82.6,2],["Apex-70B-franken","WizardLM",2023,89.3,2],["Lazarus-70B-ties","bartowski",2023,88.6,2],["Vertex-70B-lora","togethercomputer",2023,85.2,2],["Solstice-70B-ties","Gryphe",2023,89.1,2],["Alpagasus-7B-slerp","jondurbin",2023,78.7,2],["Abel-70B-ties","NousResearch",2023,91.0,2],["Lazarus-70B-franken","togethercomputer",2023,87.2,2],["Minotaur-70B-sft","bartowski",2024,82.8,2],["CodeAlpaca-70B-franken","TIGER-Lab",2024,85.5,2],["ReMM-70B-passthrough","mlabonne",2024,87.8,2],["Zenith-70B-slerp","allenai",2024,88.3,2],["Baize-70B-sft","allenai",2024,86.5,2],["Xwin-70B-dare","NousResearch",2024,84.6,2],["GPT4All-70B-linear","bartowski",2024,90.0,2],["OpenOrca-70B-ties","togethercomputer",2024,88.1,2],["Nexus-70B-ties","defog",2024,82.5,2],["Lazarus-70B-slerp","defog",2024,89.1,2],["Speechless-70B-sft","garage-bAInd",2024,89.4,2],["Hermes-70B-sft","jondurbin",2024,87.9,2],["Morpheus-70B-slerp","jondurbin",2024,82.9,2],["Lazarus-70B-dpo","Open-Orca",2024,86.0,2],["Vortex-70B-dare","allenai",2024,86.5,2],["SciTulu-70B-dpo","teknium",2024,86.1,2],["Catalyst-70B-linear","Gryphe",2024,87.1,2],["Notus-70B-ties","TheBloke",2024,86.2,2],["Titan-FT-70B-rlhf","garage-bAInd",2024,90.1,2],["Lazarus-70B-rlhf","meta-math",2024,89.9,2],["WizardMath-70B-linear","mistralai-community",2024,86.0,2],["EvolInstruct-70B-sft","cognitivecomputations",2024,85.9,2],["Linhope-8B-lora","mlabonne",2024,76.0,2],["Notus-70B-passthrough","jondurbin",2024,87.9,2],["GPT4All-70B-passthrough","teknium",2024,82.8,2],["Airoboros-70B-slerp","Gryphe",2024,88.9,2],["Koala-70B-rlhf","TheBloke",2024,88.0,2],["Manticore-70B-lora","WizardLM",2024,89.6,2],["Guanaco-70B-rlhf","togethercomputer",2024,89.4,2],["Nous-70B-dare","garage-bAInd",2024,90.8,2],["ReMM-7B-passthrough","Open-Orca",2024,78.5,2],["Axiom-70B-rlhf","allenai",2024,87.6,2],["Minotaur-8B-linear","mlabonne",2024,75.5,2],["LongAlpaca-70B-franken","mlabonne",2024,87.1,2],["Aurora-8B-dare","mlabonne",2024,73.7,2],["Hydra-70B-dpo","meta-math",2024,87.3,2],["Starling-70B-ties","TheBloke",2024,87.2,2],["Cascade-70B-sft","WizardLM",2024,82.2,2],["Koala-70B-slerp","unsloth",2024,87.9,2],["Nova-FT-70B-linear","WizardLM",2024,84.7,2],["Abel-70B-dare","Open-Orca",2024,86.3,2],["Pegasus-70B-ties","TIGER-Lab",2024,82.8,2],["Pulse-70B-linear","Gryphe",2024,83.2,2],["InfinityInstruct-70B-ties","bartowski",2024,86.2,2],["Morpheus-70B-sft","HuggingFaceH4",2024,86.8,2],["Chimera-70B-lora","unsloth",2024,87.7,2],["WizardMath-70B-dpo","teknium",2024,89.5,2],["Nereid-70B-dare","Open-Orca",2024,86.2,2],["Sphinx-70B-linear","FPHam",2024,85.6,2],["Koala-70B-lora","cognitivecomputations",2024,85.4,2],["Minotaur-70B-linear","togethercomputer",2024,88.5,2],["MetaMath-70B-linear","TIGER-Lab",2024,83.2,2],["Platypus-70B-passthrough","teknium",2024,89.2,2],["Titan-FT-7B-sft","FPHam",2024,75.7,2],["EvolInstruct-70B-linear","TIGER-Lab",2024,82.7,2],["Nereid-70B-ties","cognitivecomputations",2024,89.4,2],["Nous-70B-dpo","mistralai-community",2024,85.5,2],["Nexus-70B-lora","HuggingFaceH4",2024,87.6,2],["NeuralHermes-70B-sft","TheBloke",2024,86.8,2]];
+  const pts=B.map(d=>({name:d[0],prov:d[1],year:d[2],score:d[3],cat:CATS[d[4]]}));
+  const svgEl=document.getElementById("c3");
+  const W=svgEl.clientWidth||980,H=330,m={t:30,r:30,b:42,l:52};
+  const svg=d3.select("#c3").attr("viewBox",`0 0 ${W} ${H}`);
+  const years=[2020,2021,2022,2023,2024,2025,2026];
+  const x=d3.scalePoint().domain(years).range([m.l+20,W-m.r-20]).padding(.5);
+  const y=d3.scaleLinear().domain([12,100]).range([H-m.b,m.t]);
+  svg.append("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y(100)).attr("y2",y(100))
+    .attr("stroke","#C4202B").attr("stroke-dasharray","6 4").attr("stroke-width",1.5).attr("opacity",.6);
+  svg.append("text").attr("x",W-m.r-4).attr("y",y(100)-6).attr("text-anchor","end").attr("font-size",10).attr("fill","#C4202B").attr("font-family","'IBM Plex Mono',monospace").text("100% ceiling");
+  svg.append("g").attr("transform",`translate(0,${H-m.b})`).call(d3.axisBottom(x).tickFormat(d3.format("d"))).selectAll("text").attr("fill","#6B6A65").attr("font-family","'IBM Plex Mono',monospace").attr("font-size",10);
+  svg.append("g").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(6).tickFormat(d=>d+"%")).selectAll("text").attr("fill","#6B6A65").attr("font-family","'IBM Plex Mono',monospace").attr("font-size",10);
+  svg.selectAll(".domain,.tick line").attr("stroke","rgba(0,50,98,.15)");
+  // per-year sample size annotations, computed from the real data (professor feedback: surface n directly)
+  const nBy={};pts.forEach(d=>{nBy[d.year]=(nBy[d.year]||0)+1;});
+  svg.append("g").selectAll("text.nlab").data(years).join("text").attr("class","nlab")
+    .attr("x",d=>x(d)).attr("y",H-m.b+34).attr("text-anchor","middle")
+    .attr("font-size",10).attr("font-family","'IBM Plex Mono',monospace")
+    .attr("font-weight",d=>d===2026?"600":"400")
+    .attr("fill",d=>d===2026?"#C4202B":"#6B6A65")
+    .text(d=>"n="+(nBy[d]||0));
+  // directional flag on the 2026 endpoint, placed in the clear zone below the cluster
+  const m26=pts.filter(d=>d.year===2026);
+  const mean26=m26.reduce((s,d)=>s+d.score,0)/(m26.length||1);
+  const a26=svg.append("g").attr("font-family","'IBM Plex Mono',monospace").attr("fill","#C4202B");
+  a26.append("text").attr("x",x(2026)+10).attr("y",y(66)).attr("text-anchor","end").attr("font-size",10).attr("font-weight",600).text("2026: n="+m26.length);
+  a26.append("text").attr("x",x(2026)+10).attr("y",y(61)).attr("text-anchor","end").attr("font-size",10).text("directional,");
+  a26.append("text").attr("x",x(2026)+10).attr("y",y(56)).attr("text-anchor","end").attr("font-size",10).text("not definitive");
+  a26.append("line").attr("x1",x(2026)).attr("x2",x(2026)).attr("y1",y(mean26)+10).attr("y2",y(69)).attr("stroke","#C4202B").attr("stroke-width",1).attr("stroke-dasharray","3 3").attr("opacity",.7);
+  const nodes=pts.map(d=>({...d,fx0:x(d.year),fy:y(d.score)}));
+  const sim=d3.forceSimulation(nodes)
+    .force("x",d3.forceX(d=>d.fx0).strength(.35))
+    .force("collide",d3.forceCollide(4.2)).stop();
+  for(let i=0;i<240;i++)sim.tick();
+  svg.append("g").selectAll("circle").data(nodes).join("circle")
+    .attr("cx",d=>d.x).attr("cy",d=>d.fy).attr("r",3.6)
+    .attr("fill",d=>catC[d.cat]).attr("fill-opacity",.8).attr("stroke","#fff").attr("stroke-width",.6)
+    .style("cursor","pointer")
+    .on("mouseover",function(e,d){d3.select(this).attr("r",5.4).attr("fill-opacity",1);
+      showTip(e,`<b>${d.name}</b>${d.prov} · ${d.cat}<br>MMLU: ${d.score.toFixed(1)}% · ${d.year}`);})
+    .on("mousemove",(e)=>moveTip(e))
+    .on("mouseout",function(){d3.select(this).attr("r",3.6).attr("fill-opacity",.8);hideTip();});
+})();
+
+
+/* ── C4: Scatter H2v1 ── */
+const coolC=t=>{const n=(t-68)/28;return `rgb(${Math.round(20+n*160)},${Math.round(80+n*100)},${Math.round(210-n*70)})`;};
+new Chart("c4",{type:"scatter",data:{datasets:[
+  {data:DATA.map(d=>({x:d.mmlu,y:d.elo,label:d.m,p:d.p})),
+   pointBackgroundColor:DATA.map(d=>coolC(d.mmlu)),
+   pointRadius:6,pointBorderWidth:0,label:"frontier"}
+]},options:{...BASE,
+  scales:{
+    x:{min:68,max:96,...AXES.x,ticks:{color:MUTED,callback:v=>v+"%"},title:{display:true,text:"MMLU Score (%)",color:MUTED,font:{size:11}}},
+    y:{min:1080,max:1520,...AXES.y,title:{display:true,text:"Arena ELO (human preference)",color:MUTED,font:{size:11}}}
+  },
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>[ctx[0].raw.label],
+    label:ctx=>[ctx.raw.p,"MMLU: "+ctx.raw.x+"%","Arena ELO: "+ctx.raw.y]
+  }}}}});
+
+/* ── C5: Dual trend scatter ── */
+const top20=new Set([...DATA].sort((a,b)=>b.elo-a.elo).slice(0,20).map(d=>d.m));
+new Chart("c5",{type:"scatter",data:{datasets:[
+  {data:DATA.filter(d=>!top20.has(d.m)).map(d=>({x:d.mmlu,y:d.elo,label:d.m,p:d.p})),
+   pointBackgroundColor:"#8B9DAF",pointRadius:5,pointBorderWidth:0,label:"Other frontier"},
+  {data:DATA.filter(d=>top20.has(d.m)).map(d=>({x:d.mmlu,y:d.elo,label:d.m,p:d.p})),
+   pointBackgroundColor:GOLD,pointRadius:6.5,pointBorderWidth:0,label:"Top-20 ELO"}
+]},options:{...BASE,
+  scales:{
+    x:{min:68,max:96,...AXES.x,ticks:{color:MUTED,callback:v=>v+"%"},title:{display:true,text:"MMLU Score (%)",color:MUTED,font:{size:11}}},
+    y:{min:1080,max:1520,...AXES.y,title:{display:true,text:"Arena ELO (human preference)",color:MUTED,font:{size:11}}}
+  },
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>[ctx[0].raw.label],
+    label:ctx=>[ctx.raw.p,"MMLU: "+ctx.raw.x+"%  ·  ELO: "+ctx.raw.y,top20.has(ctx.raw.label)?"★ Top-20 ELO":""]
+  }}}}});
+
+/* ── C6: Slope chart — D3, opens on the biggest inversions, toggle to full field ── */
+function renderSlope(mode){
+  const all=DATA.filter(d=>d.mr&&d.er);
+  const big=d=>Math.abs(d.gap)>=8;
+  const focus=(mode==="focus");
+  const sD=focus?all.filter(big):all;
+  const gMax=Math.max(...all.map(d=>Math.abs(d.gap)));
+  const svgEl=document.getElementById("c6");
+  const W=svgEl.clientWidth||980, H=focus?620:860;
+  svgEl.style.height=H+"px";
+  const m={t:44,r:200,b:40,l:200};
+  const svg=d3.select("#c6").attr("viewBox",`0 0 ${W} ${H}`);
+  svg.selectAll("*").remove();
+  const maxR=d3.max(all,d=>Math.max(d.mr,d.er));
+  const y=d3.scaleLinear().domain([1,maxR]).range([m.t,H-m.b]);
+  const xL=m.l, xR=W-m.r;
+  const colG=d3.scaleSequential().domain([0,gMax]).interpolator(d3.interpolatePlasma);
+  const bigLbl=d=>focus?big(d):Math.abs(d.gap)>=12;
+
+  // lines
+  const strokeOf=d=>big(d)?colG(Math.abs(d.gap)):"rgba(0,50,98,0.13)";
+  const widthOf=d=>big(d)?2.4:0.9;
+  const lineSel=svg.append("g").selectAll("line").data(sD).join("line")
+    .attr("x1",xL).attr("y1",d=>y(d.mr)).attr("x2",xR).attr("y2",d=>y(d.er))
+    .attr("stroke",strokeOf).attr("stroke-width",widthOf)
+    .attr("opacity",0.92);
+
+  // dodge overlapping labels (tied or near-tied ranks); lines stay at true rank positions
+  function dodgeY(items,acc,minGap){
+    const arr=items.map(d=>({d,y:y(acc(d))})).sort((a,b)=>a.y-b.y||acc(a.d)-acc(b.d));
+    for(let i=1;i<arr.length;i++) if(arr[i].y<arr[i-1].y+minGap) arr[i].y=arr[i-1].y+minGap;
+    const map=new Map(); arr.forEach(o=>map.set(o.d,o.y)); return map;
+  }
+  const gapPx=focus?13:11.5;
+  const lY=dodgeY(sD,d=>d.mr,gapPx), rY=dodgeY(sD,d=>d.er,gapPx);
+  const nameOf=d=>(focus?("#"+d.mr+" "):"")+(d.m.length>20?d.m.slice(0,19)+"…":d.m);
+  const nameOfR=d=>(focus?("#"+d.er+" "):"")+(d.m.length>20?d.m.slice(0,19)+"…":d.m);
+
+  // invisible wide hit lines so thin slopes are hoverable
+  const slopeTip=d=>`<b>${d.m}</b>MMLU rank #${d.mr} → ELO rank #${d.er}<br>Gap: ${d.gap>0?"+":""}${d.gap} ${Math.abs(d.gap)>=8?"· major inversion":""}`;
+  svg.append("g").selectAll("line.hit").data(sD).join("line").attr("class","hit")
+    .attr("x1",xL).attr("y1",d=>y(d.mr)).attr("x2",xR).attr("y2",d=>y(d.er))
+    .attr("stroke","transparent").attr("stroke-width",13).style("cursor","pointer")
+    .on("mouseover",(e,d)=>{showTip(e,slopeTip(d));
+      lineSel.attr("opacity",l=>l.m===d.m?1:.07)
+        .attr("stroke",l=>l.m===d.m?(big(l)?colG(Math.abs(l.gap)):"#003262"):strokeOf(l))
+        .attr("stroke-width",l=>l.m===d.m?2.8:widthOf(l));
+      lblL.attr("opacity",l=>l.m===d.m?1:.18).attr("font-weight",l=>l.m===d.m?"700":(bigLbl(l)?"600":"400"));
+      lblR.attr("opacity",l=>l.m===d.m?1:.18).attr("font-weight",l=>l.m===d.m?"700":(bigLbl(l)?"600":"400"));})
+    .on("mousemove",(e)=>moveTip(e))
+    .on("mouseout",()=>{hideTip();
+      lineSel.attr("opacity",.92).attr("stroke",strokeOf).attr("stroke-width",widthOf);
+      lblL.attr("opacity",1).attr("font-weight",l=>bigLbl(l)?"600":"400");
+      lblR.attr("opacity",1).attr("font-weight",l=>bigLbl(l)?"600":"400");});
+
+  // left labels (MMLU rank)
+  const lblL=svg.append("g").selectAll("text.l").data(sD).join("text").attr("class","l")
+    .attr("x",xL-8).attr("y",d=>lY.get(d)).attr("text-anchor","end").attr("dominant-baseline","middle")
+    .attr("font-size",focus?10:9).attr("font-family","'IBM Plex Mono',monospace")
+    .attr("fill",d=>bigLbl(d)?colG(Math.abs(d.gap)):"#9aa")
+    .attr("font-weight",d=>bigLbl(d)?"600":"400")
+    .text(nameOf);
+
+  // right labels (ELO rank)
+  const lblR=svg.append("g").selectAll("text.r").data(sD).join("text").attr("class","r")
+    .attr("x",xR+8).attr("y",d=>rY.get(d)).attr("text-anchor","start").attr("dominant-baseline","middle")
+    .attr("font-size",focus?10:9).attr("font-family","'IBM Plex Mono',monospace")
+    .attr("fill",d=>bigLbl(d)?colG(Math.abs(d.gap)):"#9aa")
+    .attr("font-weight",d=>bigLbl(d)?"600":"400")
+    .text(nameOfR);
+
+  // column headers
+  svg.append("text").attr("x",xL).attr("y",24).attr("text-anchor","middle")
+    .attr("font-size",12).attr("font-weight","600").attr("fill","#003262").attr("font-family","'IBM Plex Mono',monospace").text("MMLU RANK");
+  svg.append("text").attr("x",xR).attr("y",24).attr("text-anchor","middle")
+    .attr("font-size",12).attr("font-weight","600").attr("fill","#003262").attr("font-family","'IBM Plex Mono',monospace").text("ARENA ELO RANK");
+
+  // gradient legend
+  const defs=svg.append("defs");
+  const grad=defs.append("linearGradient").attr("id","plasmaGrad").attr("x1","0%").attr("x2","100%");
+  [0,.25,.5,.75,1].forEach(t=>grad.append("stop").attr("offset",`${t*100}%`).attr("stop-color",d3.interpolatePlasma(t)));
+  svg.append("rect").attr("x",xL).attr("y",H-22).attr("width",xR-xL).attr("height",6).attr("fill","url(#plasmaGrad)");
+  svg.append("text").attr("x",xL).attr("y",H-26).attr("font-size",9).attr("fill","#6B6A65").attr("font-family","'IBM Plex Mono',monospace").text("small rank gap");
+  svg.append("text").attr("x",xR).attr("y",H-26).attr("text-anchor","end").attr("font-size",9).attr("fill","#6B6A65").attr("font-family","'IBM Plex Mono',monospace").text("large rank gap (inversions)");
+
+  // legend caption + count
+  const legEl=document.getElementById("c6-legend");
+  if(legEl){
+    legEl.textContent=focus
+      ?`Showing the ${sD.length} models with rank gap ≥ 8 — the inversions that make the case. Toggle to see all ${all.length} models.`
+      :`Showing all ${all.length} models. Bright colored lines = rank gap ≥ 8 · gray lines = smaller gaps. Hover any line to isolate it.`;
+  }
+}
+renderSlope("focus");
+document.querySelectorAll("#c6-ctrl .tbtn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("#c6-ctrl .tbtn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderSlope(btn.dataset.mode);
+  });
+});
+
+
+/* ── C7: Cost vs ELO ── */
+const hasCost=DATA.filter(d=>d.cost&&d.elo);
+const costCol=c=>{const t=(Math.log10(c)-Math.log10(.2))/(2-Math.log10(.2));return `hsl(${Math.round(40-t*40)},75%,${Math.round(55-t*18)}%)`;};
+const logTick={callback:v=>({"0-1":"$0.1","0":"$1","1":"$10","2":"$100"}[String(v)]||"")};
+new Chart("c7",{type:"scatter",data:{datasets:[
+  {data:hasCost.map(d=>({x:Math.log10(d.cost),y:d.elo,label:d.m,cost:d.cost,p:d.p})),
+   pointBackgroundColor:hasCost.map(d=>costCol(d.cost)),
+   pointRadius:6,pointBorderWidth:0,label:"models"}
+]},options:{...BASE,
+  scales:{
+    x:{min:-1,max:2.1,...AXES.x,ticks:{color:MUTED,...logTick},title:{display:true,text:"Output cost per 1M tokens USD (log scale: each gridline is 10\u00d7 the price)",color:MUTED,font:{size:11}}},
+    y:{min:1080,max:1520,...AXES.y,title:{display:true,text:"Arena ELO (human preference)",color:MUTED,font:{size:11}}}
+  },
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>[ctx[0].raw.label],
+    label:ctx=>[ctx.raw.p,"Cost: $"+ctx.raw.cost+"/1M tokens","Arena ELO: "+ctx.raw.y]
+  }}}}});
+
+/* ── C8a & C8b ── */
+function mkPanel(id,yField,yDomain,color){
+  const valid=hasCost.filter(d=>d[yField]!=null);
+  // least-squares fit in log-cost space for the trend line
+  const xs=valid.map(d=>Math.log10(d.cost)), ys=valid.map(d=>d[yField]);
+  const n=xs.length, mx=xs.reduce((a,b)=>a+b,0)/n, my=ys.reduce((a,b)=>a+b,0)/n;
+  let sxy=0,sxx=0; for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my); sxx+=(xs[i]-mx)*(xs[i]-mx);}
+  const slope=sxy/sxx, icpt=my-slope*mx;
+  const tx0=-1, tx1=2.1;
+  new Chart(id,{type:"scatter",data:{datasets:[
+    {data:valid.map(d=>({x:Math.log10(d.cost),y:d[yField],label:d.m,cost:d.cost})),
+     pointBackgroundColor:color,pointRadius:5,pointBorderWidth:0},
+    {type:"line",data:[{x:tx0,y:icpt+slope*tx0},{x:tx1,y:icpt+slope*tx1}],
+     borderColor:color,borderWidth:2,borderDash:[6,4],pointRadius:0,fill:false,order:0}
+  ]},options:{...BASE,
+    scales:{
+      x:{min:-1,max:2.1,...AXES.x,ticks:{color:MUTED,...logTick}},
+      y:{min:yDomain[0],max:yDomain[1],...AXES.y,ticks:{color:MUTED,callback:v=>yField==="mmlu"?v+"%":v}}
+    },
+    plugins:{...BASE.plugins,tooltip:{...TT,filter:i=>i.datasetIndex===0,callbacks:{
+      title:ctx=>ctx[0]?[ctx[0].raw.label]:[],
+      label:ctx=>["$"+ctx.raw.cost+"/1M",(yField==="elo"?"ELO: ":"MMLU: ")+ctx.raw.y+(yField==="mmlu"?"%":"")]
+    }}}}});
+}
+mkPanel("c8a","elo",[1080,1520],SKY);
+mkPanel("c8b","mmlu",[68,96],RED);
+
+/* ── C9: Cost bar ── */
+const mxE=Math.max(...DATA.map(d=>d.elo));
+const bnd=DATA.filter(d=>d.cost&&d.elo>=mxE-25).sort((a,b)=>b.cost-a.cost);
+new Chart("c9",{type:"bar",data:{
+  labels:bnd.map(d=>d.m),
+  datasets:[{data:bnd.map(d=>d.cost),
+    backgroundColor:bnd.map((_,i)=>{const t=i/(bnd.length-1);return `hsl(${Math.round(40-t*40)},75%,${Math.round(55-t*20)}%)` }),
+    borderRadius:0,borderWidth:0}]
+},options:{...BASE,indexAxis:"y",
+  scales:{
+    x:{...AXES.x,ticks:{color:MUTED,callback:v=>"$"+v},title:{display:true,text:"Output cost per 1M tokens (USD)",color:MUTED,font:{size:11}}},
+    y:{...AXES.y,grid:{display:false},ticks:{color:INK,font:{size:11}}}
+  },
+  plugins:{...BASE.plugins,tooltip:{...TT,callbacks:{
+    title:ctx=>[bnd[ctx[0].dataIndex].m],
+    label:ctx=>["$"+ctx.raw+"/1M tokens","Arena ELO: "+bnd[ctx.dataIndex].elo]
+  }}}}});
+
+/* ── C10: Multi-benchmark ── */
+const BM={MMLU:{c:BLUE,d:[{y:2020,v:33},{y:2021,v:48},{y:2022,v:58},{y:2023,v:71},{y:2024,v:85},{y:2025,v:90},{y:2026,v:93}]},GSM8K:{c:GOLD,d:[{y:2021,v:35},{y:2022,v:58},{y:2023,v:82},{y:2024,v:93},{y:2025,v:97},{y:2026,v:99}]},HumanEval:{c:SKY,d:[{y:2021,v:28},{y:2022,v:52},{y:2023,v:76},{y:2024,v:90},{y:2025,v:97},{y:2026,v:99}]},HellaSwag:{c:RED,d:[{y:2020,v:72},{y:2021,v:81},{y:2022,v:86},{y:2023,v:91},{y:2024,v:94},{y:2025,v:96},{y:2026,v:97}]}};
+const YRS=[2020,2021,2022,2023,2024,2025,2026];
+new Chart("c10",{type:"line",data:{datasets:[
+  ...Object.entries(BM).map(([name,{c,d}])=>({
+    label:name,
+    data:YRS.map(y=>{const pt=d.find(x=>x.y===y);return pt?{x:y,y:pt.v}:null}).filter(Boolean),
+    borderColor:c,borderWidth:2.5,pointBackgroundColor:c,pointRadius:4,
+    fill:false,tension:.35,spanGaps:true
+  })),
+  {label:"ceiling",data:[{x:2020,y:100},{x:2026,y:100}],
+   borderColor:"rgba(196,32,43,.35)",borderWidth:1.5,borderDash:[6,4],pointRadius:0,fill:false}
+]},options:{...BASE,
+  scales:{
+    x:{type:"linear",min:2019.8,max:2026.2,...AXES.x,ticks:{color:MUTED,callback:v=>Number.isInteger(v)?v:"",stepSize:1}},
+    y:{min:20,max:103,...AXES.y,ticks:{color:MUTED,callback:v=>v+"%"}}
+  },
+  plugins:{...BASE.plugins,legend:{display:false},tooltip:{...TT,callbacks:{
+    title:ctx=>[ctx[0].dataset.label],
+    label:ctx=>[ctx.dataset.label+" "+ctx.raw.x+": "+ctx.raw.y+"%"]
+  }}}}});
+
+/* ── C11a & C11b: Radar — on white card, VISIBLE fills ── */
+const RLBLS=[["Resists","contamination"],["Resists","saturation"],["Separates","top models"],["Cannot be","gamed"],["Price predicts","quality"]];
+function mkRadar(id,label,data,fillColor,borderColor){
+  new Chart(id,{type:"radar",data:{
+    labels:RLBLS,
+    datasets:[{label,data,
+      backgroundColor:fillColor,
+      borderColor:borderColor,
+      borderWidth:2.5,
+      pointBackgroundColor:borderColor,
+      pointRadius:5,
+      pointHoverRadius:7
+    }]
+  },options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{display:true,position:"bottom",labels:{color:borderColor,font:{size:12,weight:"600"},boxWidth:14,padding:10}},
+      tooltip:{...TT,callbacks:{title:ctx=>[ctx[0].label],label:ctx=>[label+": "+ctx.raw+"/5"]}}
+    },
+    scales:{r:{
+      min:0,max:5,
+      ticks:{stepSize:1,color:"rgba(0,50,98,0.4)",font:{size:9},backdropColor:"transparent"},
+      grid:{color:"rgba(0,50,98,0.12)"},
+      pointLabels:{color:MUTED,font:{size:10}},
+      angleLines:{color:"rgba(0,50,98,0.12)"}
+    }}
+  }});
+}
+mkRadar("c11a","MMLU",[1,1,2,1,2],"rgba(196,32,43,0.15)",RED);
+mkRadar("c11b","Arena ELO",[5,5,4,5,4],"rgba(0,50,98,0.12)",BLUE);
+
+/* ── NETWORK: Model Similarity Atlas ── */
+(function(){
+  const provCol={"OpenAI":"#2BB39B","Anthropic":"#E8853D","Google":"#7CB4FF","xAI":"#B78BF0","Mistral AI":"#F2E85C","DeepSeek":"#FF6B81"};
+  const OTHER="#9AA5B1";
+  const col=p=>provCol[p]||OTHER;
+  const nodes=DATA.map((d,i)=>({...d,id:i,color:col(d.p)}));
+  const links=[];
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+    if(Math.abs(nodes[i].mmlu-nodes[j].mmlu)<=3&&Math.abs(nodes[i].elo-nodes[j].elo)<=50){
+      const str=1-((Math.abs(nodes[i].mmlu-nodes[j].mmlu)/3+Math.abs(nodes[i].elo-nodes[j].elo)/50)/2);
+      links.push({s:i,t:j,strength:str});
+    }
+  }
+  const adj=nodes.map(()=>new Set());
+  links.forEach(l=>{adj[l.s].add(l.t);adj[l.t].add(l.s);});
+
+  const svgEl=document.getElementById("net-svg");
+  const W=svgEl.clientWidth||900, H=520;
+  const m={l:44,r:44,t:18,b:48};
+  const svg=d3.select("#net-svg").attr("viewBox",`0 0 ${W} ${H}`);
+  const x=d3.scaleLinear().domain([1080,1520]).range([m.l,W-m.r]);
+  const rScale=d3.scaleSqrt().domain([70,95]).range([4,14]);
+
+  // ELO axis: position now carries meaning
+  const ax=svg.append("g").attr("transform",`translate(0,${H-m.b})`)
+    .call(d3.axisBottom(x).ticks(8).tickFormat(d3.format("d")));
+  ax.selectAll("text").attr("fill","rgba(255,255,255,.55)").attr("font-family","'IBM Plex Mono',monospace").attr("font-size",10);
+  ax.selectAll(".domain,.tick line").attr("stroke","rgba(253,181,21,.25)");
+  svg.append("g").selectAll("line.grid").data(x.ticks(8)).join("line").attr("class","grid")
+    .attr("x1",d=>x(d)).attr("x2",d=>x(d)).attr("y1",m.t).attr("y2",H-m.b)
+    .attr("stroke","rgba(253,181,21,.07)");
+  svg.append("text").attr("x",W-m.r).attr("y",H-10).attr("text-anchor","end")
+    .attr("font-size",11).attr("fill","rgba(253,181,21,.6)").attr("font-family","'IBM Plex Mono',monospace")
+    .text("Arena ELO (human preference) →");
+
+  const linkSel=svg.append("g").selectAll("line.sim").data(links).join("line").attr("class","sim")
+    .attr("stroke","#FDB515").attr("stroke-width",d=>d.strength*2).attr("opacity",.28);
+  const nodeSel=svg.append("g").selectAll("g").data(nodes).join("g").style("cursor","pointer");
+  nodeSel.append("circle").attr("r",d=>rScale(d.mmlu)).attr("fill",d=>d.color)
+    .attr("fill-opacity",.92).attr("stroke","rgba(255,255,255,.25)").attr("stroke-width",1);
+  const labeled=nodes.filter(d=>d.elo>1400||Math.abs(d.gap)>=12);
+  const lblSel=svg.append("g").selectAll("text").data(labeled).join("text")
+    .attr("font-size",9).attr("fill","rgba(255,255,255,.75)").attr("text-anchor","middle")
+    .attr("font-family","'IBM Plex Mono',monospace").attr("pointer-events","none")
+    .text(d=>d.m.length>16?d.m.slice(0,15)+"…":d.m);
+
+  // hover: tooltip + neighbor highlight, everything else fades
+  nodeSel
+    .on("mouseover",function(e,d){
+      d3.select(this).select("circle").attr("stroke","#FDB515").attr("stroke-width",2);
+      nodeSel.attr("opacity",n=>(n.id===d.id||adj[d.id].has(n.id))?1:.12);
+      lblSel.attr("opacity",n=>(n.id===d.id||adj[d.id].has(n.id))?1:.12);
+      linkSel.attr("opacity",l=>(l.s===d.id||l.t===d.id)?.9:.04);
+      const nb=adj[d.id].size;
+      showTip(e,`<b>${d.m}</b>${d.p}<br>MMLU: ${d.mmlu}% · ELO: ${d.elo}<br>${nb} benchmark twin${nb===1?"":"s"} lit up`);
+    })
+    .on("mousemove",(e)=>moveTip(e))
+    .on("mouseout",function(){
+      d3.select(this).select("circle").attr("stroke","rgba(255,255,255,.25)").attr("stroke-width",1);
+      nodeSel.attr("opacity",1);lblSel.attr("opacity",1);linkSel.attr("opacity",.28);
+      hideTip();
+    });
+
+  const sim=d3.forceSimulation(nodes)
+    .force("x",d3.forceX(d=>x(d.elo)).strength(1))
+    .force("y",d3.forceY((H-m.b+m.t)/2).strength(.06))
+    .force("collide",d3.forceCollide(d=>rScale(d.mmlu)+2.5))
+    .on("tick",()=>{
+      nodes.forEach(d=>{const r=rScale(d.mmlu);d.y=Math.max(m.t+r,Math.min(H-m.b-r-4,d.y));});
+      linkSel.attr("x1",l=>nodes[l.s].x).attr("y1",l=>nodes[l.s].y)
+             .attr("x2",l=>nodes[l.t].x).attr("y2",l=>nodes[l.t].y);
+      nodeSel.attr("transform",d=>`translate(${d.x},${d.y})`);
+      lblSel.attr("x",d=>d.x).attr("y",d=>d.y-rScale(d.mmlu)-4);
+    });
+  nodeSel.call(d3.drag()
+    .on("start",(e,d)=>{if(!e.active)sim.alphaTarget(.3).restart();d.fx=d.x;d.fy=d.y;})
+    .on("drag",(e,d)=>{d.fx=e.x;d.fy=e.y;})
+    .on("end",(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}));
+
+  /* legend */
+  const leg=document.getElementById("net-legend");
+  const order=["OpenAI","Anthropic","Google","xAI","Mistral AI","DeepSeek"];
+  order.forEach(p=>{
+    const span=document.createElement("span");
+    span.innerHTML=`<span style="width:10px;height:10px;border-radius:50%;background:${provCol[p]};display:inline-block;flex-shrink:0"></span>${p}`;
+    leg.appendChild(span);
+  });
+  const oth=document.createElement("span");
+  oth.innerHTML=`<span style="width:10px;height:10px;border-radius:50%;background:${OTHER};display:inline-block;flex-shrink:0"></span>Other`;
+  leg.appendChild(oth);
+  // size key: reference circles for the MMLU encoding
+  const sizeKey=document.createElement("span");
+  sizeKey.style.cssText="display:inline-flex;align-items:flex-end;gap:6px;margin-left:10px";
+  const skLbl=document.createElement("span");
+  skLbl.style.cssText="color:rgba(255,255,255,.55);align-self:center";
+  skLbl.textContent="MMLU:";
+  sizeKey.appendChild(skLbl);
+  const sk=d3.create("svg").attr("width",150).attr("height",44);
+  [[75,"75%"],[85,"85%"],[95,"95%"]].forEach((pair,i)=>{
+    const cx=22+i*52, r=rScale(pair[0]);
+    sk.append("circle").attr("cx",cx).attr("cy",18).attr("r",r)
+      .attr("fill","none").attr("stroke","rgba(255,255,255,.6)").attr("stroke-width",1.2);
+    sk.append("text").attr("x",cx).attr("y",42).attr("text-anchor","middle")
+      .attr("font-size",8).attr("fill","rgba(255,255,255,.55)")
+      .attr("font-family","'IBM Plex Mono',monospace").text(pair[1]);
+  });
+  sizeKey.appendChild(sk.node());
+  leg.appendChild(sizeKey);
+  const note=document.createElement("span");
+  note.style.cssText="margin-left:12px;color:rgba(253,181,21,.75);font-size:10px;align-self:center";
+  note.textContent="x = Arena ELO · hover a model to light up its benchmark twins · dragged nodes snap back to their true ELO";
+  leg.appendChild(note);
+
+  // one-time discoverability pulse: highlight the top ELO model's twins on first view
+  let pulsed=false;
+  const io=new IntersectionObserver(ens=>{ens.forEach(en=>{
+    if(en.isIntersecting&&!pulsed){pulsed=true;io.disconnect();
+      setTimeout(()=>{
+        const hero=nodes.reduce((a,b)=>b.elo>a.elo?b:a);
+        nodeSel.attr("opacity",n=>(n.id===hero.id||adj[hero.id].has(n.id))?1:.12);
+        lblSel.attr("opacity",n=>(n.id===hero.id||adj[hero.id].has(n.id))?1:.12);
+        linkSel.attr("opacity",l=>(l.s===hero.id||l.t===hero.id)?.9:.04);
+        setTimeout(()=>{nodeSel.attr("opacity",1);lblSel.attr("opacity",1);linkSel.attr("opacity",.28);},1900);
+      },900);
+    }
+  });},{threshold:.4});
+  io.observe(svgEl);
+})();
+</script>
+</body>
+</html>
